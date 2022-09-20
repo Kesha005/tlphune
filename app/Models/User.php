@@ -13,8 +13,11 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     
     protected $fillable = [
-        'name',
         'phone',
         'isban',
+    ];
+
+    protected $hidden = [
+        'remember_token',
     ];
 }

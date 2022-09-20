@@ -17,7 +17,6 @@ class Users extends Component
     public function show($id)
     {
         $user=User::findOrFail($id);
-        $this->name=$user->name;
         $this->phone=$user->phone;
         $this->isban=$user->isban;
     }

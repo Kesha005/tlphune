@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->integer('isban')->default(0);
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

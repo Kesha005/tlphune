@@ -10,7 +10,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Ady</th>
                                     <th scope="col">Nomeri</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
@@ -19,7 +18,6 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <th scope="row">{{$user->id}}</th>
-                                    <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>
                                         <button wire:click="delban({{ $user->id }})" class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></button>
