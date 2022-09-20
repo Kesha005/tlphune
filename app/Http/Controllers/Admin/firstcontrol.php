@@ -34,7 +34,7 @@ class firstcontrol extends Controller
 
     public function marks()
     {
-        return view('admin.marks');
+        return view('admin.marks.index');
     }
 
     public function events()
