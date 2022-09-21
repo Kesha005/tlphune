@@ -47,4 +47,28 @@ class Category extends Component
             session()->flash('message', 'Users Deleted Successfully.');
         }
     }
+
+    public function cancel()
+    {
+        $this->resetinput();
+    }
+
+    public function edit($id)
+    {
+        $category=ModelsCategory::findOrFail($id);
+        $this->category_id=$category->id;
+        $this->name=$category->name;
+        $this->image=$category->image;
+    }
+
+    public function update()
+    {
+        $validateddata=$this->validate([
+            'name'=>'required',
+            'image'=>'required',
+        ]);
+        $category=ModelsCategory::find($this->category_id);
+        $data=['name'=>$this->name,'image'=>is_file($this->image) ?$this->image->store('files', 'public'): $category->image ];
+        $category->update($data);
+    }
 }

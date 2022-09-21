@@ -24,7 +24,7 @@ class firstcontrol extends Controller
 
     public function banuser()
     {
-        return view('admin.banuser');
+        return view('admin.banuser.index');
     }
 
     public function shops()

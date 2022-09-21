@@ -10,21 +10,21 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.categories')}}">
         <i class="bi bi-grid"></i>
         <span>Bölümler</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.users')}}">
         <i class="bi bi-person"></i>
         <span>Ulanyjylar</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.banusers')}}">
         <i class="bi bi-trash-fill"></i>
         <span>Gadagan edilenler</span>
       </a>

@@ -9,7 +9,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('',[firstcontrol::class,'index'])->name('index');
     Route::get('/categories',[firstcontrol::class,'categories'])->name('categories');
     Route::get('/users',[firstcontrol::class,'users'])->name('users');
-    Route::get('/banusers',[firstcontrol::class,'banuser'])->name('banuser');
+    Route::get('/banusers',[firstcontrol::class,'banuser'])->name('banusers');
     Route::get('/shops',[firstcontrol::class,'shops'])->name('shops');
     Route::get('/marks',[firstcontrol::class,'marks'])->name('marks');
     Route::get('/events',[firstcontrol::class,'events'])->name('events');

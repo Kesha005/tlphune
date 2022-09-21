@@ -24,7 +24,7 @@
                                     <td>{{$category->name}}</td>
                                     <td><img src="{{ asset('storage/'.$category->image) }}" height="70" width="70"></td>
                                     <td>
-                                        <button type="button" data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $category->id }})" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i></button>
+                                        <button  data-bs-toggle="modal" data-bs-target="#cedit" wire:click="edit({{ $category->id }})" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i></button>
                                         <button wire:click="delete({{ $category->id }})" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
 
                                     </td>
