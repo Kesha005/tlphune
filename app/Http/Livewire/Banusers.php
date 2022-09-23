@@ -6,10 +6,11 @@ use Livewire\Component;
 
 class Banusers extends Component
 {
+    public $users;
     public function render()
     {   
-        $users=User::where('isban',1)->get();
-        return view('livewire.banusers',compact('users'));
+        $this->users=User::where('isban',1)->get();
+        return view('livewire.banusers');
     }
 
     public function show($id)
