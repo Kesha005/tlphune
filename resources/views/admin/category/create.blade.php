@@ -10,9 +10,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-                    @csrf
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Ady</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ady" wire:model="name">
