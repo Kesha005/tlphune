@@ -7,11 +7,11 @@ use App\Models\User;
 
 class Users extends Component
 {
-    public $isban;
+    public $isban,$users;
     public function render()
     {   
-        $users=User::where('isban',0)->get();
-        return view('livewire.users',compact('users'));
+        $this->users=User::where('isban',0)->get();
+        return view('livewire.users');
     }
 
     public function show($id)

@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\File;
 class Category extends Component
 {
     use WithFileUploads;
-    public $name,$image,$category_id;
+    public $categories,$name,$image,$category_id;
 
     public function render()
     {
-        $categories=ModelsCategory::all();
-        return view('livewire.category',compact('categories'));
+        $this->categories=ModelsCategory::all();
+        return view('livewire.category');
     }
 
     private function resetinput()
