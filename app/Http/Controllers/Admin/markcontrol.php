@@ -17,7 +17,7 @@ class markcontrol extends Controller
   }
 
   public function store(Request $request)
-  { 
+  {
     $validateddata = $request->validate(['name' => 'required', 'image' => 'required']);
     $validateddata['image'] = $request->image->store('files', 'public');
     marks::create($validateddata);
