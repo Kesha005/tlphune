@@ -9,4 +9,9 @@ class category extends Model
 {
     use HasFactory;
     protected $fillable=['name','image'];
+
+    public function user()
+    {
+        return $this->hasMany(events::class);
+    }
 }

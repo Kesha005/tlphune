@@ -18,34 +18,6 @@ class markcontrol extends Controller
 
   public function store(Request $request)
   {
-<<<<<<< HEAD
-
-  }
-
-  public function edit($id)
-  {
-
-  }
-
-  public function update($id)
-  {
-
-  }
-
-
-
-
-    public function delete($id)
-    {
-        if ($id) {
-            $img = marks::find($id)->pluck('image');
-            foreach ($img as $i) {
-                File::delete('storage/' . $i);
-            }
-            marks::destroy($id);
-        }
-    }
-=======
     $validateddata = $request->validate(['name' => 'required', 'image' => 'required']);
     $validateddata['image'] = $request->image->store('files', 'public');
     marks::create($validateddata);
@@ -88,5 +60,4 @@ class markcontrol extends Controller
     return redirect()->route('admin.marks.index');
   }
 
->>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
 }

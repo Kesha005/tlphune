@@ -54,11 +54,8 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
-<<<<<<< HEAD
-=======
   <script src="{{asset('assets/vendor/jquery.js')}}"></script>
   <script src="{{asset('assets/vendor/jquery-datatable.js')}}"></script>
->>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
   <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/chart.js/chart.min.js')}}"></script>
