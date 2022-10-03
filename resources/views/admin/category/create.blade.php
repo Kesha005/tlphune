@@ -11,11 +11,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
                     <div class="form-group">
                         <label for="name">Ady</label>
                         <input type="text" class="form-control" id="name" placeholder="Ady" name="name">
