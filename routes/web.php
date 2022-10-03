@@ -3,6 +3,11 @@
 use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Admin\categories;
+use App\Http\Controllers\Admin\usercontrol;
+>>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Routing\Router;
@@ -15,11 +20,23 @@ Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
 Route::middleware(Authenticate::class)->group(function(){
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('', [firstcontrol::class, 'index'])->name('index');
+<<<<<<< HEAD
         // Route::resource('/categories', [firstcontrol::class, 'categories']);
         // Route::resource('/users', [firstcontrol::class, 'users']);
         // Route::resource('/banusers', [firstcontrol::class, 'banuser']);
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         Route::resource('/marks', markcontrol::class);
+=======
+        Route::resource('/marks',markcontrol::class);
+        Route::resource('/categories', categories::class);
+        Route::get('/users', [usercontrol::class,'index'])->name('users.index');
+        Route::get('/banusers', [usercontrol::class,'banuser'])->name('users.banuser');
+        Route::post('/banusers/{user}', [usercontrol::class,'ban'])->name('users.ban');
+        Route::post('/banusers_del/{user}', [usercontrol::class,'delban'])->name('users.delban');
+        // Route::resource('/banusers', [firstcontrol::class, 'banuser']);
+        // Route::resource('/shops', [firstcontrol::class, 'shops']);
+        
+>>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
         // Route::resource('/events', [firstcontrol::class, 'events']);
         // Route::resource('/messages', [firstcontrol::class, 'messages']);
     });

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Adminstrasiýa</title>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -23,7 +24,6 @@
   <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-  @livewireStyles
 </head>
 
 <body>
@@ -53,8 +53,12 @@
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  @livewireScripts
   <!-- Vendor JS Files -->
+<<<<<<< HEAD
+=======
+  <script src="{{asset('assets/vendor/jquery.js')}}"></script>
+  <script src="{{asset('assets/vendor/jquery-datatable.js')}}"></script>
+>>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
   <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/chart.js/chart.min.js')}}"></script>
