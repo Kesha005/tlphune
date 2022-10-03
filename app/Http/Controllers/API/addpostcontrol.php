@@ -9,6 +9,6 @@ class addpostcontrol extends Controller
 {
     public function add_event(Request $request)
     {
-        $request->validate([])
+        $request->validate([]);
     }
 }
