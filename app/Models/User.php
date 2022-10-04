@@ -20,4 +20,9 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
+
+    public function category()
+    {
+        return $this->belongsToMany(category::class,'events');
+    }
 }
