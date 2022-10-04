@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<div wire:ignore.self class="modal fade" id="cedit" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form wire:submit.prevent="update" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title">Üýtget</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+=======
 @extends('layouts.admin.app')
 
 @section('page_name')
@@ -16,6 +26,7 @@ Markalar
                     <form action="{{route('admin.categories.update',$category)}}"  id="markform1" enctype="multipart/form-data" method="POST">
                     @method('PUT')
                     @csrf
+>>>>>>> a28ae097858eb3651dc13d450a3cb7693ae1c766
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="mname1">Ady</label>

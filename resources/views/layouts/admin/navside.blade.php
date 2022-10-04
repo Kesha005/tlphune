@@ -3,7 +3,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.index')}}">
         <i class="bi bi-bar-chart-line"></i>
         <span>Baş sahypa</span>
       </a>

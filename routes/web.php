@@ -23,7 +23,6 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('/banusers', [usercontrol::class,'banuser'])->name('users.banuser');
         Route::post('/banusers/{user}', [usercontrol::class,'ban'])->name('users.ban');
         Route::post('/banusers_del/{user}', [usercontrol::class,'delban'])->name('users.delban');
-        // Route::resource('/banusers', [firstcontrol::class, 'banuser']);
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         // Route::resource('/events', [firstcontrol::class, 'events']);
