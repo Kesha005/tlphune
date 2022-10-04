@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\events;
 use App\Models\messages;
 use Illuminate\Http\Request;
@@ -20,6 +21,19 @@ class basecontrol extends Controller
         messages::create($request->all());
         return response()->json(['message'=>'Hat iberildi']);
     }
+
+    public function get_events()
+    {
+        $events=events::with('user','category','mark')->get();
+        return response()->json($events);
+    }
+
+    public function get_category()
+    {
+        $categories=category::all();
+        return response()->json($categories);
+    }
+
     
 
 }

@@ -29,7 +29,11 @@ Ulanyjylar
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$user->phone}}</td>
                                     <td>
-                                        <a href="{{route('admin.users.ban',$user)}}" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                        <form method="POST" action="{{route('admin.users.ban',$user)}}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                        
 
                                     </td>
 

@@ -21,14 +21,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-<<<<<<< HEAD
-    public function category()
-    {
-        return $this->belongsToMany(category::class,'events');
-=======
-    public function events()
+    public function user_events()
     {
         return $this->hasMany(events::class);
->>>>>>> 02b28f734262bd6a8b3bb36e78637e46286cb410
     }
 }

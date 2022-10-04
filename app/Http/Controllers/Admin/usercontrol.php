@@ -10,7 +10,7 @@ class usercontrol extends Controller
    
     public function index()
     {
-        $users=User::all();
+        $users=User::where('isban',0)->get();
         return view('admin.users.index',compact('users'));
     }
 
@@ -20,14 +20,14 @@ class usercontrol extends Controller
         return view('admin.banuser.index',compact('users'));
     }
 
-    public function ban($user)
+    public function ban(User $user)
     {
         $data=['isban'=>1];
         $user->update($data);
         return redirect()->route('admin.users.index');
     }
 
-    public function delban($user)
+    public function delban(User $user)
     {
         $data=['isban'=>0];
         $user->update($data);

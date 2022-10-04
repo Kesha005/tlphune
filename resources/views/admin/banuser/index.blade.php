@@ -29,8 +29,11 @@ Gadagan edilen ulanyjylar
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$user->phone}}</td>
                                     <td>
-                                        <a href="{{route('admin.users.delban',$user)}}" class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></button>
-
+                                        <form method="post" action="{{route('admin.users.delban',$user)}}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></button>
+                                        </form>
+                                        
                                     </td>
 
                                 </tr>

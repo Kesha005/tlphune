@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\logincontrol;
+use App\Http\Controllers\API\basecontrol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/auth',[logincontrol::class,'isnew']);
+Route::get('/events',[basecontrol::class,'get_events']);
