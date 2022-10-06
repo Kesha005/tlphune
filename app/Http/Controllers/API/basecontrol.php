@@ -10,10 +10,6 @@ use Illuminate\Http\Request;
 
 class basecontrol extends Controller
 {
-    public function get_all(){
-        $events=events::with('user_id')->get();
-        return response()->json($events);
-    }
 
     public function send_msg(Request $request)
     {

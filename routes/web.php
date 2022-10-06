@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\apkcontrol;
 use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
+use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
@@ -23,9 +25,17 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('/banusers', [usercontrol::class,'banuser'])->name('users.banuser');
         Route::post('/banusers/{user}', [usercontrol::class,'ban'])->name('users.ban');
         Route::post('/banusers_del/{user}', [usercontrol::class,'delban'])->name('users.delban');
+        Route::get('/apk',[apkcontrol::class,'index'])->name('apk.index');
+        Route::post('/apk_add',[apkcontrol::class,'create'])->name('apk.create');
+        Route::delete('/apk_delete/{apk}',[apkcontrol::class,'destroy'])->name('apk.destroy');
+        Route::get('/apk_doenload/{apk}',[apkcontrol::class,'download'])->name('apk.download');
+        Route::get('/messages', [msgscontrol::class,'index'])->name('messages.index');
+        Route::get('/messages/{msg}', [msgscontrol::class,'show'])->name('messages.show');
+        Route::delete('/messages_del/{msg}', [msgscontrol::class,'destroy'])->name('messages.destroy');
+        Route::post('/messages_multi_del/', [msgscontrol::class,'multi_del'])->name('messages.multi_del');
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         // Route::resource('/events', [firstcontrol::class, 'events']);
-        // Route::resource('/messages', [firstcontrol::class, 'messages']);
+        
     });
 });

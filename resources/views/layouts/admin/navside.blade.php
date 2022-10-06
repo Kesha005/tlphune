@@ -52,9 +52,16 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.messages.index')}}">
         <i class="bi bi-chat"></i>
         <span>Gelen hatlar</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.apk.index')}}">
+        <i class="bi bi-cloud"></i>
+        <span>APK</span>
       </a>
     </li>
 

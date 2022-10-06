@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('model')->nullable();
             $table->string('price')->nullable();
             $table->string('condition')->nullable();
-            $table->json('about')->nullable();
+            $table->string('about')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\addpostcontrol;
 use App\Http\Controllers\API\logincontrol;
 use App\Http\Controllers\API\basecontrol;
 use Illuminate\Http\Request;
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/auth',[logincontrol::class,'isnew']);
+Route::get('/categories',[basecontrol::class,'get_category']);
+Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
+Route::post('/add',[addpostcontrol::class,'add_event'])->middleware('auth:sanctum');
+
+

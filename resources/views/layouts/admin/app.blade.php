@@ -66,6 +66,7 @@
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 
   <script src="{{asset('assets/js/main.js')}}"></script>
+  <script src="{{asset('assets/js/laravel.js')}}"></script>
 </body>
 
 </html>
