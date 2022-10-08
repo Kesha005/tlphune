@@ -23,15 +23,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::create([
-            'name'=>'Kesha',
-            'email'=>'admin@admin.com',
-            'password'=>Hash::make('password'),
+            'phone'=>'+99364188068',
         ]);
         
         \App\Models\User::create([
-            'name'=>'Kesha1',
-            'email'=>'admin1@admin.com',
-            'password'=>Hash::make('password'),
+            'phone'=>'+99364123456',
         ]);
     }
 }

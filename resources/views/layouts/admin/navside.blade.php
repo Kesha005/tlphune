@@ -31,7 +31,7 @@
     </li>
 
      <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.events.index')}}">
         <i class="bi bi-display"></i>
         <span>Bildirişler</span>
       </a>

@@ -19,8 +19,7 @@ Gadagan edilen ulanyjylar
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Ady</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Telefon/nom</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -28,8 +27,7 @@ Gadagan edilen ulanyjylar
                                 @foreach($users as $user)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->phone}}</td>
                                     <td>
                                         <form method="post" action="{{route('admin.users.delban',$user)}}">
                                             @csrf
