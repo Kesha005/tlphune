@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\a_changecontrol;
 use App\Http\Controllers\Admin\apkcontrol;
 use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
+use App\Http\Controllers\Admin\eventcontrol;
+use App\Http\Controllers\Admin\eventscontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Middleware\auth;
@@ -15,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [authcontrol::class, 'login'])->name('login');
 Route::post('/post', [authcontrol::class, 'post'])->name('postlog');
 Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
+
+
+
+
+Route::get('firebase',[authcontrol::class,'firebase'])->name('firebase');
 
 Route::middleware(Authenticate::class)->group(function(){
     Route::prefix('admin')->name('admin.')->group(function () {
@@ -33,6 +41,15 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('/messages/{msg}', [msgscontrol::class,'show'])->name('messages.show');
         Route::delete('/messages_del/{msg}', [msgscontrol::class,'destroy'])->name('messages.destroy');
         Route::post('/messages_multi_del/', [msgscontrol::class,'multi_del'])->name('messages.multi_del');
+        #__________________Admin profil routes_______________
+        Route::get('/profile',[a_changecontrol::class,'index'])->name('profile.index');
+        Route::put('/profile_update/{user}',[a_changecontrol::class,'change_profil'])->name('profile.update');
+        Route::put('/profile_update_password/{user}',[a_changecontrol::class,'change_password'])->name('profile.update.password');
+
+        #_______________________Admin_event routes_____________________________
+        Route::get('/events',[eventcontrol::class,'index'])->name('events.index');
+        Route::get('/event/{event}',[eventcontrol::class,'show'])->name('events.show');
+        Route::delete('/event/{event}',[eventscontrol::class,'destroy'])->name('events.destroy');
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         // Route::resource('/events', [firstcontrol::class, 'events']);

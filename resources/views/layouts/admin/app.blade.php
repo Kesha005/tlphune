@@ -35,7 +35,7 @@
       <h1>@yield('page_name')</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Baş sahypa</a></li>
+          <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Baş sahypa</a></li>
           <li class="breadcrumb-item active">@yield('page_name')</li>
         </ol>
       </nav>
