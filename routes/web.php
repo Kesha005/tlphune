@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\a_changecontrol;
 use App\Http\Controllers\Admin\apkcontrol;
 use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
@@ -33,6 +34,10 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('/messages/{msg}', [msgscontrol::class,'show'])->name('messages.show');
         Route::delete('/messages_del/{msg}', [msgscontrol::class,'destroy'])->name('messages.destroy');
         Route::post('/messages_multi_del/', [msgscontrol::class,'multi_del'])->name('messages.multi_del');
+        #__________________Admin profil routes_______________
+        Route::get('/profile',[a_changecontrol::class,'index'])->name('profile.index');
+        Route::put('profile_update/{user}',[a_changecontrol::class,'change_profil'])->name('profile.update');
+        Route::put('profile_update_password/{user}',[a_changecontrol::class,'change_password'])->name('profile.update.password');
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         // Route::resource('/events', [firstcontrol::class, 'events']);

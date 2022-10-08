@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class messages extends Model
 {
     use HasFactory;
-    protected $fillable=['name','phone','email','text'];
+    protected $fillable=['name','email','text'];
 }

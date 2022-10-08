@@ -19,7 +19,8 @@ Ulanyjylar
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nomeri</th>
+                                    <th scope="col">Ady</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -27,7 +28,8 @@ Ulanyjylar
                                 @foreach($users as $user)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
                                     <td>
                                         <form method="POST" action="{{route('admin.users.ban',$user)}}">
                                             @csrf
