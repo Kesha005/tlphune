@@ -49,7 +49,7 @@ Baş sahypa
                                     <i class="bi bi-bookmark"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>$3,264</h6>
+                                    <h6>3,264</h6>
                                     <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Ösüş</span>
 
                                 </div>
@@ -144,7 +144,7 @@ Baş sahypa
                                     },
                                 },
                                 xaxis: {
-                                    categories: ['Ýan', 'Feb', 'Mar', 'Apr', 'May', 'Iýun', 'Iýul', 'Aug', 'Sep', 'Okt', 'Noý', 'Dek'],
+                                    categories: ['Ýan', 'Feb', 'Mar', 'Apr', 'May', 'Iýun', 'Iýul', 'Aug', 'Sen', 'Okt', 'Noý', 'Dek'],
                                 }
                             }).render();
                         });

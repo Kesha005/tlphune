@@ -22,7 +22,7 @@ Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
 
 
 
-Route::get('firebase',[authcontrol::class,'firebase'])->name('firebase');
+
 
 Route::middleware(Authenticate::class)->group(function(){
     Route::prefix('admin')->name('admin.')->group(function () {
