@@ -22,21 +22,11 @@ class eventcontrol extends Controller
 
     public function destroy(events $event)
     {
-<<<<<<< HEAD
-        $id = $event->id;
-        $img = events::find($event)->pluck('image');
-        foreach ($img as $i) {
-          File::delete('storage/' . $i);
-        }
-        $event->delete();
-        return redirect()->route('admin.events.index');
-=======
         $img = events::find($event)->pluck('image');
         foreach ($img as $i) {
             File::delete('storage/' . $i);
         }
         events::destroy($event);
     return redirect()->route('admin.events.index');
->>>>>>> 6859abc7f3cd909acd8e9bfe6a955f117cb07821
     }
 }

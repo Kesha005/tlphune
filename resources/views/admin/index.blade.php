@@ -12,7 +12,7 @@ Baş sahypa
             <div class="row">
 
                 <!-- Sales Card -->
-                <div class="col-4">
+                <div class="col-6">
                     <div class="card info-card sales-card">
 
 
@@ -37,7 +37,7 @@ Baş sahypa
                 <!-- End Sales Card -->
 
                 <!-- Revenue Card -->
-                <div class="col-4">
+                <div class="col-6">
                     <div class="card info-card revenue-card">
 
 
@@ -61,28 +61,6 @@ Baş sahypa
                 <!-- End Revenue Card -->
 
                 <!-- Customers Card -->
-                <div class="col-4">
-
-                    <div class="card info-card customers-card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Aktiwlik </h5>
-
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-speedometer"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6>1244</h6>
-                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Ösüş</span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
 
@@ -105,10 +83,6 @@ Baş sahypa
                                         name: "Täze bildirişler",
                                         data: [2, 21, 15, 51, 20, 62, 29, 91, 12, 87, 56, 43]
                                     },
-                                    {
-                                        name: "Aktiwlik",
-                                        data: [5, 31, 25, 11, 30, 32, 39, 21, 2, 76, 89, 50]
-                                    }
                                 ],
                                 chart: {
                                     height: 350,

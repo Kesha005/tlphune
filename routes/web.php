@@ -7,10 +7,6 @@ use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
 use App\Http\Controllers\Admin\eventcontrol;
-<<<<<<< HEAD
-use App\Http\Controllers\Admin\eventscontrol;
-=======
->>>>>>> 6859abc7f3cd909acd8e9bfe6a955f117cb07821
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Middleware\auth;
@@ -46,15 +42,6 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::post('/messages_multi_del/', [msgscontrol::class,'multi_del'])->name('messages.multi_del');
         #__________________Admin profil routes_______________
         Route::get('/profile',[a_changecontrol::class,'index'])->name('profile.index');
-<<<<<<< HEAD
-        Route::put('/profile_update/{user}',[a_changecontrol::class,'change_profil'])->name('profile.update');
-        Route::put('/profile_update_password/{user}',[a_changecontrol::class,'change_password'])->name('profile.update.password');
-
-        #_______________________Admin_event routes_____________________________
-        Route::get('/events',[eventcontrol::class,'index'])->name('events.index');
-        Route::get('/event/{event}',[eventcontrol::class,'show'])->name('events.show');
-        Route::delete('/event/{event}',[eventscontrol::class,'destroy'])->name('events.destroy');
-=======
         Route::put('profile_update/{user}',[a_changecontrol::class,'change_profil'])->name('profile.update');
         Route::put('profile_update_password/{user}',[a_changecontrol::class,'change_password'])->name('profile.update.password');
 
@@ -63,7 +50,8 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('events',[eventcontrol::class,'index'])->name('events.index');
         Route::get('events/{event}',[eventcontrol::class,'index'])->name('events.show');
         Route::delete('event_destroy/{event}',[eventcontrol::class,'destroy'])->name('events.destroy');
->>>>>>> 6859abc7f3cd909acd8e9bfe6a955f117cb07821
+
+        Route::get('/dd',[firstcontrol::class,'index1']);
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         
