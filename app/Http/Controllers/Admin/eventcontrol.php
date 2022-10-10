@@ -15,7 +15,7 @@ class eventcontrol extends Controller
         return view('admin.events.index',compact('events'));
     }
 
-    public function show(events $event)
+    public function show($event)
     {
         return view('admin.events.show',compact('event'));
     }
