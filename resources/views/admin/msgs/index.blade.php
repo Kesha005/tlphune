@@ -33,7 +33,6 @@ Hatlar
                                     </th>
                                     <th scope="col">No</th>
                                     <th scope="col">Ady</th>
-                                    <th scope="col">Telefon</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Tekst</th>
                                     <th scope="col">Funksiýa</th>
@@ -47,7 +46,6 @@ Hatlar
                                     </td>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$msg->name}}</td>
-                                    <td>{{$msg->phone}}</td>
                                     <td>{{$msg->email}}</td>
                                     <td>{{$msg->email}}</td>
                                     <td>

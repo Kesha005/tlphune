@@ -12,34 +12,21 @@ use Illuminate\Support\Facades\Validator;
 
 class logincontrol extends Controller
 {
-    public function isnew(Request $request)
-    {
-        $request->validate(['phone'=>'required']); $user=User::where('phone',$request['phone'])->get();
-        if(count($user)>0) 
-        {
-            if($user['isban']==0) return $this->loginUser($request);
-            return $this->error();
-        }
-        return $this->createUser($request);
-    }
-
 
     public function error()
     {
         return response()->json(['message'=>'Siz  düzgünleri bozanlygyňyz üçin çäklendirildiňiz']);
     }
 
-
-
-
-    public function createUser($request)
+    public function register(Request $request)
     {
         try {
             //Validated
             $validateUser = Validator::make($request->all(), 
             [
-               
-                'phone' => 'required',
+               'name'=>'required|unique',
+               'email'=>'required|unique',
+               'password'=>'required',
             ]);
 
             if($validateUser->fails()){
@@ -51,7 +38,7 @@ class logincontrol extends Controller
             }
 
             $user = User::create([
-               'phone'=>$request->phone
+               $request->all()
             ]);
 
             return response()->json([
@@ -69,12 +56,14 @@ class logincontrol extends Controller
     }
 
  
-    public function loginUser(Request $request)
+    public function login(Request $request)
     {
         try {
             $validateUser = Validator::make($request->all(), 
             [
-                'phone'=>'required'
+                'name'=>'required|unique',
+               'email'=>'required|unique',
+               'password'=>'required',
             ]);
 
             if($validateUser->fails()){
@@ -85,14 +74,14 @@ class logincontrol extends Controller
                 ], 401);
             }
 
-            if(!Auth::attempt($request->only(['phone']))){
+            if(!Auth::attempt($request->only(['name','email','password']))){
                 return response()->json([
                     'status' => false,
                     'message' => 'Nädogry maglumatlar girizildi',
                 ], 401);
             }
-
-            $user = User::where('phone', $request->email)->first();
+            if($request->name!=null) $user=User::where('name',$request->name);
+            $user = User::where('email', $request->email)->first();
 
             return response()->json([
                 'status' => true,
