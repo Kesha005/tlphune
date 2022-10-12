@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\events;
+use App\Models\gallery;
 use App\Models\messages;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,13 @@ class basecontrol extends Controller
     {
         $categories=category::all();
         return response()->json($categories);
+    }
+
+
+    public function images()
+    {
+        $images=gallery::all();
+        return response()->json($images);
     }
 
     

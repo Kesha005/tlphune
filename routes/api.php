@@ -22,6 +22,7 @@ Route::post('/register',[logincontrol::class,'register']);
 Route::get('/categories',[basecontrol::class,'get_category']);
 Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
+Route::get('/images',[basecontrol::class,'images']);
 Route::post('/add',[addpostcontrol::class,'add_event'])->middleware('auth:sanctum');
 
 
