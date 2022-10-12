@@ -7,10 +7,12 @@ use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
 use App\Http\Controllers\Admin\eventcontrol;
+use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
+use App\Models\gallery;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,10 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::put('profile_update/{user}',[a_changecontrol::class,'change_profil'])->name('profile.update');
         Route::put('profile_update_password/{user}',[a_changecontrol::class,'change_password'])->name('profile.update.password');
 
+        #__________________________________Gallery_Routes______________________
+        Route::get('gallery',[gallerycontrol::class,'index'])->name('gallery.index');
+        Route::post('img_store',[gallerycontrol::class,'store'])->name('gallery.store');
+        Route::delete('img_destroy/{image}',[gallerycontrol::class,'destroy'])->name('gallery.destroy');
         #_________________________________Event routes_______________________________________________
 
         Route::get('events',[eventcontrol::class,'index'])->name('events.index');

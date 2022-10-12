@@ -17,6 +17,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.gallery.index')}}">
+        <i class="bi bi-image"></i>
+        <span>Galereýa</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.users.index')}}">
         <i class="bi bi-person"></i>
         <span>Ulanyjylar</span>
