@@ -36,7 +36,7 @@ Bölümler
                                     @csrf
                                     @method('DELETE')
                                         <a href="{{route('admin.categories.edit',$category)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-pen"></i></a>
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                     </form>
                                     </td>
                                 </tr>

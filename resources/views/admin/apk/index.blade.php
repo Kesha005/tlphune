@@ -32,7 +32,7 @@ APK
                                     @csrf
                                     @method('DELETE')
                                         <a href="{{route('admin.apk.download',$apk)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-download"></i></a>
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                     </form>
                                     </td>
 

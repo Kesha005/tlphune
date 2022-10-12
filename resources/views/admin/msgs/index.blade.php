@@ -15,8 +15,8 @@ Hatlar
             <i class="bi bi-trash"></i>Aýyr
         </button>
     </form><br>
-       
-    </form>
+    
+    
 
     <section class="section">
         <div class="row">

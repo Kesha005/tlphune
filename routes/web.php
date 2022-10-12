@@ -50,6 +50,8 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::get('events',[eventcontrol::class,'index'])->name('events.index');
         Route::get('events/{event}',[eventcontrol::class,'index'])->name('events.show');
         Route::delete('event_destroy/{event}',[eventcontrol::class,'destroy'])->name('events.destroy');
+        Route::post('event_del',[eventcontrol::class,'multi_del'])->name('events.multi_del');
+        Route::post('event_check',[eventcontrol::class,'multi_check'])->name('events.multi_check');
 
         Route::get('/dd',[firstcontrol::class,'index1']);
         // Route::resource('/shops', [firstcontrol::class, 'shops']);

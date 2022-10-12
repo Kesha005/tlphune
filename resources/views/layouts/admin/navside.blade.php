@@ -38,7 +38,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="{{route('admin.marks.index')}}">
+      <a class="nav-link" href="{{route('admin.marks.index')}}">
         <i class="bi bi-bookmark"></i>
         <span>Markalar</span>
       </a>
