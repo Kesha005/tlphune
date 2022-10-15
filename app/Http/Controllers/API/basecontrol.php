@@ -21,7 +21,7 @@ class basecontrol extends Controller
 
     public function get_events()
     {
-        $events=events::with('user','category','mark')->get();
+        $events=events::with('user','category','mark')->where('status',1)->get();
         return response()->json($events);
     }
 

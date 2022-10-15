@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\categories;
 use App\Http\Controllers\Admin\eventcontrol;
 use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
+use App\Http\Controllers\Admin\shopscontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
@@ -60,6 +61,8 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::post('event_check',[eventcontrol::class,'multi_check'])->name('events.multi_check');
 
         Route::get('/dd',[firstcontrol::class,'index1']);
+
+        Route::get('/shop',[shopscontrol::class,'index']);
         // Route::resource('/shops', [firstcontrol::class, 'shops']);
         
         

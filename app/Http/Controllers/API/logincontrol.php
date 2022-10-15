@@ -14,87 +14,43 @@ use Illuminate\Support\Facades\Validator;
 class logincontrol extends Controller
 {
 
+    public function isnew(Request $request)
+    {
+        $request->validate(['phone'=>'required','name'=>'required']); $user=User::where('phone',$request['phone'])->get();
+        if($user->count()>0) 
+        {
+            if($user['isban']==0) return $this->login($request);
+            return $this->error();
+        }
+        return $this->register($request);
+    }
+
+    public function login($data)
+    {
+        $user = User::where('phone', $data['phone'])->firstOrFail();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+           'access_token' => $token,
+           'token_type' => 'Bearer',
+        ]);
+    }
+
+    public function register($data)
+    {
+        $user = User::create($data->all());
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+           'access_token' => $token,
+           'token_type' => 'Bearer',
+        ]);
+    }
+
     public function error()
     {
         return response()->json(['message'=>'Siz  düzgünleri bozanlygyňyz üçin çäklendirildiňiz']);
-    }
-
-    public function register(Request $request)
-    {
-        try {
-            //Validated
-            $validateUser = Validator::make($request->all(), 
-            [
-               'name'=>'required|unique',
-               'email'=>'required|unique',
-               'password'=>'required',
-            ]);
-
-            if($validateUser->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Nädogry maglumatlar girizildi',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            $user = User::create([
-               $request->all()
-            ]);
-
-            return response()->json([
-                'status' => true,
-                'message' => 'Ulanyjy doredildi',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
-    }
-
- 
-    public function login(Request $request)
-    {
-        try {
-            $validateUser = Validator::make($request->all(), 
-            [
-                'name'=>'required|unique',
-               'email'=>'required|unique',
-               'password'=>'required',
-            ]);
-
-            if($validateUser->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Nädogry maglumatlar girizildi',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            if(!Auth::attempt($request->only(['name','email','password']))){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Nädogry maglumatlar girizildi',
-                ], 401);
-            }
-            if($request->name!=null) $user=User::where('name',$request->name);
-            $user = User::where('email', $request->email)->first();
-
-            return response()->json([
-                'status' => true,
-                'message' => 'Iceri girildi.',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
     }
 }

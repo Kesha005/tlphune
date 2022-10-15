@@ -24,10 +24,12 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'phone'=>'+99364188068',
+            'name'=>'User1'
         ]);
         
         \App\Models\User::create([
             'phone'=>'+99364123456',
+            'name'=>'User2'
         ]);
     }
 }

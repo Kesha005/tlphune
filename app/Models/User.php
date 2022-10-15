@@ -15,6 +15,7 @@ class User extends Authenticatable
     protected $fillable = [
         'phone',
         'isban',
+        'name',
     ];
 
     protected $hidden = [
@@ -25,5 +26,10 @@ class User extends Authenticatable
     public function user_events()
     {
         return $this->hasMany(events::class);
+    }
+
+    public function shops()
+    {
+        return $this->hasMany(shops::class);
     }
 }

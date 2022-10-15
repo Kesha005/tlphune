@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login',[logincontrol::class,'login']);
-Route::post('/register',[logincontrol::class,'register']);
+Route::post('/login',[logincontrol::class,'isnew']);
 Route::get('/categories',[basecontrol::class,'get_category']);
 Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
