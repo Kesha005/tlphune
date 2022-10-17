@@ -19,6 +19,7 @@ Ulanyjylar
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Ady</th>
                                     <th scope="col">Telefon/nom</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
@@ -27,6 +28,7 @@ Ulanyjylar
                                 @foreach($users as $user)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>
                                         <form method="POST" action="{{route('admin.users.ban',$user)}}">
