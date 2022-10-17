@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\events;
 use App\Models\gallery;
+use App\Models\marks;
 use App\Models\messages;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,12 @@ class basecontrol extends Controller
     {
         $images=gallery::all();
         return response()->json($images);
+    }
+
+    public function marks()
+    {
+        $marks=marks::all();
+        return response()->json($marks);
     }
 
     
