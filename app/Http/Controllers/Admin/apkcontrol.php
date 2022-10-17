@@ -40,6 +40,9 @@ class apkcontrol extends Controller
     public function download($apk)
     {
         $file = apk::find($apk);
-        return response()->download(storage_path('app/public/' . $file->apk));
+        return response()->file(storage_path('app/public/' . $file->apk),[
+            'Content-Type'=>'application/vnd.android.package-archive',
+            'Content-Disposition'=> 'attachment; filename="android.apk"',
+        ]) ;
     }
 }
