@@ -83,3 +83,7 @@ Bildirişler
     </section>
 </div>
 @endsection
+
+@section('js')
+<script src="{{asset('assets/js/event_check.js')}}"></script>
+@endsection

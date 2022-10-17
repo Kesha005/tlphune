@@ -55,17 +55,12 @@
   <script src="{{asset('assets/vendor/jquery.js')}}"></script>
   <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('assets/vendor/quill/quill.min.js')}}"></script>
   <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('assets/vendor/sweetalert/sweetalert2.min.js')}}"></script>
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
-
   <script src="{{asset('assets/js/main.js')}}"></script>
-  <script src="{{asset('assets/js/msg_check.js')}}"></script>
-  <script src="{{asset('assets/js/shop.js')}}"></script>
-  <script src="{{asset('assets/js/event_check.js')}}"></script>
-  <script src="{{asset('assets/js/sweet.js')}}"></script>
+  @yield('js')
 </body>
 
 </html>

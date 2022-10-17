@@ -71,3 +71,7 @@ Hatlar
     </section>
 </div>
 @endsection
+
+@section('js')
+<script src="{{asset('assets/js/msg_check.js')}}"></script>
+@endsection
