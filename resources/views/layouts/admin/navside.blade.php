@@ -52,7 +52,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link " href="{{route('admin.shops.index')}}">
         <i class="bi bi-bank"></i>
         <span>Dükanlar</span>
       </a>

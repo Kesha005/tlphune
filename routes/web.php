@@ -60,10 +60,9 @@ Route::middleware(Authenticate::class)->group(function(){
         Route::post('event_del',[eventcontrol::class,'multi_del'])->name('events.multi_del');
         Route::post('event_check',[eventcontrol::class,'multi_check'])->name('events.multi_check');
 
-        Route::get('/dd',[firstcontrol::class,'index1']);
-
-        Route::get('/shop',[shopscontrol::class,'index']);
-        // Route::resource('/shops', [firstcontrol::class, 'shops']);
+        Route::resource('/shops', shopscontrol::class);
+        Route::post('/shops/multi_confirm',[shopscontrol::class,'multi_confirm'])->name('shops.multi_confirm');
+        Route::post('/shops/multi_delete',[shopscontrol::class,'multi_destroy'])->name('shops.multi_destroy');
         
         
     });

@@ -63,6 +63,7 @@
 
   <script src="{{asset('assets/js/main.js')}}"></script>
   <script src="{{asset('assets/js/msg_check.js')}}"></script>
+  <script src="{{asset('assets/js/shop.js')}}"></script>
   <script src="{{asset('assets/js/event_check.js')}}"></script>
   <script src="{{asset('assets/js/sweet.js')}}"></script>
 </body>
