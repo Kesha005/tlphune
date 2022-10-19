@@ -14,16 +14,7 @@ use Illuminate\Support\Facades\Validator;
 class logincontrol extends Controller
 {
 
-    public function isnew(Request $request)
-    {
-        $request->validate(['phone'=>'required','name'=>'required']); $user=User::where('phone',$request['phone'])->get();
-        if($user->count()>0) 
-        {
-            if($user['isban']==0) return $this->login($request);
-            return $this->error();
-        }
-        return $this->register($request);
-    }
+  
 
     public function register(Request $request)
     {
@@ -86,8 +77,12 @@ class logincontrol extends Controller
                     'message' => 'Name & Password does not match with our record.',
                 ], 401);
             }
-
+            
             $user = User::where('email', $request->email)->first();
+            if ($user->isban==1)
+            {
+                return $this->error();
+            }
 
             return response()->json([
                 'status' => true,
@@ -101,6 +96,24 @@ class logincontrol extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+    public function password_reset(Request $request)
+    {
+        $request->validate(['user_id'=>'required','password'=>'required|min:6']);$user=User::find($request->user_id);
+        $user->update(['password'=>Hash::make($request->password)]);
+        return $this->success($request->user_id);
+
+    }
+
+    public function success($id)
+    {
+        $user=User::find($id);
+        return response()->json([
+            'status' => true,
+            'message'=>'Parol üýtgedildi',
+            'token'=>$user->createToken("API TOKEN")->plainTextToken
+        ]);
     }
 
     public function error()
