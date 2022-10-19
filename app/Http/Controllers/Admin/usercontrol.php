@@ -17,7 +17,7 @@ class usercontrol extends Controller
 
     public function index()
     {
-        $users = User::where('isban', 0)->get();
+        $users = User::where('isban', 0)->where('role','user')->get();
         return view('admin.users.index', compact('users'));
     }
 

@@ -16,6 +16,8 @@ class User extends Authenticatable
         'phone',
         'isban',
         'name',
+        'email',
+        'role',
         'password',
     ];
 

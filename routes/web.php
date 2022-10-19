@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\shopscontrol;
 use App\Http\Controllers\Admin\usercontrol;
+use App\Http\Middleware\admin;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
 use App\Models\gallery;
@@ -26,7 +27,7 @@ Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
 
 
 
-Route::middleware(Authenticate::class)->group(function(){
+Route::middleware(Authenticate::class,admin::class)->group(function(){
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('', [firstcontrol::class, 'index'])->name('index');
         Route::resource('/marks',markcontrol::class);

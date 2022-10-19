@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Validator;
 class logincontrol extends Controller
 {
 
-  
+    public function control(userrequest $request)
+    {
+        return response()->json(['status'=>true]);
+    }
 
     public function register(userrequest $request)
     {
@@ -35,7 +38,8 @@ class logincontrol extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Registrasiýa edildi',
-                'token' => $user->createToken("API TOKEN")->accessToken
+                'token' => $user->createToken("API TOKEN")->accessToken,
+                'user'=>$user
             ], 200);
 
         } catch (\Throwable $th) {
@@ -66,7 +70,8 @@ class logincontrol extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Içeri girildi',
-                'token' => $user->createToken("API TOKEN")->accessToken
+                'token' => $user->createToken("API TOKEN")->accessToken,
+                'user'=>$user
             ], 200);
 
         } catch (\Throwable $th) {
@@ -91,7 +96,8 @@ class logincontrol extends Controller
         return response()->json([
             'status' => true,
             'message'=>'Parol üýtgedildi',
-            'token'=>$user->createToken("API TOKEN")->accessToken
+            'token'=>$user->createToken("API TOKEN")->accessToken,
+            'user'=>$user
         ]);
     }
 

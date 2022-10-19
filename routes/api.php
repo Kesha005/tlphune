@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/control',[logincontrol::class,'control']);
 Route::post('/login',[logincontrol::class,'login']);
 Route::post('/register',[logincontrol::class,'register']);
 Route::post('/password_re',[logincontrol::class,'password_reset']);
