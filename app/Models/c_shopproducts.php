@@ -11,6 +11,4 @@ class c_shopproducts extends Model
 
     protected $fillable=['shop_id','name','image','image1','mark','model','about'];
 
-
-    
 }

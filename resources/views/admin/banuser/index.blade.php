@@ -31,9 +31,11 @@ Gadagan edilen ulanyjylar
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>
-                                        <form method="post" action="{{route('admin.users.delban',$user)}}">
+                                        <form method="post" action="{{route('admin.users.destroy',$user)}}">
                                             @csrf
-                                            <button type="submit" class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></button>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                            <a class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></a>
                                         </form>
                                         
                                     </td>

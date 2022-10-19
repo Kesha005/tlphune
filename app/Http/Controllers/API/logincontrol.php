@@ -5,9 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\loginapirequest;
+use App\Http\Requests\userrequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -16,34 +19,23 @@ class logincontrol extends Controller
 
   
 
-    public function register(Request $request)
+    public function register(userrequest $request)
     {
         try {
-            $validateUser = Validator::make($request->all(), 
-            [
-                'name' => 'required|unique:users,name',
-                'phone' => 'required|unique:users,phone',
-                'password' => 'required'
-            ]);
-
-            if($validateUser->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
 
             $user = User::create([
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password)
             ]);
+            Storage::disk('local')->makeDirectory("public/users/$user->id/events");
+            Storage::disk('local')->makeDirectory("public/users/$user->id/shops");
+            Storage::disk('local')->makeDirectory("public/users/$user->id/products");
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Created Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'message' => 'Registrasiýa edildi',
+                'token' => $user->createToken("API TOKEN")->accessToken
             ], 200);
 
         } catch (\Throwable $th) {
@@ -54,31 +46,18 @@ class logincontrol extends Controller
         }
     }
 
-    public function login(Request $request)
+    public function login(loginapirequest $request)
     {
         try {
-            $validateUser = Validator::make($request->all(), 
-            [
-                'name' => 'required',
-                'password' => 'required'
-            ]);
 
-            if($validateUser->fails()){
+            if(!Auth::attempt($request->only(['phone', 'password']))){
                 return response()->json([
                     'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            if(!Auth::attempt($request->only(['name', 'password']))){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Name & Password does not match with our record.',
+                    'message' => 'Ulanyjy belgisi ýa-da açar sözi nädogry',
                 ], 401);
             }
             
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('phone', $request->phone)->first();
             if ($user->isban==1)
             {
                 return $this->error();
@@ -86,8 +65,8 @@ class logincontrol extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'message' => 'Içeri girildi',
+                'token' => $user->createToken("API TOKEN")->accessToken
             ], 200);
 
         } catch (\Throwable $th) {
@@ -112,7 +91,7 @@ class logincontrol extends Controller
         return response()->json([
             'status' => true,
             'message'=>'Parol üýtgedildi',
-            'token'=>$user->createToken("API TOKEN")->plainTextToken
+            'token'=>$user->createToken("API TOKEN")->accessToken
         ]);
     }
 

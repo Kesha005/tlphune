@@ -11,10 +11,10 @@ class addpostcontrol extends Controller
 {
     public function add_event(Request $request)
     {
-        $request->validate(['name'=>'required','image'=>'required',
-        'price'=>'required','condition'=>'required','mark_id'=>'required']);
-        $request['image'] = $request->image->store('files', 'public');
+        $request->validate(['name'=>'required']);
+        // $request['image'] = $request->image->store('users/'.Auth::user()->id.'/events/', 'public');
         $request['user_id']=Auth::user()->id;
-        events::create($request->all());
+        $event=events::create($request->all());
+        return response()->json($event);
     }
 }
