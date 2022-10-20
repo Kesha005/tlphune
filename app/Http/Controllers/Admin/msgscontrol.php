@@ -18,15 +18,11 @@ class msgscontrol extends Controller
 
 
     public function create()
-    {
-        //
-    }
+    {}
 
 
     public function store(Request $request)
-    {
-        //
-    }
+    {}
 
 
     public function show(messages $msg)
@@ -41,9 +37,7 @@ class msgscontrol extends Controller
 
 
     public function update(Request $request, $id)
-    {
-        //
-    }
+    {}
 
 
     public function destroy(messages $msg)

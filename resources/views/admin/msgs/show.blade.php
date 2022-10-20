@@ -36,7 +36,7 @@ Hat barada
 
                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
                         <h5 class="card-title">Tekst</h5>
-                        <p class="small fst-italic">{{$msg->text}}</p>
+                        <p class="fst-italic">{{$msg->text}}</p>
 
                         <h5 class="card-title">Iberen hakda maglumat</h5>
 

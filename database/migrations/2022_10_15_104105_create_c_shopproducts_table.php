@@ -22,7 +22,7 @@ class CreateCShopproductsTable extends Migration
             $table->string('image1')->nullable();
             $table->string('mark');
             $table->string('model');
-            $table->string('about');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

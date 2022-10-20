@@ -26,6 +26,6 @@ Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
 Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
-Route::post('/add',[addpostcontrol::class,'add_event'])->middleware('apiauth');
+Route::post('/add',[addpostcontrol::class,'add_event']);
 
 
