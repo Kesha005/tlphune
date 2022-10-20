@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\productrequest;
 use App\Models\products;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,11 @@ class productcontrol extends Controller
     public function create()
     {}
 
-    public function store(Request $request)
+    public function store(productrequest $request)
     {
-        
+        $request->image1==null ?$request['image']=$request->image->store('files','public'):
+        $request['image']=$request->image->store('files','public')&&$request['image1']=$request->image1->store('files','public');
+        products::create($request->all);
     }
 
     public function edit()

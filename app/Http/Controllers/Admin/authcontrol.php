@@ -39,11 +39,4 @@ class authcontrol extends Controller
         Auth::logout();
         return redirect('login');
     }
-
-
-
-    public function firebase()
-    {
-        return view('firebase');
-    }
 }
