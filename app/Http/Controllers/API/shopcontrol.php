@@ -11,46 +11,39 @@ use Illuminate\Support\Facades\Storage;
 
 class shopcontrol extends Controller
 {
+    protected $text = 'Biraz garaşyň dükan entek tassyklanmady';
+
+
     public function index($id)
     {
-        $shop=shops::where('user_id',$id)->get();
-       if($shop[0]->status==0){
-        return response()->json([
-            'message'=>'Biraz garaşyň dükan entek tassyklanmady',
-        ]);
-       }
-       $this->activated($shop);
-       
+        $shop = shops::where('user_id', $id)->first();
+
+        if (!($shop->status)) return $this->NotActivated();
+
+        return response()->json($shop, 200);
     }
 
-    public function activated($shop)
-    {
-        return response()->json([
-            'shop'=>$shop
-           ]);
-    }
 
     public function store(shoprequest $request)
     {
-        $shop=shops::create($request->all());
+        $shop = shops::create($request->all());
         return response()->json([
-            'message'=>'Tabşyryk nobata goýuldy.Adminiň gözegçiliginden soň dükan açylar',
+            'message' => 'Tabşyryk nobata goýuldy.Adminiň gözegçiliginden soň dükan açylar',
         ]);
     }
 
-    public function update(Request $request,shops $shop)
+    public function update(Request $request, shops $shop)
     {
-
+        // 
     }
 
     public function destroy(Request $request)
     {
-        shops::where('user_id',$request->user_id)->delete();
-        products::where('shop_id',$request->shop_id)->delete();
-        $shops=Storage::allFiles("public/users/$request->user_id/shops/");$this->delfiles($shops);
-        $products=Storage::allFiles("public/users/$request->user_id/products/"); $this->delfiles($products);
+        $this->DestroyUserAndShopData($request);
+        $this->DestroyUserAndShopFiles($request);
+
         return response()->json([
-            'message'=>'Dükan we ähli maglumatlary pozuldy'
+            'message' => 'Dükan we ähli maglumatlary pozuldy'
         ]);
     }
 
@@ -58,6 +51,24 @@ class shopcontrol extends Controller
     public function delfiles($path)
     {
         Storage::delete($path);
+    }
 
+    public function NotActivated()
+    {
+        return response()->json([
+            'message' => $this->text,
+        ]);
+    }
+
+    protected function DestroyUserAndShopData($request)
+    {
+        shops::where('user_id', $request->user_id)->delete();
+        products::where('shop_id', $request->shop_id)->delete();
+    }
+
+    protected function DestroyUserAndShopFiles($request)
+    {
+        $this->delfiles(Storage::allFiles("public/users/$request->user_id/shops/"));
+        $this->delfiles(Storage::allFiles("public/users/$request->user_id/products/"));
     }
 }

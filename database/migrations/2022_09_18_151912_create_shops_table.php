@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('place');
             $table->string('phone');
             $table->string('user_id');
+            $table->string('about')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

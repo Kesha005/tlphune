@@ -38,8 +38,9 @@ class logincontrol extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Registrasiýa edildi',
-                'token' => $user->createToken("API TOKEN")->accessToken,
+                'access_token' => $user->createToken("API TOKEN")->plainTextToken,
                 'user'=>$user
+                
             ], 200);
 
         } catch (\Throwable $th) {
@@ -70,7 +71,7 @@ class logincontrol extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Içeri girildi',
-                'token' => $user->createToken("API TOKEN")->accessToken,
+                'access_token' => $user->createToken("API TOKEN")->plainTextToken,
                 'user'=>$user
             ], 200);
 
@@ -96,7 +97,7 @@ class logincontrol extends Controller
         return response()->json([
             'status' => true,
             'message'=>'Parol üýtgedildi',
-            'token'=>$user->createToken("API TOKEN")->accessToken,
+            'access_token'=>$user->createToken("API TOKEN")->plainTextToken,
             'user'=>$user
         ]);
     }
@@ -104,5 +105,10 @@ class logincontrol extends Controller
     public function error()
     {
         return response()->json(['message'=>'Siz  düzgünleri bozanlygyňyz üçin çäklendirildiňiz']);
+    }
+
+    public function me(Request $request)
+    {
+        return $request->user();
     }
 }

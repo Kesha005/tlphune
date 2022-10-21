@@ -26,7 +26,7 @@ Ulanyjylar
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
-                                <tr>
+                                <tr id="user_id{{ $user->id }}">
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
@@ -50,4 +50,8 @@ Ulanyjylar
         </div>
     </section>
 </div>
+
+<script>
+
+</script>
 @endsection

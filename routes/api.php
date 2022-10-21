@@ -29,3 +29,7 @@ Route::get('/marks',[basecontrol::class,'marks']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/me', [logincontrol::class,'me']);
+});
+

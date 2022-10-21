@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class events extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id',
-    'category_id','name','image','image1','mark_id',
-    'price','about','status'];
+    
+    protected $fillable=[
+    'user_id',
+    'category_id',
+    'name',
+    'image',
+    'image1',
+    'mark_id',
+    'price',
+    'about',
+    'status'];
 
    
     public function user()

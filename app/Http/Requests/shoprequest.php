@@ -19,7 +19,8 @@ class shoprequest extends FormRequest
             'image'=>'Suraty',
             'place'=>'Ýeri',
             'phone'=>'Teleon nomeri',
-            'user_id'=>'Eýesi'
+            'user_id'=>'Eýesi',
+            'about'=>'Barada'
         ];
     }
 
@@ -33,7 +34,8 @@ class shoprequest extends FormRequest
             'image.mimes'=>'Faýl surat däl',
             'place.required'=>'Ýerleşýän ýeri girizilmedik',
             'phone.required'=>'Telefon nomeri girizilmedik',
-            'user_id.required'=>'Dükanyň eýesi näbelli '
+            'user_id.required'=>'Dükanyň eýesi näbelli ',
+            'about.max'=>'Has uly format',
         ];
     }
    
@@ -44,7 +46,8 @@ class shoprequest extends FormRequest
             'image'=>'required|max:10000|mimes:jpeg,jpg,png',
             'place'=>'required',
             'phone'=>'required',
-            'user_id'=>'required'
+            'user_id'=>'required',
+            'about'=>'max:10000',
         ];
     }
 }
