@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'web_auth'=>\App\Http\Middleware\web_auth::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'apiauth'=>\App\Http\Middleware\apiauth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

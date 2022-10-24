@@ -21,7 +21,7 @@ class productrequest extends FormRequest
             'image1'=>'Goşmaça surat',
             'mark'=>'Marka',
             'model'=>'Model',
-            'shop_id'=>'Dükan',
+            'about'=>'Barada'
         ];
     }
 
@@ -38,7 +38,7 @@ class productrequest extends FormRequest
             'image1.mimes'=>'Faýl kabul edilmeýär',
             'mark.required'=>'Marka girizilmedik',
             'model.required'=>'Model girizilmedik',
-            'shop_id.required'=>'Dükan girizilmedik',
+            'about.required'=>'Barada meýdany boş'
         ];
     }
 
@@ -52,7 +52,8 @@ class productrequest extends FormRequest
             'image1'=>'max:10000|mimes:jpg,jpeg,png',
             'mark'=>'required',
             'model'=>'required',
-            'shop_id'=>'required',
+            'about'=>'required'
+            
         ];
     }
 }

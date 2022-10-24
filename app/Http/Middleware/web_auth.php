@@ -2,16 +2,17 @@
 
 namespace App\Http\Middleware;
 
+namespace App\Http\Middleware;
+
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class apiauth extends Middleware
+class Authenticate extends Middleware
 {
+   
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return response()->json([
-                'message'=>'Içeri giriň ýa-da täze hasap açyň'
-            ]);
+            return route('signin');
         }
     }
 }

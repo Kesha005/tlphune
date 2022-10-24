@@ -12,6 +12,6 @@ class marks extends Model
 
     public function mark_event()
     {
-        return $this->hasMany(events::class);
+        return $this->hasMany(events::class,'mark_id','id');
     }
 }
