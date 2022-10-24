@@ -9,6 +9,6 @@ class c_shopproducts extends Model
 {
     use HasFactory;
 
-    protected $fillable=['shop_id','name','image','image1','mark','model','about'];
+    protected $fillable=['shop_id','name','image','image1','mark_id','about','price','status'];
 
 }

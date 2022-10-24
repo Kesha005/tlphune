@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class productrequest extends FormRequest
 {
@@ -19,9 +21,8 @@ class productrequest extends FormRequest
             'image'=>'Surat',
             'price'=>'Bahasy',
             'image1'=>'Goşmaça surat',
-            'mark'=>'Marka',
-            'model'=>'Model',
-            'shop_id'=>'Dükan',
+            'mark_id'=>'Marka',
+            'about'=>'Haryt barada',
         ];
     }
 
@@ -36,9 +37,8 @@ class productrequest extends FormRequest
             'price.numeric'=>'Sifr girizilmedik',
             'image1.max'=>'Surat uly göwrümde',
             'image1.mimes'=>'Faýl kabul edilmeýär',
-            'mark.required'=>'Marka girizilmedik',
-            'model.required'=>'Model girizilmedik',
-            'shop_id.required'=>'Dükan girizilmedik',
+            'mark_id.required'=>'Marka girizilmedik',
+            'about.required'=>'Maglumat girizilmedik',
         ];
     }
 
@@ -50,9 +50,12 @@ class productrequest extends FormRequest
             'image'=>'required|max:10000|mimes:jpg,jpeg,png',
             'price'=>'required|numeric',
             'image1'=>'max:10000|mimes:jpg,jpeg,png',
-            'mark'=>'required',
-            'model'=>'required',
-            'shop_id'=>'required',
+            'mark_id'=>'required',
+            'about'=>'required',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }

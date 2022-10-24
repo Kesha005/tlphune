@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('image1')->nullable();
-            $table->string('mark')->nullable();
+            $table->string('mark_id')->nullable();
+            $table->string('place');
             $table->string('price');
             $table->string('about')->nullable();
             $table->integer('status')->default(0);

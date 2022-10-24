@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\productrequest;
+use App\Models\c_shopproducts;
 use App\Models\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -38,7 +39,7 @@ class productcontrol extends Controller
 
     public function store($request)
     {
-        products::create($request->all());
+        c_shopproducts::create($request->all());
         return response()->json([
             'message'=>'Haryt nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
@@ -46,8 +47,8 @@ class productcontrol extends Controller
 
     public function destroy(Request $request)
     {
-        $product=products::find($request->id);
-        products::where('id',$request->id)->delete();
+        $product=c_shopproducts::find($request->id);
+        c_shopproducts::where('id',$request->id)->delete();
         return $this->destroy_image($product);
     }
 
