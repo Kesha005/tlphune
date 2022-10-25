@@ -57,7 +57,7 @@ Route::middleware(Authenticate::class,admin::class)->group(function(){
         #_________________________________Event routes_______________________________________________
 
         Route::get('events',[eventcontrol::class,'index'])->name('events.index');
-        Route::get('events/{event}',[eventcontrol::class,'index'])->name('events.show');
+        Route::get('event_show/{event}',[eventcontrol::class,'show'])->name('events.show');
         Route::delete('event_destroy/{event}',[eventcontrol::class,'destroy'])->name('events.destroy');
         Route::post('event_del',[eventcontrol::class,'multi_del'])->name('events.multi_del');
         Route::post('event_check',[eventcontrol::class,'multi_check'])->name('events.multi_check');

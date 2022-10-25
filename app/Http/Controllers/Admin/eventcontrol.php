@@ -15,8 +15,9 @@ class eventcontrol extends Controller
         return view('admin.events.index', compact('events'));
     }
 
-    public function show($event)
+    public function show($id)
     {
+        $event=events::find($id)->with('mark','user');
         return view('admin.events.show', compact('event'));
     }
 

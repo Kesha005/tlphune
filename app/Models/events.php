@@ -16,6 +16,7 @@ class events extends Model
     'image',
     'image1',
     'mark_id',
+    'place',
     'price',
     'about',
     'status'];
@@ -23,19 +24,27 @@ class events extends Model
    
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class,'id');
+        return $this->belongsTo(User::class);
     }
 
     public function category()
     {
-        return $this->belongsTo(category::class,'id',);
+        return $this->belongsTo(category::class);
     }
 
     public function mark()
     {
-        return $this->belongsTo(marks::class,'id');
+        return $this->belongsTo(marks::class);
     }
 
+<<<<<<< HEAD
+=======
+    public function model()
+    {
+        return $this->belongsTo(models::class);
+    }
+
+>>>>>>> fb92a152244bb29604fda098bd8b574818af7ee0
 
 }
 
