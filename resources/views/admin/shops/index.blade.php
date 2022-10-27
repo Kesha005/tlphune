@@ -76,6 +76,7 @@ Dükanlar
                                 @endforeach
                             </tbody>
                         </table>
+                        {!! $shops->links() !!}
                     </div>
                 </div>
 

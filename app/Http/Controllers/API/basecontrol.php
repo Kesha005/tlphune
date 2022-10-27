@@ -45,6 +45,12 @@ class basecontrol extends Controller
         return response()->json($marks);
     }
 
+    public function category($id)
+    {
+        $events=events::with('user','mark')->where('category_id',$id)->get();
+        return response()->json($events);
+    }
+
     
 
 }

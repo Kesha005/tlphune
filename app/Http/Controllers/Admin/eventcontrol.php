@@ -11,20 +11,20 @@ class eventcontrol extends Controller
 {
     public function index()
     {
-        $events = events::with('user', 'category', 'mark')->get();
+        $events = events::with('user')->get();
         return view('admin.events.index', compact('events'));
     }
 
     public function show($id)
     {
-        $event=events::find($id)->with('mark','user');
+        $event = events::with('mark', 'user')->find($id);
         return view('admin.events.show', compact('event'));
     }
 
-    public function destroy(events $event)
+    public function destroy()
     {
-        $img = events::find($event)->pluck('image');
-        $event->delete();
+        $img = events::find(request('event'))->pluck('image');
+        events::destroy(request('event'));
         return $this->destroy_img($img);
     }
 
@@ -37,7 +37,15 @@ class eventcontrol extends Controller
         }
         return redirect()->route('admin.events.index');
     }
+    
 
+    public function check($id)
+    {
+        $event=events::find($id);
+        $event->update(['status',1]);
+        return redirect()->route('admin.events.index');
+
+    }
 
     public function multi_check()
     {
