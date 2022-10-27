@@ -30,7 +30,7 @@ class addpostcontrol extends Controller
     {
         $validated['image'] = $request->image->store("users/$request->user_id/events", 'public');
         $validated['image1'] = $request->image1->store("users/$request->user_id/events", 'public');
-
+        $this->imagewatermark($validated);
         $this->store($validated);
     }
 
