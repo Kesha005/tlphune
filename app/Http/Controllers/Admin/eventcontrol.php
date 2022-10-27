@@ -17,14 +17,14 @@ class eventcontrol extends Controller
 
     public function show($id)
     {
-        $event=events::find($id)->with('mark','user');
+        $event = events::with('mark', 'user')->find($id);
         return view('admin.events.show', compact('event'));
     }
 
-    public function destroy(events $event)
+    public function destroy()
     {
-        $img = events::find($event)->pluck('image');
-        $event->delete();
+        $img = events::find(request('event'))->pluck('image');
+        events::destroy(request('event'));
         return $this->destroy_img($img);
     }
 

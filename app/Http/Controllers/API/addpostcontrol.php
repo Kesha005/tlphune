@@ -8,6 +8,7 @@ use App\Models\events;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Image;
 use Illuminate\Support\Facades\Auth;
 
 class addpostcontrol extends Controller
@@ -18,10 +19,7 @@ class addpostcontrol extends Controller
     { 
         $validated=$request->all();
         
-        if ($request['image1']!=null) $this->storemultiimage($validated,$request);
-
-        $this->storesingleimage($validated,$request);
-
+         $request['image1']!=null ? $this->storemultiimage($validated,$request):$this->storesingleimage($validated,$request);
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
@@ -47,4 +45,19 @@ class addpostcontrol extends Controller
         events::create($validated);
 
     }
+
+    // public function imageFileUpload(Request $request)
+    // {
+    //     $image = $request->file('file');
+    //     $input['file'] = time().'.'.$image->getClientOriginalExtension();
+
+    //     $imgFile = Image::make($image->getRealPath());
+
+    //     $imgFile->text('© 2021 codingtricks.io', 50, 50, function($font) { 
+    //         $font->size(60);  
+    //         $font->color('#FF0000');  
+    //         $font->align('center');  
+    //         $font->align('bottom');  
+    //     })->save(storage_path('/app/public/upload').'/'.$input['file']);                  
+    // }
 }

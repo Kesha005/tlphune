@@ -17,12 +17,12 @@ Bildiriş barada
                     </li>
 
                     <li class="nav-item">
-                        <form action="{{route('admin.events.destroy',$event)}}" method="post">
+                        <form action="{{route('admin.events.destroy',$event->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                             <button type="submit" class="btn btn-outline-danger">Poz</button>
+                            <button type="submit" class="btn btn-outline-danger">Poz</button>
                         </form>
-                       
+
                     </li>
 
 
@@ -54,19 +54,19 @@ Bildiriş barada
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Marka</div>
-                            <div class="col-lg-9 col-md-8">{{$event->mark->name}}</div>
+                            <div class="col-lg-9 col-md-8">{{$event->mark->name ?? "Not found"}}</div>
                         </div>
 
                         <h5 class="card-title">Iberen hakda maglumat</h5>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Ady</div>
-                            <div class="col-lg-9 col-md-8">{{$event->user->name}}</div>
+                            <div class="col-lg-9 col-md-8">{{$event->user->name ?? "Not found"}}</div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">Telefon/nom</div>
-                            <div class="col-lg-9 col-md-8">{{$event->user->phone}}</div>
+                            <div class="col-lg-9 col-md-8">{{$event->user->phone ?? "Not found"}}</div>
                         </div>
 
 
