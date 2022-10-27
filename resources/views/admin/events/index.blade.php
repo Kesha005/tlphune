@@ -31,13 +31,13 @@ Bildirişler
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        
+                        <h5 class="card-title"><input type="checkbox" class="select-all-event checkbox" name="select-all-event" /> Ählisini saýla</h5>
 
-                        <h5 class="card-title">Bildirişler</h5>
-                        <table class="table">
+                        <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th class="active">
-                                        <input type="checkbox" class="select-all-event checkbox" name="select-all-event" />
                                     </th>
                                     <th scope="col">No</th>
                                     <th scope="col">Ady</th>
@@ -66,7 +66,7 @@ Bildirişler
                                         <form action="{{route('admin.events.destroy',$event)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{route('admin.events.show',$event->id)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
+                                            <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
@@ -75,7 +75,6 @@ Bildirişler
                                 @endforeach
                             </tbody>
                         </table>
-                        {!! $events->links() !!}
                     </div>
                 </div>
 

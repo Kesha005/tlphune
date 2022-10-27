@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Auth;
 class addpostcontrol extends Controller
 {
 
- 
+
     public function add_event(eventrequest $request)
-    { 
-        $validated=$request->all();
-        
-         $request['image1']!=null ? $this->storemultiimage($validated,$request):$this->storesingleimage($validated,$request);
+    {
+        $validated = $request->all();
+
+        $request['image1'] != null ? $this->storemultiimage($validated, $request) : $this->storesingleimage($validated, $request);
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
     }
 
 
-    public function storemultiimage($validated,$request)
+    public function storemultiimage($validated, $request)
     {
         $validated['image'] = $request->image->store("users/$request->user_id/events", 'public');
         $validated['image1'] = $request->image1->store("users/$request->user_id/events", 'public');
@@ -34,30 +34,27 @@ class addpostcontrol extends Controller
         $this->store($validated);
     }
 
-    public function storesingleimage($validated,$request)
+    public function storesingleimage($validated, $request)
     {
-         $validated['image']=$request->image->store("users/$request->user_id/events", 'public');
-         $this->store($validated);
+        $validated['image'] = $request->image->store("users/$request->user_id/events", 'public');
+        $this->imagewatermark($validated);
+        $this->store($validated);
     }
 
     public function store($validated)
     {
         events::create($validated);
-
     }
 
-    // public function imageFileUpload(Request $request)
-    // {
-    //     $image = $request->file('file');
-    //     $input['file'] = time().'.'.$image->getClientOriginalExtension();
-
-    //     $imgFile = Image::make($image->getRealPath());
-
-    //     $imgFile->text('© 2021 codingtricks.io', 50, 50, function($font) { 
-    //         $font->size(60);  
-    //         $font->color('#FF0000');  
-    //         $font->align('center');  
-    //         $font->align('bottom');  
-    //     })->save(storage_path('/app/public/upload').'/'.$input['file']);                  
-    // }
+    public function imagewatermark($validated)
+    {
+       
+        $imgFile= Image::make(storage_path("/app/public/$validated"));
+        $imgFile->text('Telfun.ltd', 50, 50, function ($font) {
+            $font->size(60);
+            $font->color('#FF0000');
+            $font->align('center');
+            $font->align('bottom');
+        });
+    }
 }
