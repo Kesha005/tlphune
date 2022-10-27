@@ -11,7 +11,7 @@ class eventcontrol extends Controller
 {
     public function index()
     {
-        $events = events::with('user', 'category', 'mark')->get();
+        $events = events::with('user')->paginate(20);
         return view('admin.events.index', compact('events'));
     }
 

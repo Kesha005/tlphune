@@ -13,7 +13,7 @@ class shopscontrol extends Controller
    
     public function index()
     {
-        $shops=shops::with('user')->get();
+        $shops=shops::with('user')->paginate(20);
         return view('admin.shops.index',compact('shops'));
     }
 
