@@ -63,9 +63,12 @@ Bildirişler
                                     <td> <span class="badge bg-success">Tassyklanan</span></td>
                                     @endif
                                     <td>
+
+                                    
                                         <form action="{{route('admin.events.destroy',$event)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
+                                            <a href="{{route('admin.events.check',$event->id)}}" class="btn btn-outline-success btn-sm "><i class="bi bi-check"></i></a>
                                             <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                         </form>

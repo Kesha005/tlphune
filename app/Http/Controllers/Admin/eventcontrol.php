@@ -37,7 +37,15 @@ class eventcontrol extends Controller
         }
         return redirect()->route('admin.events.index');
     }
+    
 
+    public function check($id)
+    {
+        $event=events::find($id);
+        $event->update(['status',1]);
+        return redirect()->route('admin.events.index');
+
+    }
 
     public function multi_check()
     {

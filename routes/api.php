@@ -27,6 +27,7 @@ Route::get('/events',[basecontrol::class,'get_events']);
 Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
+Route::get('/category/{id}',[basecontrol::class,'category']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
