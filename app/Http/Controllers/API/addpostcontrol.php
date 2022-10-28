@@ -28,33 +28,36 @@ class addpostcontrol extends Controller
 
     public function storemultiimage($validated, $request)
     {
-        $validated['image'] = $request->image->store("users/$request->user_id/events", 'public');
-        $validated['image1'] = $request->image1->store("users/$request->user_id/events", 'public');
-        $this->imagewatermark($validated);
+        $images=[];
+        if($request->image)
+        {
+            foreach($request->image as $img)
+            {
+                $img_name=time().rand(1,99).'.'.$img->extension();
+                $img->storeAs("public/users/$request->user_id/events",$img_name);
+                $images[]=$img_name;
+            }
+            $validated['image']=$images;
+        }
         $this->store($validated);
     }
 
-    public function storesingleimage($validated, $request)
-    {
-        $validated['image'] = $request->image->store("users/$request->user_id/events", 'public');
-        $this->imagewatermark($validated);
-        $this->store($validated);
-    }
+   
 
     public function store($validated)
     {
         events::create($validated);
     }
 
-    public function imagewatermark($validated)
-    {
+    // public function imagewatermark($validated)
+    // {
        
-        $imgFile= Image::make(storage_path("/app/public/$validated"));
-        $imgFile->text('Telfun.ltd', 50, 50, function ($font) {
-            $font->size(60);
-            $font->color('#FF0000');
-            $font->align('center');
-            $font->align('bottom');
-        });
-    }
+    //     $imgFile= Image::make(storage_path("/app/public/$validated->image"));
+    //     $imgFile->text('Telfun.ltd', 50, 50, function ($font) {
+    //         $font->size(60);
+    //         $font->color('#FF0000');
+    //         $font->align('center');
+    //         $font->align('bottom');
+    //     });
+    // }
 }

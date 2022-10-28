@@ -14,7 +14,6 @@ class events extends Model
     'category_id',
     'name',
     'image',
-    'image1',
     'mark_id',
     'place',
     'price',
@@ -37,14 +36,11 @@ class events extends Model
         return $this->belongsTo(marks::class);
     }
 
-<<<<<<< HEAD
-=======
     public function model()
     {
         return $this->belongsTo(models::class);
     }
 
->>>>>>> fb92a152244bb29604fda098bd8b574818af7ee0
 
 }
 

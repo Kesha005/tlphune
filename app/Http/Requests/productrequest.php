@@ -21,14 +21,8 @@ class productrequest extends FormRequest
             'image'=>'Surat',
             'price'=>'Bahasy',
             'image1'=>'Goşmaça surat',
-<<<<<<< HEAD
-            'mark'=>'Marka',
-            'model'=>'Model',
-            'about'=>'Barada'
-=======
             'mark_id'=>'Marka',
             'about'=>'Haryt barada',
->>>>>>> fb92a152244bb29604fda098bd8b574818af7ee0
         ];
     }
 
@@ -43,14 +37,8 @@ class productrequest extends FormRequest
             'price.numeric'=>'Sifr girizilmedik',
             'image1.max'=>'Surat uly göwrümde',
             'image1.mimes'=>'Faýl kabul edilmeýär',
-<<<<<<< HEAD
-            'mark.required'=>'Marka girizilmedik',
-            'model.required'=>'Model girizilmedik',
-            'about.required'=>'Barada meýdany boş'
-=======
             'mark_id.required'=>'Marka girizilmedik',
             'about.required'=>'Maglumat girizilmedik',
->>>>>>> fb92a152244bb29604fda098bd8b574818af7ee0
         ];
     }
 
@@ -62,15 +50,8 @@ class productrequest extends FormRequest
             'image'=>'required|max:10000|mimes:jpg,jpeg,png',
             'price'=>'required|numeric',
             'image1'=>'max:10000|mimes:jpg,jpeg,png',
-<<<<<<< HEAD
-            'mark'=>'required',
-            'model'=>'required',
-            'about'=>'required'
-            
-=======
             'mark_id'=>'required',
             'about'=>'required',
->>>>>>> fb92a152244bb29604fda098bd8b574818af7ee0
         ];
     }
     protected function failedValidation(Validator $validator)
