@@ -24,6 +24,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.design.index')}}">
+        <i class="bi bi-image"></i>
+        <span>Dizayn</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.users.index')}}">
         <i class="bi bi-person"></i>
         <span>Ulanyjylar</span>
@@ -48,6 +55,13 @@
       <a class="nav-link" href="{{route('admin.marks.index')}}">
         <i class="bi bi-bookmark"></i>
         <span>Markalar</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('admin.products.index')}}">
+        <i class="bi bi-phone"></i>
+        <span>Modeller</span>
       </a>
     </li>
 

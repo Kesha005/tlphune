@@ -60,6 +60,7 @@
   <script src="{{asset('assets/vendor/sweetalert/sweetalert2.min.js')}}"></script>
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
   <script src="{{asset('assets/js/main.js')}}"></script>
+  <script src="{{asset('assets/js/sweet.js')}}"></script>
   @yield('js')
 </body>
 

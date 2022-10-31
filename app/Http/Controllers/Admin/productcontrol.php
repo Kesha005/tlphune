@@ -6,13 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\productrequest;
 use App\Models\products;
 use Illuminate\Http\Request;
+use App\Models\marks;
+use App\Models\category;
 
 class productcontrol extends Controller
 {
     public function index()
     {
-        $products=products::paginate(20);
-        return view('admin.products.index',compact('products'));
+        $marks=marks::all();
+        $categories=category::all();
+        $products=products::with('category','mark')->paginate(20);
+        return view('admin.products.index',compact('products','marks','categories'));
     }
 
     public function create()
@@ -22,14 +26,34 @@ class productcontrol extends Controller
 
     public function store(productrequest $request)
     {
-        $request->image1==null ?$request['image']=$request->image->store('files','public'):
-        $request['image']=$request->image->store('files','public')&&$request['image1']=$request->image1->store('files','public');
-        products::create($request->all);
+        $images=[];
+        if($request->image)
+        {
+            foreach($request->image as $img)
+            {
+                $img_name=time().rand(1,99).'.'.$img->extension();
+                $img->storeAs('public/products',$img_name);
+                $images[]=$img_name;
+            }
+            $validated['image']=$images;
+        }
+        $this->saveproduct($validated);
+        return '';
     }
 
-    public function edit()
+    public function show($product)
     {
+        
+    }
 
+    public function saveproduct($validated)
+    {
+        products::create($validated);
+    }
+
+    public function edit($product)
+    {
+        return $product;
     }
 
     public function update()

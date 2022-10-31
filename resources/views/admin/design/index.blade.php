@@ -2,45 +2,38 @@
 
 @section('page_name')
 
-Bölümler
+Galereýa
 @endsection
 
 @section('main_section')
 
 <div>
-    @include('admin.products.create')<br>
+    @include('admin.design.create')<br>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Bölümler</h5>
+                        <h5 class="card-title">Dizayn</h5>
                         <table class="table datatable" id="marktable">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Ady</th>
                                     <th scope="col">Suraty</th>
-                                    <th scope="col">Kategoriýa</th>
-                                    <th scope="col">Marka </th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
                             <tbody id="tbodymark">
-                                @foreach($products as $product)
+                                @foreach($images as $image)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$product->name}}</td>
-                                    <td><img src="{{ asset('storage/'.$product->image[0]) }}" height="70" width="70"></td>
+                                    <td><img src="{{ asset('storage/'.$image->image) }}" height="70" width="70"></td>
                                     <td>
-                                    <td>{{$product->category->name}}</td>
-                                    <td>{{$product->mark->name}}</td>
-                                    <form action="{{route('admin.products.destroy',$product)}}" method="POST">
+                                    <form action="{{route('admin.design.destroy',$image->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{route('admin.products.show',$product)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
-                                        <a href="{{route('admin.products.edit',$product)}}" class="btn btn-outline-warning btn-sm "><i class="bi bi-pen"></i></a>
+                                    <a href="{{route('admin.design.download',$image->id)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-download"></i></a>
                                         <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                     </form>
                                     </td>
@@ -56,3 +49,4 @@ Bölümler
     </section>
 </div>
 @endsection
+

@@ -19,27 +19,33 @@ class addpostcontrol extends Controller
     {
         $validated = $request->all();
 
-        $request['image1'] != null ? $this->storemultiimage($validated, $request) : $this->storesingleimage($validated, $request);
-        return response()->json([
-            'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
-        ]);
+      return $this->storemultiimage($validated, $request);
+        // return response()->json([
+        //     'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
+        // ]);
     }
 
 
     public function storemultiimage($validated, $request)
     {
-        $images=[];
-        if($request->image)
-        {
-            foreach($request->image as $img)
-            {
-                $img_name=time().rand(1,99).'.'.$img->extension();
-                $img->storeAs("public/users/$request->user_id/events",$img_name);
-                $images[]=$img_name;
-            }
-            $validated['image']=$images;
-        }
-        $this->store($validated);
+        //  $img = [];
+
+        // if($request->image)
+        // {
+        //     foreach($request->image as $img)
+        //     {
+        //         $img[] =$request->img->store("users/$request->user_id/events",'public');
+        //     }
+        //     $validated['image']=$images;
+        // }
+        // $validated['image'] = $img;
+
+        
+        
+
+         response()->json($names);
+     
+        
     }
 
    

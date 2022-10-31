@@ -111,4 +111,12 @@ class logincontrol extends Controller
     {
         return $request->user();
     }
+
+    public function logout(Request $request)
+    {
+        $user=request()->user();$user->tokens()->where('id',$user->currentAccessToken()->id)->delete();
+        return response()->json([
+            'message'=>'Siz ulgamdan çykdyňyz'
+        ]);
+    }
 }
