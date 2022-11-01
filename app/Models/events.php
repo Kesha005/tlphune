@@ -10,15 +10,16 @@ class events extends Model
     use HasFactory;
     
     protected $fillable=[
-    'user_id',
-    'category_id',
-    'name',
-    'image',
-    'mark_id',
-    'place',
-    'price',
-    'about',
-    'status'];
+        'image',
+        'category_id',
+        'user_id',
+        'name',
+        'image1',
+        'mark_id',
+        'place',
+        'price',
+        'about',
+        'status'];
 
    
     public function user()

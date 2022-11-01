@@ -4,7 +4,7 @@
 <div class="modal fade" id="modelmodal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-             <form action="{{route('admin.categories.store')}}" enctype="multipart/form-data" id="markform" method="POST">
+             <form action="{{route('admin.products.store')}}" enctype="multipart/form-data" id="markform" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">Model goş</h5>

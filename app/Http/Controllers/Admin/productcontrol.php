@@ -8,6 +8,8 @@ use App\Models\products;
 use Illuminate\Http\Request;
 use App\Models\marks;
 use App\Models\category;
+use Illuminate\Queue\Jobs\RedisJob;
+use Illuminate\Support\Facades\File;
 
 class productcontrol extends Controller
 {
@@ -26,19 +28,10 @@ class productcontrol extends Controller
 
     public function store(productrequest $request)
     {
-        $images=[];
-        if($request->image)
-        {
-            foreach($request->image as $img)
-            {
-                $img_name=time().rand(1,99).'.'.$img->extension();
-                $img->storeAs('public/products',$img_name);
-                $images[]=$img_name;
-            }
-            $validated['image']=$images;
-        }
+        $validated=$request->all();
+        $validated['image']=$request->image->store('products','public');
         $this->saveproduct($validated);
-        return '';
+        return redirect()->route('admin.products.index');
     }
 
     public function show($product)
@@ -61,8 +54,10 @@ class productcontrol extends Controller
 
     }
 
-    public function destroy()
+    public function destroy($product)
     {
-
+        File::delete('storage/'.$product->image);
+        products::where('id',$product)->delete();
+        return redirect()->route('admin.products.index');
     }
 }

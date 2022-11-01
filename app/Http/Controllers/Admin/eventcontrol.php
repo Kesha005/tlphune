@@ -42,7 +42,7 @@ class eventcontrol extends Controller
     public function check($id)
     {
         $event=events::find($id);
-        $event->update(['status',1]);
+        $event->update(['status'=>1]);
         return redirect()->route('admin.events.index');
 
     }

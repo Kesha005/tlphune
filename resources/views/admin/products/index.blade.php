@@ -15,7 +15,7 @@ Bölümler
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Bölümler</h5>
+                        <h5 class="card-title">Modeller</h5>
                         <table class="table datatable" id="marktable">
                             <thead>
                                 <tr>
@@ -32,10 +32,10 @@ Bölümler
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$product->name}}</td>
-                                    <td><img src="{{ asset('storage/'.$product->image[0]) }}" height="70" width="70"></td>
-                                    <td>
+                                    <td><img src="{{ asset('storage/'.$product->image) }}" height="70" width="70"></td>
                                     <td>{{$product->category->name}}</td>
                                     <td>{{$product->mark->name}}</td>
+                                    <td>
                                     <form action="{{route('admin.products.destroy',$product)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
