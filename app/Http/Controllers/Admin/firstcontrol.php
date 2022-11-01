@@ -13,7 +13,9 @@ class firstcontrol extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $users=count(User::where('role','user')->get());
+        $events=count(events::all());
+        return view('admin.index',compact('users','events'));
     }
 
 
