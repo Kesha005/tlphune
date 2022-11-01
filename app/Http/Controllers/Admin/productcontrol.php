@@ -56,7 +56,7 @@ class productcontrol extends Controller
 
     public function destroy($product)
     {
-        File::delete('storage/'.$product->image);
+        File::delete('storage/'.products::where('id',$product)->first()->pluck('image'));
         products::where('id',$product)->delete();
         return redirect()->route('admin.products.index');
     }
