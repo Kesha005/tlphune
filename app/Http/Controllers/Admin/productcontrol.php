@@ -30,7 +30,7 @@ class productcontrol extends Controller
 
     public function store(productrequest $request)
     {
-        $validated=$request->all();
+        $validated=$request->only('name','country','mark_id','category_id','about');
         $product= products::create($validated);
         $this->storeimage($product);
         return redirect()->route('admin.products.index');
@@ -42,7 +42,7 @@ class productcontrol extends Controller
         foreach($product->image as $image)
         {
             $img['product_id']=$product->id;
-            $img['image']=$image->store("products/$product->id",'public');product_img::create($img);
+            $img['image']=$image->store("products/$product->id/",'public');product_img::create($img);
         }
     }
 
