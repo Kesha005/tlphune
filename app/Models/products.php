@@ -23,6 +23,6 @@ class products extends Model
 
     public function image()
     {
-        return $this->hasMany(product_img::class);
+        return $this->hasMany(product_img::class,'product_id');
     }
 }
