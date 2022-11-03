@@ -2,7 +2,7 @@
 
 @section('page_name')
 
-Bölümler
+Modeller
 @endsection
 
 @section('main_section')
