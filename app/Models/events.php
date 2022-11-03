@@ -13,7 +13,6 @@ class events extends Model
     'user_id',
     'category_id',
     'name',
-    'image',
     'mark_id',
     'place',
     'price',
@@ -39,6 +38,11 @@ class events extends Model
     public function model()
     {
         return $this->belongsTo(models::class);
+    }
+
+    public function image()
+    {
+        return $this->hasMany(event_img::class);
     }
 
 

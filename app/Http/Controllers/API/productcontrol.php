@@ -14,9 +14,6 @@ class productcontrol extends Controller
 {
     public function create(cshopprequest $request)
     {
-        if($request['image1']!=null){
-           $this->storemultiimage($request);
-        }
         $this->storesingleimage($request);
         
     }
@@ -28,18 +25,7 @@ class productcontrol extends Controller
         return $this->store($request);
     }
 
-    public function storesingleimage($request)
-    {
-        $request['image']=$request->image->store("users/$request->user_id/products",'public');return $this->store($request);
-    }
 
-    public function store($request)
-    {
-        c_shopproducts::create($request->all());
-        return response()->json([
-            'message'=>'Haryt nobata goýuldy admin tassyklandan soň kabul ediler'
-        ]);
-    }
 
     public function destroy(Request $request)
     {

@@ -56,7 +56,7 @@ Bildirişler
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$event->name}}</td>
                                     <td><img src="{{ asset('storage/'.$event->image) }}" height="70" width="70"></td>
-                                    <td>{{$event->user->phone}}</td>
+                                    <td>{{$event->user->phone ?? "Not found"}}</td>
                                     @if($event->status==0)
                                     <td> <span class="badge bg-warning">prosesde</span></td>
                                     @else

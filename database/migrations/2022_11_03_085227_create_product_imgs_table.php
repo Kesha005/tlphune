@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCShopproductsTable extends Migration
+class CreateProductImgsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateCShopproductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_shopproducts', function (Blueprint $table) {
+        Schema::create('product_imgs', function (Blueprint $table) {
             $table->id();
-            $table->string('shop_id');
-            $table->string('name');
+            $table->string('product_id');
             $table->string('image');
-            $table->integer('price');
-            $table->string('mark_id');
-            $table->string('about');
-            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateCShopproductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_shopproducts');
+        Schema::dropIfExists('product_imgs');
     }
 }
