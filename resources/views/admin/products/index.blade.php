@@ -32,7 +32,7 @@ Modeller
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$product->name}}</td>
-                                    <td><img src="{{ asset('storage/'.$product->image[0]) }}" height="70" width="70"></td>
+                                    <td><img src="{{ asset('storage/'.$product->image) }}" height="70" width="70"></td>
                                     <td>{{$product->category->name}}</td>
                                     <td>{{$product->mark->name}}</td>
                                     <td>
