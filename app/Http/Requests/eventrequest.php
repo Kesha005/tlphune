@@ -23,6 +23,7 @@ class eventrequest extends FormRequest
             'mark_id' => 'Marka',
             'name' => 'Ady',
             'image' => 'Surat',
+            'image1' => 'Surat',
             'price' => 'Bahasy',
             'about' => 'Barada',
             'place'=>'Welayat'
@@ -39,6 +40,8 @@ class eventrequest extends FormRequest
             'image.required' => 'Surat ýok',
             'image.max' => 'Surat has uly',
             'image.mimes' => 'Bu faýl kabul edilmeýär',
+            'image1.max' => 'Surat uly göwrümde',
+            'image1.mimes' => 'Bu faýl kabul edilmeýär',
             'price.required' => 'Baha girizilmedik',
             'price.numeric' => 'Baha ýalňyş girizilen',
             'about.required' => 'Maglumat ýok',
@@ -55,6 +58,7 @@ class eventrequest extends FormRequest
             'mark_id' => 'required',
             'name' => 'required',
             'image' => 'required|max:10000|mimes:jpeg,jpg,png',
+            'image1' => 'max:10000|mimes:jpeg,jpg,png',
             'price' => 'required|numeric',
             'about' => 'required',
             'place'=>'required'

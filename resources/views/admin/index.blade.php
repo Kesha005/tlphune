@@ -25,7 +25,7 @@ Baş sahypa
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>145</h6>
+                                    <h6>{{$users}}</h6>
                                     <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Ösüş</span>
 
                                 </div>
@@ -49,7 +49,7 @@ Baş sahypa
                                     <i class="bi bi-bookmark"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>3,264</h6>
+                                    <h6>{{$events}}</h6>
                                     <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Ösüş</span>
 
                                 </div>
@@ -75,13 +75,15 @@ Baş sahypa
 
                     <script>
                         document.addEventListener("DOMContentLoaded", () => {
+                            var users = <?php echo json_encode($users) ?>;
+                            var events = <?php echo json_encode($events) ?>;
                             new ApexCharts(document.querySelector("#lineChart"), {
                                 series: [{
                                         name: "Täze ulanyjylar",
-                                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 32, 12, 2]
+                                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, users, 0]
                                     }, {
                                         name: "Täze bildirişler",
-                                        data: [2, 21, 15, 51, 20, 62, 29, 91, 12, 87, 56, 43]
+                                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, events, 0]
                                     },
                                 ],
                                 chart: {

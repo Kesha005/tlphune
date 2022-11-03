@@ -6,10 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\eventrequest;
 use App\Models\event_img;
 use App\Models\events;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Http\Request;
-use Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 

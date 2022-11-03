@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\eventcontrol;
 use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\shopscontrol;
+use App\Http\Controllers\Admin\designcontrol;
 use App\Http\Controllers\Admin\usercontrol;
+use App\Http\Controllers\Admin\productcontrol;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
@@ -56,16 +58,22 @@ Route::middleware(Authenticate::class,admin::class)->group(function(){
         Route::delete('img_destroy/{image}',[gallerycontrol::class,'destroy'])->name('gallery.destroy');
         #_________________________________Event routes_______________________________________________
 
+        Route::resource('design',designcontrol::class);
+        Route::get('download/{id}',[designcontrol::class,'download'])->name('design.download');
+
         Route::get('events',[eventcontrol::class,'index'])->name('events.index');
         Route::get('event_show/{id}',[eventcontrol::class,'show'])->name('events.show');
         Route::delete('event_destroy/{event}',[eventcontrol::class,'destroy'])->name('events.destroy');
         Route::post('event_del',[eventcontrol::class,'multi_del'])->name('events.multi_del');
         Route::post('event_check',[eventcontrol::class,'multi_check'])->name('events.multi_check');
-        Route::post('event_check_single',[eventcontrol::class,'check'])->name('events.check');
+        Route::post('event_check_single/{id}',[eventcontrol::class,'check'])->name('events.check');
 
         Route::resource('/shops', shopscontrol::class);
         Route::post('/shops/multi_confirm',[shopscontrol::class,'multi_confirm'])->name('shops.multi_confirm');
         Route::post('/shops/multi_delete',[shopscontrol::class,'multi_destroy'])->name('shops.multi_destroy');
+
+        #______________________________________Model Product Routes_____________________________________________________
+        Route::resource('/products',productcontrol::class);
         
         
     });

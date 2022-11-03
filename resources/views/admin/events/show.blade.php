@@ -25,6 +25,14 @@ Bildiriş barada
 
                     </li>
 
+                    <li class="nav-item">
+                        <form action="{{route('admin.events.check',$event->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-success">Tassykla</button>
+                        </form>
+
+                    </li>
+
 
                 </ul>
                 <div class="tab-content pt-2">
