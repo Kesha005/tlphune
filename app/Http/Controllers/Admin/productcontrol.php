@@ -30,10 +30,11 @@ class productcontrol extends Controller
 
     public function store(productrequest $request)
     {
-        $validated=$request->only('name','country','mark_id','category_id','about');
-        $product= products::create($validated);
-        $this->storeimage($product);
-        return redirect()->route('admin.products.index');
+        return $request->all();
+        // $validated=$request->only('name','country','mark_id','category_id','about');
+        // $product= products::create($validated);
+        // $this->storeimage($product);
+        // return redirect()->route('admin.products.index');
     }
 
     public function storeimage($product)
