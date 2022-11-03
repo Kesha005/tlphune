@@ -19,7 +19,7 @@ class productcontrol extends Controller
     {
         $marks=marks::all();
         $categories=category::all();
-        $products=products::with('category','mark')->paginate(20);
+        $products=products::with('category','mark','image')->paginate(1);
         return view('admin.products.index',compact('products','marks','categories'));
     }
 
@@ -28,22 +28,23 @@ class productcontrol extends Controller
         return view('admin.products.create');
     }
 
-    public function store(productrequest $request)
+    public function store(Request $request)
     {
-        return $request->all();
-        // $validated=$request->only('name','country','mark_id','category_id','about');
-        // $product= products::create($validated);
-        // $this->storeimage($product);
-        // return redirect()->route('admin.products.index');
+        $validated=$request->only('name','country','mark_id','category_id','about');
+        $product= products::create($validated);
+        $this->storeimage($product,$request);
+         return redirect()->route('admin.products.index');
     }
 
-    public function storeimage($product)
+    public function storeimage($product,$request)
     {
+        $images=$request->file('image');
         Storage::disk('local')->makeDirectory("public/products/$product->id");
-        foreach($product->image as $image)
+        foreach($images as $image)
         {
-            $img['product_id']=$product->id;
-            $img['image']=$image->store("products/$product->id/",'public');product_img::create($img);
+            $file['product_id']=$product->id;
+            $file['image']=$image->store("products/$product->id/",'public');
+            product_img::create($file);
         }
     }
 
@@ -66,7 +67,7 @@ class productcontrol extends Controller
 
     public function destroy($product)
     {
-        File::delete('storage/'.products::where('id',$product)->first()->pluck('image'));
+        Storage::deleteDirectory("public/products/$product->id");
         products::where('id',$product)->delete();
         return redirect()->route('admin.products.index');
     }
