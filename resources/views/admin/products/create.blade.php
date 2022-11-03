@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <label for="image">Surat</label>
-                        <input type="file" class="form-control" id="image" name="image" placeholder="Surat">
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Surat" multiple>
                     </div>
 
                     <div class="form-group">
