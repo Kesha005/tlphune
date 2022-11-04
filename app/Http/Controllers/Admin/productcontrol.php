@@ -53,8 +53,6 @@ class productcontrol extends Controller
         
     }
 
-    
-
     public function edit($product)
     {
         return $product;

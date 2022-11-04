@@ -15,17 +15,18 @@ class addpostcontrol extends Controller
 
     public function add_event(eventrequest $request)
     {
-        $validated = $request->image;
-        $event=events::create($request->only($this->event_conf));
-        $this->storeimage($validated,$event);
+
+        $event=events::create($request->only('user_id','category_id','name','mark_id','place','price','about'));
+        $this->storeimage($request,$event);
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
     }
 
 
-    public function storeimage($validated, $event)
+    public function storeimage($request, $event)
     {
+        $validated=$request->file('image');
         Storage::disk('local')->makeDirectory("public/users/$event->user_id/events/$event->id");
         foreach($validated as $img)
         {
