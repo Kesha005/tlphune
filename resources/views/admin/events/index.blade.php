@@ -68,7 +68,7 @@ Bildirişler
                                         <form action="{{route('admin.events.destroy',$event)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{route('admin.events.check',$event->id)}}" class="btn btn-outline-success btn-sm "><i class="bi bi-check"></i></a>
+                                            <button  class="btn btn-outline-success btn-sm " id="single_check" value="{{$event->id}}"><i class="bi bi-check"></i></button>
                                             <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                         </form>
@@ -89,4 +89,25 @@ Bildirişler
 
 @section('js')
 <script src="{{asset('assets/js/event_check.js')}}"></script>
+
+<script>
+        $(document).ready(function(){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $("#single_check").click(function(){
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: "route('admin.events.check')",
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, id:$("#single_check").val()},
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) { 
+                        window.location.reload();
+                    }
+                }); 
+            });
+       });    
+    </script>
+
 @endsection

@@ -52,3 +52,8 @@ Gadagan edilen ulanyjylar
     </section>
 </div>
 @endsection
+
+
+@section('js')
+
+@endsection
