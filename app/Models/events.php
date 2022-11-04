@@ -42,7 +42,7 @@ class events extends Model
 
     public function image()
     {
-        return $this->hasMany(event_img::class);
+        return $this->hasMany(event_img::class,'event_id');
     }
 
 
