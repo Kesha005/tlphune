@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class event_img extends Model
 {
     use HasFactory;
-    protected $fillable=['event_id','image'];
+    protected $fillable = ['event_id', 'image'];
 
     public function event()
     {
-        return $this->belongsTo(events::class,'event_id');
+        return $this->belongsTo(events::class, 'event_id');
     }
 }

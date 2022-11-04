@@ -17,10 +17,10 @@ class productcontrol extends Controller
 {
     public function index()
     {
-        $marks=marks::all();
-        $categories=category::all();
-        $products=products::with('category','mark','image')->get();
-        return view('admin.products.index',compact('products','marks','categories'));
+        $marks = marks::all();
+        $categories = category::all();
+        $products = products::with('category', 'mark', 'image')->get();
+        return view('admin.products.index', compact('products', 'marks', 'categories'));
     }
 
     public function create()
@@ -30,27 +30,25 @@ class productcontrol extends Controller
 
     public function store(Request $request)
     {
-        $validated=$request->only('name','country','mark_id','category_id','about');
-        $product= products::create($validated);
-        $this->storeimage($product,$request);
-         return redirect()->route('admin.products.index');
+        $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about');
+        $product = products::create($validated);
+        $this->storeimage($product, $request);
+        return redirect()->route('admin.products.index');
     }
 
-    public function storeimage($product,$request)
+    public function storeimage($product, $request)
     {
-        $images=$request->file('image');
+        $images = $request->file('image');
         Storage::disk('local')->makeDirectory("public/products/$product->id");
-        foreach($images as $image)
-        {
-            $file['product_id']=$product->id;
-            $file['image']=$image->store("products/$product->id/",'public');
+        foreach ($images as $image) {
+            $file['product_id'] = $product->id;
+            $file['image'] = $image->store("products/$product->id/", 'public');
             product_img::create($file);
         }
     }
 
     public function show($product)
     {
-        
     }
 
     public function edit($product)
@@ -60,13 +58,12 @@ class productcontrol extends Controller
 
     public function update()
     {
-
     }
 
     public function destroy($product)
     {
         Storage::deleteDirectory("public/products/$product");
-        products::where('id',$product)->delete();
+        products::where('id', $product)->delete();
         return redirect()->route('admin.products.index');
     }
 }

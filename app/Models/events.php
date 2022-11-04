@@ -8,18 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class events extends Model
 {
     use HasFactory;
-    
-    protected $fillable=[
-    'user_id',
-    'category_id',
-    'name',
-    'mark_id',
-    'place',
-    'price',
-    'about',
-    'status'];
 
-   
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'name',
+        'mark_id',
+        'place',
+        'price',
+        'about',
+        'status'
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -42,9 +43,6 @@ class events extends Model
 
     public function image()
     {
-        return $this->hasMany(event_img::class,'event_id');
+        return $this->hasMany(event_img::class, 'event_id');
     }
-
-
 }
-

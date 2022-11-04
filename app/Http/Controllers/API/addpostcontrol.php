@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class addpostcontrol extends Controller
 {
- 
+
 
     public function add_event(eventrequest $request)
     {
 
-        $event=events::create($request->only('user_id','category_id','name','mark_id','place','price','about'));
-       return  $this->storeimage($request,$event);
+        $event = events::create($request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about'));
+        return  $this->storeimage($request, $event);
         // return response()->json([
         //     'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         // ]);
@@ -27,17 +27,13 @@ class addpostcontrol extends Controller
 
     public function storeimage($request, $event)
     {
-        $validated=$request->file('image');
+        $validated = $request->file('image');
         Storage::disk('local')->makeDirectory("public/users/$event->user_id/events/$event->id");
-        foreach($validated as $img)
-        {
-            $image['event_id']=$event->id;
-            $image['image']=$img->store("users/$event->user_id/events/$event->id",'public');event_img::create($image);
+        foreach ($validated as $img) {
+            $image['event_id'] = $event->id;
+            $image['image'] = $img->store("users/$event->user_id/events/$event->id", 'public');
+            event_img::create($image);
         }
         return response()->json($request->file('image'));
-           
     }
 }
-
-
-

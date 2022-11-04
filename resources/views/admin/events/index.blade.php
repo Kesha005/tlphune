@@ -31,7 +31,7 @@ Bildirişler
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        
+
                         <h5 class="card-title"><input type="checkbox" class="select-all-event checkbox" name="select-all-event" /> Ählisini saýla</h5>
 
                         <table class="table datatable">
@@ -57,21 +57,24 @@ Bildirişler
                                     <td>{{$event->name}}</td>
                                     <td><img src="{{ asset('storage/'.$event->image->first()->image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
-                                    @if($event->status==0)
-                                    <td> <span class="badge bg-warning">prosesde</span></td>
-                                    @else
-                                    <td> <span class="badge bg-success">Tassyklanan</span></td>
-                                    @endif
-                                    <td>
 
-                                    
-                                        <form action="{{route('admin.events.destroy',$event)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button  class="btn btn-outline-success btn-sm " id="single_check" value="{{$event->id}}"><i class="bi bi-check"></i></button>
-                                            <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
-                                        </form>
+                                    <td class="st{{$event->id}}">
+                                        @if($event->status==0)
+                                        <span class="badge bg-warning">prosesde</span>
+                                        @else
+                                        <span class="badge bg-success">Tassyklanan</span>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        
+                                    <form action="{{route('admin.events.destroy',$event)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a class="btn btn-outline-success btn-sm single_check" onclick="example({{$event->id}})"><i class="bi bi-check"></i></a>
+                                        <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
+                                    </form>
                                     </td>
 
                                 </tr>
@@ -91,23 +94,21 @@ Bildirişler
 <script src="{{asset('assets/js/event_check.js')}}"></script>
 
 <script>
-        $(document).ready(function(){
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $("#single_check").click(function(){
-                $.ajax({
-                    /* the route pointing to the post function */
-                    url: "route('admin.events.check')",
-                    type: 'POST',
-                    /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN, id:$("#single_check").val()},
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) { 
-                        window.location.reload();
-                    }
-                }); 
-            });
-       });    
-    </script>
+    function example(id) {
+        $.ajax({
+            data: {
+                _token: "{{csrf_token()}}"
+            },
+            url: "{{route('admin.events.check')}}/" + id,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function(response) {
+                var id = response['dataId']
+                html = `<span class="badge bg-success">Tassyklanan</span>`;
+                $('.st' + id).html(html)
+            }
+        });
+    }
+</script>
 
 @endsection
