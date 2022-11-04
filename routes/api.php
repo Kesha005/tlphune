@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\addpostcontrol;
 use App\Http\Controllers\API\logincontrol;
 use App\Http\Controllers\API\basecontrol;
+use App\Http\Controllers\API\shopcontrol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 Route::get('/category/{id}',[basecontrol::class,'category']);
+Route::post('/shop_add',[shopcontrol::class,'store']);
 
 
 Route::middleware('auth:sanctum')->group(function () {

@@ -25,6 +25,7 @@ class shopcontrol extends Controller
     }
 
 
+
     public function store(shoprequest $request)
     {
         $request['image']=$request->image->store("users/$request->user_id/shops",'public');
