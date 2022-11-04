@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class eventcontrol extends Controller
 {
@@ -23,9 +24,10 @@ class eventcontrol extends Controller
 
     public function destroy()
     {
-        $img = events::find(request('event'))->pluck('image');
+        $img = events::find(request('event'));
         events::destroy(request('event'));
-        return $this->destroy_img($img);
+        $this->destroy_img($img);
+        return redirect()->route('admin.events.index');
     }
 
     public function multi_del(Request $request)
@@ -33,8 +35,10 @@ class eventcontrol extends Controller
         $nums = array_map('intval', explode(',', request('msgdel')));
         for ($i = 0; $i < count($nums); ++$i) {
             $event = events::find($nums[$i]);
+            $this->destroy_img($event);
             $event->delete();
         }
+
         return redirect()->route('admin.events.index');
     }
 
@@ -57,9 +61,8 @@ class eventcontrol extends Controller
 
     public function destroy_img($img)
     {
-        foreach ($img as $i) {
-            File::delete('storage/' . $i);
-        }
-        return redirect()->route('admin.events.index');
+        Storage::deleteDirectory("public/users/$img->user_id/events/$img->id");
     }
+
+   
 }

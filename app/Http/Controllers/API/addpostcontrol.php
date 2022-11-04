@@ -28,12 +28,14 @@ class addpostcontrol extends Controller
     public function storeimage($request, $event)
     {
         $validated = $request->file('image');
+        $image1=[];
         Storage::disk('local')->makeDirectory("public/users/$event->user_id/events/$event->id");
         foreach ($validated as $img) {
             $image['event_id'] = $event->id;
             $image['image'] = $img->store("users/$event->user_id/events/$event->id", 'public');
             event_img::create($image);
+            $image1[]=$image;
         }
-        return response()->json($request->file('image'));
+        return response()->json($image1);
     }
 }
