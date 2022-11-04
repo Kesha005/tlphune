@@ -19,7 +19,7 @@ class productcontrol extends Controller
     {
         $marks=marks::all();
         $categories=category::all();
-        $products=products::with('category','mark','image')->paginate(1);
+        $products=products::with('category','mark','image')->get();
         return view('admin.products.index',compact('products','marks','categories'));
     }
 
