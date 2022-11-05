@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('mark_id')->nullable();
             $table->string('place');
             $table->string('price');
-            $table->string('about')->nullable();
+            $table->longText('about')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });
