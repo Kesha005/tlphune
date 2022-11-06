@@ -60,6 +60,15 @@
         "disable-tls": false,
         "secure-http": true
     },
+    "repositories": [
+        {
+            "type":"composer",
+            "url":"https://packagist.org"
+        },
+        {
+            "packagist":false
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
