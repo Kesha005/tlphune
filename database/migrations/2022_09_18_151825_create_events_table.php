@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->foreignId('user_id');
             $table->string('name');
+            $table->string('public_image');
             $table->string('mark_id')->nullable();
             $table->string('place');
             $table->string('price');

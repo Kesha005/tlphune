@@ -17,7 +17,8 @@ class events extends Model
         'place',
         'price',
         'about',
-        'status'
+        'status',
+        'public_image'
     ];
 
 
