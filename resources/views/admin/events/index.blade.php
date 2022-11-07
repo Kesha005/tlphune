@@ -55,7 +55,7 @@ Bildirişler
                                     </td>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$event->name}}</td>
-                                    <td><img src="{{ asset('storage/'.$event->image->first()->image) }}" height="70" width="70"></td>
+                                    <td><img src="{{ asset('storage/'.$event->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
 
                                     <td class="st{{$event->id}}">
@@ -102,8 +102,11 @@ Bildirişler
             url: "{{route('admin.events.check')}}/" + id,
             type: 'POST',
             dataType: 'JSON',
+            
             success: function(response) {
+                
                 var id = response['dataId']
+                console.log(response)
                 html = `<span class="badge bg-success">Tassyklanan</span>`;
                 $('.st' + id).html(html)
             }
