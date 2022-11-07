@@ -10,16 +10,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+use Intervention\Image\Facades\Image;
+
 class addpostcontrol extends Controller
 {
 
 
     public function add_event(eventrequest $request)
     {
-        $data=$request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about');$image=$request->image[0]->resize(100,100);
-        $data['public_image']=$image->store("users/$request->user_id",'public');
-        $event = events::create($data);
-        $this->storeimage($request, $event);
+
+        $data = $request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about');
+        $path =  $request->image[0];$filename = $path->getClientOriginalName();$image_resize = Image::make($path->getRealPath());
+        $image_resize->resize(150, 150);  $image_resize->save(storage_path("/app/public/users/$request->user_id/") . $filename);
+        $data['public_image']="users/$request->user_id/$filename";
+        $event = events::create($data); $this->storeimage($request, $event);
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
