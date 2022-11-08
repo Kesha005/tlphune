@@ -66,7 +66,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{route('admin.çolor.index')}}">
+      <a class="nav-link" href="{{route('admin.color.index')}}">
         <i class="bi bi-paint"></i>
         <span>Reňkler</span>
       </a>
