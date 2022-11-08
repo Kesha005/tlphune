@@ -66,6 +66,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link" href="{{route('admin.çolor.index')}}">
+        <i class="bi bi-paint"></i>
+        <span>Reňkler</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.shops.index')}}">
         <i class="bi bi-bank"></i>
         <span>Dükanlar</span>
