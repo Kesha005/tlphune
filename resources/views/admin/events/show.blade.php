@@ -47,7 +47,9 @@ Bildiriş barada
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Suraty</div>
-                            <div class="col-lg-9 col-md-8"><img src="{{ asset('storage/'.$event->image) }}" height="80" width="80"></div>
+                            @foreach($event->image as $img)
+                            <div class="col"><img src="{{ asset('storage/'.$img->image) }}" height="80" width="80"></div>
+                            @endforeach
                         </div>
 
                         <div class="row">
