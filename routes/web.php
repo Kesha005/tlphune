@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
+use App\Http\Controllers\Admin\colorcontrol;
 use App\Http\Controllers\Admin\eventcontrol;
 use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
@@ -74,5 +75,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
+        Route::resource('color', colorcontrol::class);
     });
 });
