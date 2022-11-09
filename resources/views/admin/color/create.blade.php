@@ -15,11 +15,11 @@
 
                     <div class="form-group">
                         <label for="version">Ady</label>
-                        <input type="text" class="form-control" id="version" placeholder="version" name="version">
+                        <input type="text" class="form-control" id="version" placeholder="Ady" name="name">
                     </div><br>
                     <div class="form-group">
                         <label for="image">Saýla</label>
-                        <input type="color" class="form-control" id="image" name="apk" placeholder="APK">
+                        <input type="color" class="form-control" id="image" name="code" placeholder="APK">
                     </div>
 
 

@@ -8,10 +8,13 @@ use App\Models\products;
 use Illuminate\Http\Request;
 use App\Models\marks;
 use App\Models\category;
+use App\Models\colormodel;
+use App\Models\product_color;
 use App\Models\product_img;
 use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class productcontrol extends Controller
 {
@@ -19,8 +22,9 @@ class productcontrol extends Controller
     {
         $marks = marks::all();
         $categories = category::all();
+        $colors = colormodel::all();
         $products = products::with('category', 'mark', 'image')->get();
-        return view('admin.products.index', compact('products', 'marks', 'categories'));
+        return view('admin.products.index', compact('products', 'marks', 'categories', 'colors'));
     }
 
     public function create()
@@ -31,9 +35,16 @@ class productcontrol extends Controller
     public function store(Request $request)
     {
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about');
+        $path =  $request->image[0];
+        $filename = $path->getClientOriginalName();
+        $image_resize = Image::make($path->getRealPath());
+        $image_resize->resize(150, 150);
+        $image_resize->save(storage_path("/app/public/products/public_images/") . $filename);
+        $validated['public_image'] = "products/public_images/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
-        return redirect()->route('admin.products.index');
+        return $this->storecolor($request, $product);
+        redirect()->route('admin.products.index');
     }
 
     public function storeimage($product, $request)
@@ -45,6 +56,17 @@ class productcontrol extends Controller
             $file['image'] = $image->store("products/$product->id/", 'public');
             product_img::create($file);
         }
+    }
+
+    public function storecolor($request, $product)
+    {
+        $colors = $request->color;
+        return $colors;
+        // foreach($colors as $color)
+        // {
+        //     $color['product_id']=$product->id;$color['color_id']=$color;
+        //     product_color::create($color);
+        // }
     }
 
     public function show($product)

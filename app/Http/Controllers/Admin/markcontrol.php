@@ -46,9 +46,8 @@ class markcontrol extends Controller
   public function destroy($mark)
     {
       $img = marks::find($mark)->pluck('image');
-      foreach ($img as $i) {
-        File::delete('storage/' . $i);
-      }
+     
+        File::delete('storage/' . $img);
       marks::destroy($mark);
       return redirect()->route('admin.marks.index');
     }

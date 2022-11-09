@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('mark_id');
             $table->string('category_id');
             $table->string('country');
+            $table->string('public_image')->nullable();
             $table->longText('about');
             $table->timestamps();
         });
