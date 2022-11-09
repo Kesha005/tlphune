@@ -28,13 +28,13 @@ Reňkler
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$color->name}}</td>
-                                    <td>{{$color->name}}</td>
+                                    <td style="background-color:<?php echo $color->code  ?>"></td>
                                     <td>
-                                    <form action="{{route('admin.color.destroy',$color)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
-                                    </form>
+                                        <form action="{{route('admin.color.destroy',$color)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
+                                        </form>
                                     </td>
 
                                 </tr>

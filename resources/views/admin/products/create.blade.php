@@ -41,6 +41,18 @@
                         </select>
                     </div><br>
 
+
+                    
+                    <div class="form-group">
+                    <label for="color_id">Reňk</label>
+                        <select name="color" class="form-control" id="color_id" multiple>
+                            @foreach($colors as $color)
+                            <option value="{{$color->id}}" class="form-control">{{$color->name}}</option>
+                            @endforeach
+                        </select>
+                    </div><br>
+
+
                     <div class="form-group">
                         <label for="country">Ýurt</label>
                         <input type="text" class="form-control" id="country" placeholder="Yurt" name="country">
