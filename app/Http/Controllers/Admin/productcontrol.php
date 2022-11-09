@@ -65,31 +65,7 @@ class productcontrol extends Controller
     {
         $colors=$request->color;
         $product->color()->attach($colors);
-        // foreach($colors as $color)
-        // {
-        //     $pr_color['product_id']=$product->id;
-        //     $pr_color['color_id']=$color;
-        //     product_color::create($pr_color);
-        // }
     }
-
-    // $user = User::find(2);   
-    // $roleIds = [1, 2];
-    // $user->roles()->attach($roleIds);
-
-    // $user = User::find(3);   
-    // $roleIds = [1, 2];
-    // $user->roles()->sync($roleIds);
-
-    // //create recored in role table
-
-    // $role = Role::find(1);   
-    // $userIds = [10, 11];
-    // $role->users()->attach($userIds);
-
-    // $role = Role::find(2);   
-    // $userIds = [10, 11];
-    // $role->users()->sync($userIds);
 
     public function show($product)
     {
@@ -109,5 +85,11 @@ class productcontrol extends Controller
         Storage::deleteDirectory("public/products/$product");
         products::where('id', $product)->delete();
         return redirect()->route('admin.products.index');
+    }
+
+    public function view()
+    {
+        $all=products::with('color')->get();
+        return $all;
     }
 }
