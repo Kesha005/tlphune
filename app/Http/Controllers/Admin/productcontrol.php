@@ -34,6 +34,9 @@ class productcontrol extends Controller
 
     public function store(Request $request)
     {
+       
+     
+        
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about');
         $path =  $request->image[0];
         $filename = $path->getClientOriginalName();
@@ -43,8 +46,8 @@ class productcontrol extends Controller
         $validated['public_image'] = "products/public_images/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
-        return $this->storecolor($request, $product);
-        redirect()->route('admin.products.index');
+        $this->storecolor($request, $product);
+        return redirect()->route('admin.products.index');
     }
 
     public function storeimage($product, $request)
@@ -60,14 +63,33 @@ class productcontrol extends Controller
 
     public function storecolor($request, $product)
     {
-        $colors = $request->color;
-        return $colors;
+        $colors=$request->color;
+        $product->color()->attach($colors);
         // foreach($colors as $color)
         // {
-        //     $color['product_id']=$product->id;$color['color_id']=$color;
-        //     product_color::create($color);
+        //     $pr_color['product_id']=$product->id;
+        //     $pr_color['color_id']=$color;
+        //     product_color::create($pr_color);
         // }
     }
+
+    // $user = User::find(2);   
+    // $roleIds = [1, 2];
+    // $user->roles()->attach($roleIds);
+
+    // $user = User::find(3);   
+    // $roleIds = [1, 2];
+    // $user->roles()->sync($roleIds);
+
+    // //create recored in role table
+
+    // $role = Role::find(1);   
+    // $userIds = [10, 11];
+    // $role->users()->attach($userIds);
+
+    // $role = Role::find(2);   
+    // $userIds = [10, 11];
+    // $role->users()->sync($userIds);
 
     public function show($product)
     {

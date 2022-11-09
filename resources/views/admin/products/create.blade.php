@@ -45,9 +45,9 @@
                     
                     <div class="form-group">
                     <label for="color_id">Reňk</label>
-                        <select name="color" class="form-control" id="color_id" multiple>
+                        <select  name="color[]" class="form-control" size="2" id="color_id" multiple>
                             @foreach($colors as $color)
-                            <option value="{{$color->id}}" class="form-control">{{$color->name}}</option>
+                            <option value="{{$color->id}}" >{{$color->name}}</option>
                             @endforeach
                         </select>
                     </div><br>
