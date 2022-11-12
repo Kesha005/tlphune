@@ -19,7 +19,7 @@ class categories extends Controller
 
   public function store(Request $request)
   {
-    $validateddata = $request->validate(['name' => 'required', 'image' => 'required']);
+    $validateddata = $request->validate(['name' => 'required', 'image' => 'required','en'=>'required','ru'=>'required']);
     $validateddata['image'] = $request->image->store('files', 'public');
     category::create($validateddata);
     return redirect()->route('admin.categories.index');
@@ -34,7 +34,7 @@ class categories extends Controller
   {
 
     if ($request['image'] != null) {
-      $validateddata = $request->validate(['name' => 'required', 'image' => 'required']);
+      $validateddata = $request->validate(['name' => 'required', 'image' => 'required','en'=>'required','ru'=>'required']);
       $validateddata['image'] = $request->image->store('files', 'public');
       $category->update($validateddata);
       return redirect()->route('admin.categories.index');
