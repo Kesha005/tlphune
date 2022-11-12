@@ -46,7 +46,7 @@ class eventcontrol extends Controller
     public function check($id)
     {
         events::where('id', $id)->update(['status' => 1]);
-        return redirect()->route('admin.events.index');
+        return response()->json(['dataId'=>$id]);
     }
 
     public function multi_check()

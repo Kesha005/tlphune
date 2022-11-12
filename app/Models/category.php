@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class category extends Model
 {
     use HasFactory;
-    protected $fillable=['name','image'];
+    protected $fillable=['name','image','en','ru'];
 
     public function cat_event()
     {

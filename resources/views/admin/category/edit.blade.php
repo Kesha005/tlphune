@@ -21,6 +21,17 @@ Markalar
                         <label for="mname1">Ady</label>
                         <input type="text" class="form-control" id="mname1" placeholder="Ady" name="name" value="{{$category->name}}">
                     </div><br>
+
+                    <div class="form-group">
+                        <label for="mname2">EN</label>
+                        <input type="text" class="form-control" id="mname2" placeholder="EN" name="en" value="{{$category->en}}">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="mname3">RU</label>
+                        <input type="text" class="form-control" id="mname3" placeholder="RU" name="ru" value="{{$category->ru}}">
+                    </div><br>
+
                     <div class="form-group">
                         <label for="mimage1">Surat</label>
                         <input type="file" class="form-control" id="mimage1" name="image" placeholder="Surat" value="{{asset('storage/'.$category->image)}}">
