@@ -27,6 +27,8 @@ class addpostcontrol extends Controller
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
+
+       
     }
 
 

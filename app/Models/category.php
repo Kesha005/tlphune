@@ -14,4 +14,12 @@ class category extends Model
     {
         return $this->hasMany(events::class);
     }
+
+
+    public function products()
+    {
+        return $this->hasMany(products::class);
+    }
+
+  
 }
