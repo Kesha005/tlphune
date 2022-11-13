@@ -53,4 +53,21 @@ class basecontrol extends Controller
         $events = events::with('user', 'mark')->where('category_id', $id)->get();
         return response()->json($events);
     }
+
+    public function filter(Request $request)
+    {
+        $request->mark_id==0 ? $this->allmark($request) :$this->anymark($request);
+    }
+
+    public function allmark($request)
+    {
+        $events=events::where('category_id',$request->category_id)->get();
+        return response()->json($events);
+    }
+
+    public function anymark($request)
+    {
+        $events=events::where('category_id',$request->category_id)->where('mark_id',$request->mark_id)->get();
+        return response()->json($events);
+    }
 }
