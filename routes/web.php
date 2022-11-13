@@ -25,7 +25,6 @@ Route::get('/login', [authcontrol::class, 'login'])->name('login');
 Route::post('/post', [authcontrol::class, 'post'])->name('postlog');
 Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
 
-Route::get('',[productcontrol::class,'view']);
 
 
 
