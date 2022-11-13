@@ -45,7 +45,8 @@ class productrequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=>'required|max:10000|mimes:jpg,jpeg,png',
+            'image' => 'required',
+            'image.*' => 'max:10000|mimes:jpeg,jpg,png',
             'country'=>'required',
             'mark_id'=>'required',
             'category_id'=>'required',
