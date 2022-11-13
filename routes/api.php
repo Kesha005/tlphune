@@ -30,6 +30,7 @@ Route::get('/marks',[basecontrol::class,'marks']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 Route::get('/category/{id}',[basecontrol::class,'category']);
 Route::post('/shop_add',[shopcontrol::class,'store']);
+Route::post('/event_filter',[basecontrol::class,'filter']);
 
 
 Route::middleware('auth:sanctum')->group(function () {

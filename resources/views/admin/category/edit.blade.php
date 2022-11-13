@@ -18,8 +18,8 @@ Markalar
                     @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="mname1">Ady</label>
-                        <input type="text" class="form-control" id="mname1" placeholder="Ady" name="name" value="{{$category->name}}">
+                        <label for="mname1">TM</label>
+                        <input type="text" class="form-control" id="mname1" placeholder="Ady" name="tm" value="{{$category->name}}">
                     </div><br>
 
                     <div class="form-group">
