@@ -42,7 +42,7 @@ class productcontrol extends Controller
         $filename = $path->getClientOriginalName();
         $image_resize = Image::make($path->getRealPath());
         $image_resize->resize(150, 150);
-        $image_resize->save(storage_path("/app/public/products/public_images/") . $filename);
+        $image_resize->save(storage_path("/app/public/") . $filename);
         $validated['public_image'] = "products/public_images/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
