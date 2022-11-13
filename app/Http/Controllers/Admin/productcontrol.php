@@ -35,14 +35,17 @@ class productcontrol extends Controller
     public function store(Request $request)
     {
        
-     
-        
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about');
+
         $path =  $request->image[0];
         $filename = $path->getClientOriginalName();
         $image_resize = Image::make($path->getRealPath());
         $image_resize->resize(150, 150);
-        $image_resize->save(storage_path("/app/public/products/public_images/$filename"));
+        $image_resize->save(storage_path('/app/public/'.$filename));
+        $path =  $request->image[0]; $filename = $path->getClientOriginalName();
+        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
+        $image_resize->save(storage_path("/app/public/products/public_images/") . $filename);
+
         $validated['public_image'] = "products/public_images/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
