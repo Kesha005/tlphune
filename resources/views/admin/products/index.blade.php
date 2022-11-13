@@ -33,7 +33,7 @@ Modeller
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$product->name}}</td>
                                     <td><img src="{{ asset('storage/'.$product->image->first()->image) }}" height="70" width="70"></td>
-                                    <td>{{$product->category->name}}</td>
+                                    <td>{{$product->category->tm}}</td>
                                     <td>{{$product->mark->name}}</td>
                                     <td>
                                     <form action="{{route('admin.products.destroy',$product)}}" method="POST">
