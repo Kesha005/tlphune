@@ -65,6 +65,8 @@ class productcontrol extends Controller
 
     public function show($product)
     {
+        $model=products::find($product);
+        return view('admin.products.show',compact('model'));
     }
 
     public function edit($product)
@@ -83,9 +85,6 @@ class productcontrol extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    public function view()
-    {
-        $all=products::with('color')->get();
-        return $all;
-    }
+
+   
 }
