@@ -20,13 +20,15 @@ class addpostcontrol extends Controller
     {
 
         $data = $request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about');
-        $path =  $request->image[0];$filename = $path->getClientOriginalName();$image_resize = Image::make($path->getRealPath());
+        $path =  $request->image[0];$filename  = hash('sha256', $path);$image_resize = Image::make($path->getRealPath());
         $image_resize->resize(150, 150);  $image_resize->save(storage_path("/app/public/users/$request->user_id/") . $filename);
         $data['public_image']="users/$request->user_id/$filename";
         $event = events::create($data); $this->storeimage($request, $event);
         return response()->json([
             'message' => 'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler'
         ]);
+
+       
     }
 
 

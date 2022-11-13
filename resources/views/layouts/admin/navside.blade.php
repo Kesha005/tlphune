@@ -50,6 +50,7 @@
         <span>Bildirişler</span>
       </a>
     </li>
+    
 
     <li class="nav-item">
       <a class="nav-link" href="{{route('admin.marks.index')}}">
@@ -67,7 +68,7 @@
 
     <li class="nav-item">
       <a class="nav-link" href="{{route('admin.color.index')}}">
-        <i class="bi bi-paint"></i>
+        <i class="bi bi-paint-bucket"></i>
         <span>Reňkler</span>
       </a>
     </li>

@@ -14,8 +14,18 @@
 
 
                     <div class="form-group">
-                        <label for="name">Ady</label>
-                        <input type="text" class="form-control" id="name" placeholder="Ady" name="name">
+                        <label for="name">TM</label>
+                        <input type="text" class="form-control" id="name" placeholder="Ady" name="tm">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="name1">Ru</label>
+                        <input type="text" class="form-control" id="name1" placeholder="Ru" name="ru">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="name2">EN</label>
+                        <input type="text" class="form-control" id="name2" placeholder="En" name="en">
                     </div><br>
                     <div class="form-group">
                         <label for="image">Surat</label>
