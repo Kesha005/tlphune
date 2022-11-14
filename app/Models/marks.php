@@ -14,4 +14,9 @@ class marks extends Model
     {
         return $this->hasMany(events::class,'mark_id','id');
     }
+
+    public function product()
+    {
+        return $this->hasMany(products::class,'mark_id');
+    }
 }

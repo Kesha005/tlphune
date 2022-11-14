@@ -8,6 +8,8 @@ use App\Models\events;
 use App\Models\gallery;
 use App\Models\marks;
 use App\Models\messages;
+use App\Models\newevent;
+use App\Models\products;
 use Illuminate\Http\Request;
 
 class basecontrol extends Controller
@@ -31,7 +33,7 @@ class basecontrol extends Controller
 
     public function get_category()
     {
-        $categories = category::all();
+        $categories =category::all();
         return response()->json($categories);
     }
 
@@ -40,6 +42,12 @@ class basecontrol extends Controller
     {
         $images = gallery::all();
         return response()->json($images);
+    }
+
+    public function models()
+    {
+        $models=products::with('category:id,tm,ru,en',)->get();
+        return $models;
     }
 
     public function marks()
