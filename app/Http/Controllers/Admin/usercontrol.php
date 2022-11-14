@@ -39,7 +39,7 @@ class usercontrol extends Controller
         $data = ['isban' => 0];
         $user->update($data);
 
-        return redirect()->route('admin.users.banuser');
+        return response()->json(['dataId'=>$user->id]);
     }
 
     public function destroy(User $user)

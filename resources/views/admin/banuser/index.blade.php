@@ -26,7 +26,7 @@ Gadagan edilen ulanyjylar
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
-                                <tr>
+                                <tr class="us{{$user->id}}">
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
@@ -35,9 +35,9 @@ Gadagan edilen ulanyjylar
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                            <a class="btn btn-outline-success btn-sm"><i class="bi bi-check"></i></a>
+                                            <a class="btn btn-outline-success btn-sm single_check" onclick="example('{{$user->id}}')"><i class="bi bi-check"></i></a>
                                         </form>
-                                        
+
                                     </td>
 
                                 </tr>
@@ -54,6 +54,22 @@ Gadagan edilen ulanyjylar
 @endsection
 
 
-@section('js')
 
-@endsection
+<script>
+    function example(id) {
+        $.ajax({
+                data: {
+                    _token: "{{csrf_token()}}"
+                },
+                url: "{{route('admin.users.delban')}}/" + id,
+                type: 'POST',
+                dataType: 'JSON',
+
+                success: function(response) {
+                    var id = response['dataId']
+                    $(".us"+id).remove();
+                );
+            }
+        });
+    }
+</script>
