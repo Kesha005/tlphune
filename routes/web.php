@@ -38,7 +38,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::get('/users', [usercontrol::class, 'index'])->name('users.index');
         Route::get('/banusers', [usercontrol::class, 'banuser'])->name('users.banuser');
         Route::post('/banusers/{user}', [usercontrol::class, 'ban'])->name('users.ban');
-        Route::post('/banusers_del', [usercontrol::class, 'delban'])->name('users.delban');
+        Route::post('/banusers_del/{user}', [usercontrol::class, 'delban'])->name('users.delban');
         Route::delete('user/{user}', [usercontrol::class, 'destroy'])->name('users.destroy');
         Route::get('/apk', [apkcontrol::class, 'index'])->name('apk.index');
         Route::post('/apk_add', [apkcontrol::class, 'create'])->name('apk.create');

@@ -31,15 +31,25 @@ Gadagan edilen ulanyjylar
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>
-                                        <form method="post" action="{{route('admin.users.destroy',$user)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                            <a class="btn btn-outline-success btn-sm single_check" onclick="example('{{$user->id}}')"><i class="bi bi-check"></i></a>
-                                        </form>
+
+                                        <div class="row">
+                                            <div class=" col-md-2 col-lg-1 col-xs-1">
+                                                <form method="post" action="{{route('admin.users.destroy',$user)}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                                </form>
+                                            </div>
+
+                                            <div class=" col-md-2 col-lg-1 col-xs-1">
+                                                <form method="post" action="{{route('admin.users.delban',$user)}}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-success btn-sm "><i class="bi bi-check"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
 
                                     </td>
-
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -52,24 +62,3 @@ Gadagan edilen ulanyjylar
     </section>
 </div>
 @endsection
-
-
-
-<script>
-    function example(id) {
-        $.ajax({
-                data: {
-                    _token: "{{csrf_token()}}"
-                },
-                url: "{{route('admin.users.delban')}}/" + id,
-                type: 'POST',
-                dataType: 'JSON',
-
-                success: function(response) {
-                    var id = response['dataId']
-                    $(".us"+id).remove();
-                );
-            }
-        });
-    }
-</script>
