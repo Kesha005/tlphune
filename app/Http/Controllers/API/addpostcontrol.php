@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\eventrequest;
+use App\Http\Requests\neweventreq;
 use App\Models\event_img;
 use App\Models\events;
+use App\Models\newevent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -43,5 +45,14 @@ class addpostcontrol extends Controller
             $image['image'] = $img->store("users/$event->user_id/events/$event->id", 'public');
             event_img::create($image);
         }
+    }
+
+
+
+    public function newevent(neweventreq $request)
+    {
+        $data=$request->all();
+        newevent::create($data);
+        return response()->json(['message'=>'Bildiriş nobata goýuldy']);
     }
 }

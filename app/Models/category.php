@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class category extends Model
 {
     use HasFactory;
+
     protected $fillable=['tm','image','en','ru'];
 
     public function cat_event()
@@ -18,7 +19,7 @@ class category extends Model
 
     public function products()
     {
-        return $this->hasMany(products::class);
+        return $this->hasMany(products::class,'category_id');
     }
 
   

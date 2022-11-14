@@ -22,18 +22,25 @@ Route::post('/control',[logincontrol::class,'control']);
 Route::post('/login',[logincontrol::class,'login']);
 Route::post('/register',[logincontrol::class,'register']);
 Route::post('/password_re',[logincontrol::class,'password_reset']);
+
+
 Route::get('/categories',[basecontrol::class,'get_category']);
 Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
 Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
-Route::post('/add',[addpostcontrol::class,'add_event']);
+
+
 Route::get('/category/{id}',[basecontrol::class,'category']);
-Route::post('/shop_add',[shopcontrol::class,'store']);
+
 Route::post('/event_filter',[basecontrol::class,'filter']);
 
 
+
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/me', [logincontrol::class,'me']);
+    Route::post('/add',[addpostcontrol::class,'add_event']);
+    Route::get('/model',[basecontrol::class,'models']);
+    Route::post('/shop_add',[shopcontrol::class,'store']);
+    Route::get('/me', [logincontrol::class,'me']);Route::post('new_add',[addpostcontrol::class,'newevent']);
 });
 

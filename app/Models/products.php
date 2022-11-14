@@ -13,12 +13,12 @@ class products extends Model
 
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(category::class,'category_id');
     }
 
     public function mark()
     {
-        return $this->belongsTo(marks::class);
+        return $this->belongsTo(marks::class,'mark_id');
     }
 
     public function image()
@@ -29,5 +29,10 @@ class products extends Model
     public function color()
     {
         return $this->belongsToMany(colormodel::class,'product_colors','product_id','color_id');
+    }
+
+    public function newevent()
+    {
+        return $this->hasMany(newevent::class,'products_id');
     }
 }
