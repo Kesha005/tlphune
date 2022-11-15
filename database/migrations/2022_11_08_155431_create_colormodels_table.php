@@ -15,8 +15,10 @@ class CreateColormodelsTable extends Migration
     {
         Schema::create('colormodels', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('tm');
             $table->string('code');
+            $table->string('ru');
+            $table->string('en');
             $table->timestamps();
         });
     }
