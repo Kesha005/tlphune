@@ -11,9 +11,9 @@ class category extends Model
 
     protected $fillable=['tm','image','en','ru'];
 
-    public function cat_event()
+    public function events()
     {
-        return $this->hasMany(events::class);
+        return $this->hasMany(events::class,'category_id');
     }
 
 
