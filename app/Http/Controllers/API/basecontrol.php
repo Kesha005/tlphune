@@ -68,7 +68,7 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-    public function allmark($mark_id,$category_id)
+    public function allmark($category_id)
     {
         $events=events::where('category_id',$category_id)->get();
         return response()->json($events);

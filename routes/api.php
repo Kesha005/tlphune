@@ -35,6 +35,8 @@ Route::get('/category/{id}',[basecontrol::class,'category']);
 
 Route::get('/category/{category_id}/marks/{mark_id}',[basecontrol::class,'filter']);
 
+Route::get('/category/{category_id}',[basecontrol::class,'allmark']);
+
 
 
 Route::middleware('auth:sanctum')->group(function () {
