@@ -24,7 +24,7 @@ class basecontrol extends Controller
 
     public function get_events()
     {
-        $events = events::with('image:id,event_id,image','category:id,name','mark:id,name')->has('user')->where('status', 1)->get()->map(function ($query) {
+        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->get()->map(function ($query) {
             return (array)($query->toArray() + ['user_phone' => $query->user->phone]);
         });
 
@@ -64,7 +64,7 @@ class basecontrol extends Controller
 
     public function filter(Request $request)
     {
-        $request->mark_id==0 ? $this->allmark($request) :$this->anymark($request);
+        $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
     }
 
     public function allmark($request)
