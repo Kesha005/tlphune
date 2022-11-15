@@ -36,7 +36,7 @@ class basecontrol extends Controller
         // $categories =category::all(); 
         // $events=category::with('events')->get();
         // $count=count($events[0]->events);
-        $category = category::with('events')->has('events')->get()->map(function ($query) {
+        $category = category::has('events')->get()->map(function ($query) {
             return (array)($query->toArray() + ['count' => count($query->events)]);
         });
 
