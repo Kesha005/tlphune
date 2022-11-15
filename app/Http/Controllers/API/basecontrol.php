@@ -62,21 +62,21 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-    public function filter($request)
+    public function filter($mark_id,$category_id)
     {
        
-        $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
+        $mark_id==0 ?  $this->allmark($mark_id,$category_id) :$this->anymark($mark_id,$category_id);
     }
 
-    public function allmark($request)
+    public function allmark($mark_id,$category_id)
     {
-        $events=events::where('category_id',$request->category_id)->get();
+        $events=events::where('category_id',$category_id)->get();
         return response()->json($events);
     }
 
-    public function anymark($request)
+    public function anymark($mark_id,$category_id)
     {
-        $events=events::where('category_id',$request->category_id)->where('mark_id',$request->mark_id)->get();
+        $events=events::where('category_id',$category_id)->where('mark_id',$mark_id)->get();
         return response()->json($events);
     }
 }
