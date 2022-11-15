@@ -37,11 +37,12 @@ Route::get('/category/{category_id}/marks/{mark_id}',[basecontrol::class,'filter
 
 Route::get('/category/{category_id}',[basecontrol::class,'allmark']);
 
+Route::get('/model',[basecontrol::class,'models']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add',[addpostcontrol::class,'add_event']);
-    Route::get('/model',[basecontrol::class,'models']);
+    
     Route::post('/shop_add',[shopcontrol::class,'store']);
     Route::get('/me', [logincontrol::class,'me']);Route::post('new_add',[addpostcontrol::class,'newevent']);
 });
