@@ -33,7 +33,7 @@ Route::get('/marks',[basecontrol::class,'marks']);
 
 Route::get('/category/{id}',[basecontrol::class,'category']);
 
-Route::post('/event_filter',[basecontrol::class,'filter']);
+Route::post('/filter',[basecontrol::class,'filter']);
 
 
 
