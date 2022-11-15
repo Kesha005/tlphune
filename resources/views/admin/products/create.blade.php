@@ -47,7 +47,7 @@
                     <label for="color_id">Reňk</label>
                         <select  name="color[]" class="form-control" size="2" id="color_id" multiple>
                             @foreach($colors as $color)
-                            <option value="{{$color->id}}" >{{$color->name}}</option>
+                            <option value="{{$color->id}}" >{{$color->tm}}</option>
                             @endforeach
                         </select>
                     </div><br>
