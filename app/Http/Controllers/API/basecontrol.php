@@ -64,7 +64,8 @@ class basecontrol extends Controller
 
     public function filter(Request $request)
     {
-        $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
+        return response()->json(['message'=>'xfdfd']);
+        // $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
     }
 
     public function allmark($request)
