@@ -62,10 +62,10 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-    public function filter(Request $request)
+    public function filter($request)
     {
-        return response()->json(['message'=>'xfdfd']);
-        // $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
+       
+        $request->mark_id==0 ?  $this->allmark($request) :$this->anymark($request);
     }
 
     public function allmark($request)
