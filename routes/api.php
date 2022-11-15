@@ -33,7 +33,7 @@ Route::get('/marks',[basecontrol::class,'marks']);
 
 Route::get('/category/{id}',[basecontrol::class,'category']);
 
-Route::get('/filter',[basecontrol::class,'filter']);
+Route::get('/category/{category_id}/marks/{mark_id}',[basecontrol::class,'filter']);
 
 
 
