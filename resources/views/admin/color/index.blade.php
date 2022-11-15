@@ -27,7 +27,7 @@ Reňkler
                                 @foreach($colors as $color)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$color->name}}</td>
+                                    <td>{{$color->tm}}</td>
                                     <td style="background-color:<?php echo $color->code  ?>"></td>
                                     <td>
                                         <form action="{{route('admin.color.destroy',$color)}}" method="POST">

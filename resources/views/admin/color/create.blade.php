@@ -14,9 +14,21 @@
 
 
                     <div class="form-group">
-                        <label for="version">Ady</label>
-                        <input type="text" class="form-control" id="version" placeholder="Ady" name="name">
+                        <label for="version">TM</label>
+                        <input type="text" class="form-control" id="version" placeholder="Ady" name="tm">
                     </div><br>
+
+                    <div class="form-group">
+                        <label for="version1">EN</label>
+                        <input type="text" class="form-control" id="version1" placeholder="Ady" name="en">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="version2">RU</label>
+                        <input type="text" class="form-control" id="version2" placeholder="Ady" name="ru">
+                    </div><br>
+
+
                     <div class="form-group">
                         <label for="image">Saýla</label>
                         <input type="color" class="form-control" id="image" name="code" placeholder="APK">

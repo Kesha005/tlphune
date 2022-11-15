@@ -24,7 +24,7 @@ class colorcontrol extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['name'=>'required','code'=>'required']);
+        $request->validate(['tm'=>'required','code'=>'required','en'=>'required','ru'=>'required']);
         colormodel::create($request->all());
         return redirect()->route('admin.color.index');
     }
