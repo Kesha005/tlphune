@@ -36,7 +36,10 @@ class basecontrol extends Controller
         $categories =category::all(); 
         $events=category::with('events')->get();
         $count=count($events[0]->events);
-        return response()->json($categories,$count);
+        return response()->json([
+            'categories'=>$categories,
+            'count'=>$count
+        ]);
     }
 
 
