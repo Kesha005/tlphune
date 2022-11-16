@@ -42,8 +42,8 @@ Route::get('/model',[basecontrol::class,'models']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add',[addpostcontrol::class,'add_event']);
-    
     Route::post('/shop_add',[shopcontrol::class,'store']);
-    Route::get('/me', [logincontrol::class,'me']);Route::post('new_add',[addpostcontrol::class,'newevent']);
+    Route::get('/me', [logincontrol::class,'me']);
+    Route::post('new_add',[addpostcontrol::class,'newevent']);
 });
 

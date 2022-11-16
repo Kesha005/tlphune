@@ -68,6 +68,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::post('event_del', [eventcontrol::class, 'multi_del'])->name('events.multi_del');
         Route::post('event_check', [eventcontrol::class, 'multi_check'])->name('events.multi_check');
         Route::post('event_check_single/{id?}', [eventcontrol::class, 'check'])->name('events.check');
+        
 
         Route::resource('/shops', shopscontrol::class);
         Route::post('/shops/multi_confirm', [shopscontrol::class, 'multi_confirm'])->name('shops.multi_confirm');

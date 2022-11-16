@@ -21,7 +21,8 @@ class neweventreq extends FormRequest
             'user_id' => 'Ulanyjy',
             'price' => 'Bahasy',
             'place' => 'Welayat',
-            'products_id'=>'haryt'
+            'products_id'=>'haryt',
+            'color_id'=>'Renk'
         ];
     }
 
@@ -32,7 +33,8 @@ class neweventreq extends FormRequest
             'products_id.required'=>'Haryt yok',
             'price.required' => 'Baha girizilmedik',
             'price.numeric' => 'Baha ýalňyş girizilen',
-            'place.required' => 'Welayat yok'
+            'place.required' => 'Welayat yok',
+            'color_id.required'=>'Renk yok'
         ];
     }
 
@@ -43,7 +45,8 @@ class neweventreq extends FormRequest
             'user_id' => 'required',
             'products_id'=>'required',
             'price' => 'required|numeric',
-            'place' => 'required'
+            'place' => 'required',
+            'color_id'=>'required'
         ];
     }
     protected function failedValidation(Validator $validator)

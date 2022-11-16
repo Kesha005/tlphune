@@ -18,6 +18,7 @@ class CreateNeweventsTable extends Migration
             $table->string('user_id');
             $table->string('place');
             $table->string('price');
+            $table->string('color_id');
             $table->foreignId('products_id');
             $table->timestamps();
         });
