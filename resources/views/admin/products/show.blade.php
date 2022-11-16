@@ -38,6 +38,16 @@ Model barada
                         </div>
 
                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Barada rus dili</div>
+                            <div class="col-lg-9 col-md-8">{{$model->ru}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Barada iňlis dili</div>
+                            <div class="col-lg-9 col-md-8">{{$model->en}}</div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Marka</div>
                             <div class="col-lg-9 col-md-8">{{$model->mark->name ?? "Not found"}}</div>
                         </div>

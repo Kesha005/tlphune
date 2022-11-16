@@ -29,7 +29,7 @@ Bölümler
                                 @foreach($categories as $category)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$category->tm}}</td>
+                                    <td>{{$category->id}}</td>
                                     <td><img src="{{ asset('storage/'.$category->image) }}" height="70" width="70"></td>
                                     <td>
                                     <form action="{{route('admin.categories.destroy',$category)}}" method="POST">

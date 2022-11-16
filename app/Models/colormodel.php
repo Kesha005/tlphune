@@ -11,8 +11,12 @@ class colormodel extends Model
 
     protected $fillable=['tm','code','ru','en'];
 
+
     public function product()
     {
         return $this->belongsToMany(products::class,'colormodels','product_id','color_id');
     }
+
+    
+
 }

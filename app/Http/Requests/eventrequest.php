@@ -25,7 +25,7 @@ class eventrequest extends FormRequest
             'image' => 'Surat',
             'price' => 'Bahasy',
             'about' => 'Barada',
-            'place' => 'Welayat'
+            'place' => 'Welayat',
         ];
     }
 
@@ -42,7 +42,7 @@ class eventrequest extends FormRequest
             'price.required' => 'Baha girizilmedik',
             'price.numeric' => 'Baha ýalňyş girizilen',
             'about.required' => 'Maglumat ýok',
-            'place.required' => 'Welayat yok'
+            'place.required' => 'Welayat yok',
         ];
     }
 
@@ -58,7 +58,7 @@ class eventrequest extends FormRequest
             'image.*' => 'max:10000|mimes:jpeg,jpg,png',
             'price' => 'required|numeric',
             'about' => 'required',
-            'place' => 'required'
+            'place' => 'required',
         ];
     }
 

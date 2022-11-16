@@ -43,10 +43,12 @@ class eventcontrol extends Controller
     }
 
 
-    public function check($id)
+    public function check(Request $request)
     {
-        events::where('id', $id)->update(['status' => 1]);
-        return response()->json(['dataId'=>$id]);
+        events::where('id', $request->id)->update(['status' => 1]);
+        if($request->ajax=='true')return response()->json(['dataId'=>$request->id]); 
+        return redirect()->route('admin.events.index');
+        
     }
 
     public function multi_check()
@@ -65,5 +67,6 @@ class eventcontrol extends Controller
         File::delete("storage/".$img->public_image);
     }
 
+   
    
 }

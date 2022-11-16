@@ -24,7 +24,7 @@ class basecontrol extends Controller
 
     public function get_events()
     {
-        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->get()->map(function ($query) {
+        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name','color:id,tm,ru,en,code')->has('user')->where('status', 1)->get()->map(function ($query) {
             return (array)($query->toArray() + ['user_phone' => $query->user->phone]);
         });
 
@@ -33,11 +33,8 @@ class basecontrol extends Controller
 
     public function get_category()
     {
-        // $categories =category::all(); 
-        // $events=category::with('events')->get();
-        // $count=count($events[0]->events);
         $category = category::has('events')->get()->map(function ($query) {
-            return (array)($query->toArray() + ['count' => count($query->events)]);
+            return (array)($query->toArray() + ['count' => count($query->events->where('status',1))]);
         });
 
         return response()->json($category);
@@ -52,8 +49,8 @@ class basecontrol extends Controller
 
     public function models()
     {
-        $models=products::with('category:id,tm,ru,en',)->get();
-        return $models;
+        $models=products::with('color:id,code,tm,ru')->get();
+        return response()->json($models);
     }
 
     public function marks()

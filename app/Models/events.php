@@ -18,7 +18,7 @@ class events extends Model
         'price',
         'about',
         'status',
-        'public_image'
+        'public_image',
     ];
 
 
@@ -46,4 +46,10 @@ class events extends Model
     {
         return $this->hasMany(event_img::class, 'event_id');
     }
+
+    public function color()
+    {
+        return $this->belongsTo(colormodel::class,'color_id');
+    }
+
 }
