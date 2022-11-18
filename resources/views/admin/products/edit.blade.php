@@ -14,7 +14,7 @@ Model {{$product->name}}
                     <div class="card-body">
 
                     <h5 class="card-title">Üýtget</h5>
-                    <form action="{{route('admin.product.update',$product)}}"  id="markform1" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('admin.product.update',$product->id)}}"  id="markform1" enctype="multipart/form-data" method="POST">
                     @method('PUT')
                     @csrf
                 <div class="modal-body">
