@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('page_name')
-Markalar
+Bölümler
 @endsection
 @section('main_section')
 <div>

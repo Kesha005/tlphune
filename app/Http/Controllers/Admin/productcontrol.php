@@ -18,6 +18,7 @@ use Intervention\Image\Facades\Image;
 
 class productcontrol extends Controller
 {
+    public $validate= ['name'=>'required','public_image' => 'max:10000|mimes:jpeg,jpg,png','country'=>'required','mark_id'=>'required', 'category_id'=>'required','about'=>'required', 'en'=>'required','ru'=>'required'];
     public function index()
     {
         $marks = marks::all();
@@ -74,10 +75,25 @@ class productcontrol extends Controller
     public function edit($product)
     {
         return $product;
-    }
+    } 
 
-    public function update()
+    public function update(Request $request,$product)
     {
+        $product=products::find($product);
+        $request->validate($this->validate);
+        $validated=$request->only('name','country','mark_id','category_id','about','ru','en');
+        if($request->public_image) 
+        {
+            File::delete("storage/".$product->public_image);
+            $path =  $request->public_image; $filename = $path->getClientOriginalName();
+            $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
+            $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
+            $validated['public_image'] = "product_thumb/$filename";
+        }
+        $validated['public_image']=$product->public_image;
+        $product->update($validated);
+        return redirect()->route('admin/products.index');
+       
     }
 
     public function destroy($product)
