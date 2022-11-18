@@ -20,7 +20,7 @@ Model {{$product->name}}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Ady</label>
-                        <input type="text" class="form-control" id="name" placeholder="Ady" name="name">
+                        <input type="text" class="form-control" id="name" placeholder="Ady" name="name" value="{{$product->name}}">
                     </div><br>
 
                     <div class="form-group">
@@ -52,24 +52,24 @@ Model {{$product->name}}
 
                     <div class="form-group">
                         <label for="about">Barada</label>
-                        <textarea  class="form-control" id="about" placeholder="Barada" name="about" value="{{$product->tm}}"></textarea>
+                        <textarea  class="form-control" id="about" placeholder="Barada" name="about" value="{{$product->tm}}">{{$product->tm}}</textarea>
                     </div><br>
 
                     <div class="form-group">
                         <label for="about1">Barada Rus dili</label>
-                        <textarea  class="form-control" id="about1" placeholder="Barada rus" name="ru" value="{{$product->ru}}"></textarea>
+                        <textarea  class="form-control" id="about1" placeholder="Barada rus" name="ru" value="{{$product->ru}}">{{$product->ru}}</textarea>
                     </div><br>
 
                     <div class="form-group">
                         <label for="about2">Barada Iňlis dili</label>
-                        <textarea  class="form-control" id="about2" placeholder="Barada inlis" name="en" value="{{$product->en}}"></textarea>
+                        <textarea  class="form-control" id="about2" placeholder="Barada inlis" name="en" value="{{$product->en}}">{{$product->en}}</textarea>
                     </div><br>
 
                     <div class="form-group">
                         <label for="mimage1">Esasy Surat</label>
                         <input type="file" class="form-control" id="mimage1" name="public_image" placeholder="Surat">
                     </div>
-                    <br><img src="{{ asset('storage/'.$mark->image) }}" height="100" width="100"  />
+                    <br><img src="{{ asset('storage/'.$mark->public_image) }}" height="100" width="100"  />
                 </div>
                 
                 <button type="submit"  class="btn btn-outline-success ">Üýtget</button>
