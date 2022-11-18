@@ -54,7 +54,7 @@
     
     <li class="nav-item">
       <a class="nav-link " href="{{route('admin.new_event.index')}}">
-        <i class="bi bi-displayport-1"></i>
+        <i class="bi bi-activity"></i>
         <span>Aýratyn Bildirişler</span>
       </a>
     </li>
