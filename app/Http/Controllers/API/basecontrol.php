@@ -33,7 +33,7 @@ class basecontrol extends Controller
 
     public function get_category()
     {
-        $category = category::has('events')->get()->map(function ($query) {
+        $category = category::all()->map(function ($query) {
             return (array)($query->toArray() + ['count' => count($query->events->where('status',1))]);
         });
 

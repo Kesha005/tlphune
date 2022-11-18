@@ -46,6 +46,7 @@ Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::post('new_add',[addpostcontrol::class,'newevent']);
 Route::middleware('auth:sanctum')->group(function () {
     
+
     Route::get('/me', [logincontrol::class,'me']);
     
 });
