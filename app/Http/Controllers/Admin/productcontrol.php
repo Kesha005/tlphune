@@ -80,12 +80,12 @@ class productcontrol extends Controller
         return view('admin.products.edit',compact('product','marks','categories'));
     } 
 
-    public function update(Request $request,$product)
+    public function update(Request $request,$id)
     {
        
         $request->validate($this->validate);
         $validated=$request->only('name','country','mark_id','category_id','about','ru','en'); 
-        $product=products::find($product);
+        $product=products::find($id);
         if($request->public_image) 
         {
             File::delete("storage/".$product->public_image);
