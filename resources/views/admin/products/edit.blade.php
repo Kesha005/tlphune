@@ -52,7 +52,7 @@ Model {{$product->name}}
 
                     <div class="form-group">
                         <label for="about">Barada</label>
-                        <textarea  class="form-control" id="about" placeholder="Barada" name="about" value="{{$product->tm}}">{{$product->tm}}</textarea>
+                        <textarea  class="form-control" id="about" placeholder="Barada" name="about" value="{{$product->tm}}">{{$product->about}}</textarea>
                     </div><br>
 
                     <div class="form-group">

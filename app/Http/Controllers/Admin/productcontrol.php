@@ -83,7 +83,7 @@ class productcontrol extends Controller
     public function update(Request $request,$product)
     {
        
-       
+        $request->validate($this->validate);
         $validated=$request->only('name','country','mark_id','category_id','about','ru','en'); 
         $product=products::find($product);
         if($request->public_image) 
