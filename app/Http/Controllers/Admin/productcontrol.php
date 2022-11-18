@@ -75,7 +75,7 @@ class productcontrol extends Controller
     public function edit($product)
     {
         $product=products::find($product);
-        return view('admin.products.edit',compact($product));
+        return view('admin.products.edit',compact('product'));
     } 
 
     public function update(Request $request,$product)
