@@ -67,7 +67,7 @@ class basecontrol extends Controller
 
     public function filter($category_id,$mark_id)
     {
-        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->where('category_id',$category_id)->where('mark_id',$mark_id)->get()->map(function ($query) {
+        $events = events::with('image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->where('category_id',$category_id)->where('mark_id',$mark_id)->get()->map(function ($query) {
             return (array)($query->toArray()+ ['user_phone' => $query->user->phone]);
         });
 
@@ -76,7 +76,7 @@ class basecontrol extends Controller
 
     public function allmark($category_id)
     {
-        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->where('category_id',$category_id)->get()->map(function ($query) {
+        $events = events::with('image','category:id,tm,ru,en','mark:id,name')->has('user')->where('status', 1)->where('category_id',$category_id)->get()->map(function ($query) {
             return (array)($query->toArray()+ ['user_phone' => $query->user->phone]);
         });
         return response()->json($events);
