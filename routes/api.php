@@ -38,13 +38,13 @@ Route::get('/category/{category_id}/marks/{mark_id}',[basecontrol::class,'filter
 Route::get('/category/{category_id}',[basecontrol::class,'allmark']);
 
 Route::get('/model',[basecontrol::class,'models']);
-
-    Route::post('/add',[addpostcontrol::class,'add_event']);
-
+Route::post('/add',[addpostcontrol::class,'add_event']);
+Route::post('/shop_add',[shopcontrol::class,'store']);
+Route::post('new_add',[addpostcontrol::class,'newevent']);
 Route::middleware('auth:sanctum')->group(function () {
     
-    Route::post('/shop_add',[shopcontrol::class,'store']);
+
     Route::get('/me', [logincontrol::class,'me']);
-    Route::post('new_add',[addpostcontrol::class,'newevent']);
+    
 });
 
