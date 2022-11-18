@@ -105,9 +105,9 @@ class productcontrol extends Controller
 
     public function destroy($product)
     {
-        Storage::deleteDirectory("public/products/$product");
-        products::where('id', $product)->delete();
-        File::delete("storage/".$product->public_image);
+        Storage::deleteDirectory("public/products/$product"); File::delete("storage/".$product->public_image);
+        products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
+       
         return redirect()->route('admin.products.index');
     }
 
