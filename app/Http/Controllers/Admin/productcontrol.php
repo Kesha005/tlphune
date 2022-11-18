@@ -39,10 +39,10 @@ class productcontrol extends Controller
 
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about','ru','en');
 
-        $path =  $request->image[0]; $filename = $path->getClientOriginalName();
+        $path =  $request->image[0]; $filename =hash('sha256', $path);
         $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-        $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
-        $validated['public_image'] = "product_thumb/$filename";
+        $image_resize->save(storage_path('app/public/'.$filename));
+        $validated['public_image'] = "$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
         $this->storecolor($request, $product);
@@ -89,10 +89,10 @@ class productcontrol extends Controller
         if($request->public_image) 
         {
             File::delete("storage/".$product->public_image);
-            $path =  $request->public_image; $filename = $path->getClientOriginalName();
+            $path =  $request->public_image; $filename = hash('sha256', $path);
             $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-            $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
-            $validated['public_image'] = "product_thumb/$filename";
+            $image_resize->save(storage_path('app/public/'.$filename));
+            $validated['public_image'] = "$filename";
         }
         $validated['public_image']=$product->public_image;
         $product->update($validated);
