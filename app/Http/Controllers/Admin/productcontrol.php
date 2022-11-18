@@ -82,9 +82,10 @@ class productcontrol extends Controller
 
     public function update(Request $request,$product)
     {
+       
+       
+        $validated=$request->only('name','country','mark_id','category_id','about','ru','en'); 
         $product=products::find($product);
-        $request->validate($this->validate);
-        $validated=$request->only('name','country','mark_id','category_id','about','ru','en');
         if($request->public_image) 
         {
             File::delete("storage/".$product->public_image);
