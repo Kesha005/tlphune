@@ -10,23 +10,6 @@ Bildiriş barada
         <div class="card">
             <div class="card-body pt-3">
                 <!-- Bordered Tabs -->
-                <ul class="nav nav-tabs nav-tabs-bordered">
-
-                    <li class="nav-item">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Bildiriş barada</button>
-                    </li>
-
-                    <li class="nav-item">
-                        <form action="{{route('admin.new_event.destroy',$event->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger">Poz</button>
-                        </form>
-
-                    </li>
-
-
-                </ul>
                 <div class="tab-content pt-2">
 
                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -34,29 +17,39 @@ Bildiriş barada
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Ady</div>
-                            <div class="col-lg-9 col-md-8">{{$event->name}}</div>
+                            <div class="col-lg-9 col-md-8">{{$product->name}}</div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Suraty</div>
-                            @foreach($event->image as $img)
+                            @foreach($product->image as $img)
                             <div class="col"><img src="{{ asset('storage/'.$img->image) }}" height="80" width="80"></div>
                             @endforeach
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-3 col-md-4 label ">Bahasy</div>
-                            <div class="col-lg-9 col-md-8">{{$event->price}}</div>
+                            <div class="col-lg-3 col-md-4 label ">Yurdy</div>
+                            <div class="col-lg-9 col-md-8">{{$product->country}}</div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Barada</div>
-                            <div class="col-lg-9 col-md-8">{{$event->about}}</div>
+                            <div class="col-lg-9 col-md-8">{{$product->about}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Barada rus dili</div>
+                            <div class="col-lg-9 col-md-8">{{$product->ru}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Barada iňlis dili</div>
+                            <div class="col-lg-9 col-md-8">{{$product->en}}</div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Marka</div>
-                            <div class="col-lg-9 col-md-8">{{$event->mark->name ?? "Not found"}}</div>
+                            <div class="col-lg-9 col-md-8">{{$product->mark->name ?? "Not found"}}</div>
                         </div>
 
                         <h5 class="card-title">Iberen hakda maglumat</h5>
@@ -70,6 +63,7 @@ Bildiriş barada
                             <div class="col-lg-3 col-md-4 label">Telefon/nom</div>
                             <div class="col-lg-9 col-md-8">{{$event->user->phone ?? "Not found"}}</div>
                         </div>
+                
 
 
                     </div>

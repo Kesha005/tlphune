@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\shopscontrol;
 use App\Http\Controllers\Admin\designcontrol;
+use App\Http\Controllers\Admin\newpostcontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Controllers\Admin\productcontrol;
 use App\Http\Middleware\admin;
@@ -68,6 +69,13 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::post('event_del', [eventcontrol::class, 'multi_del'])->name('events.multi_del');
         Route::post('event_check', [eventcontrol::class, 'multi_check'])->name('events.multi_check');
         Route::post('event_check_single/{id?}', [eventcontrol::class, 'check'])->name('events.check');
+
+
+        #________________________________________NEW_EVENTS____________________________________________________
+        Route::get('new_event',[newpostcontrol::class,'index'])->name('new_event.index');
+        Route::get('new_event/show/{id}',[newpostcontrol::class,'show'])->name('new_event.show');
+        Route::post('new_event/delete/{id}',[newpostcontrol::class,'destroy'])->name('new_event.destroy');
+        Route::post('new_event/multidel',[newpostcontrol::class,'multi_del'])->name('new_event.multi_del');
         
 
         Route::resource('/shops', shopscontrol::class);
@@ -76,6 +84,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
-        Route::resource('color', colorcontrol::class);
+        Route::resource('/color', colorcontrol::class);
     });
 });

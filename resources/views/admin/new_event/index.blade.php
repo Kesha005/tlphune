@@ -1,21 +1,14 @@
 @extends('layouts.admin.app')
 
 @section('page_name')
-Bildirişler
+Aýratyn bildirişler
 @endsection
 
 @section('main_section')
 <div>
     <div class="d-flex justify-content-start">
-        <form class="me-2" name="check_event_form" action="{{route('admin.events.multi_check')}}" method="post">
-            @csrf
-            <input name="msgdel" id="check_val" hidden value="">
-            <button class="btn btn-outline-success" id="check_event" type="submit" disabled>
-                <i class="bi bi-check"></i>Tassykla
-            </button>
-        </form>
 
-        <form name="del_event_form" action="{{route('admin.events.multi_del')}}" method="post">
+        <form name="del_event_form" action="{{route('admin.new_event.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
             <button type="submit" class="btn btn-outline-danger" id="del_event" disabled>
@@ -43,7 +36,6 @@ Bildirişler
                                     <th scope="col">Ady</th>
                                     <th scope="col">Suraty</th>
                                     <th scope="col">Ulanyjy belgisi</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -57,14 +49,6 @@ Bildirişler
                                     <td>{{$event->name}}</td>
                                     <td><img src="{{ asset('storage/'.$event->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
-
-                                    <td class="st{{$event->id}}">
-                                        @if($event->status==0)
-                                        <span class="badge bg-warning">prosesde</span>
-                                        @else
-                                        <span class="badge bg-success">Tassyklanan</span>
-                                        @endif
-                                    </td>
 
                                     <td>
                                         
@@ -93,27 +77,5 @@ Bildirişler
 @section('js')
 <script src="{{asset('assets/js/event_check.js')}}"></script>
 
-<script>
-    function example(id) {
-        $.ajax({
-            data: {
-                _token: "{{csrf_token()}}",
-                'id':id,
-                'ajax':'true'
-            },
-            url: "{{route('admin.events.check')}}/" + id,
-            type: 'POST',
-            dataType: 'JSON',
-            
-            success: function(response) {
-                
-                var id = response['dataId']
-                console.log(response)
-                html = `<span class="badge bg-success">Tassyklanan</span>`;
-                $('.st' + id).html(html)
-            }
-        });
-    }
-</script>
 
 @endsection

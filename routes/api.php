@@ -43,7 +43,7 @@ Route::get('/event/{event_id}',[basecontrol::class,'event']);
 Route::get('/model',[basecontrol::class,'models']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 Route::post('/shop_add',[shopcontrol::class,'store']);
-Route::post('new_add',[addpostcontrol::class,'newevent']);
+Route::post('/new_add',[addpostcontrol::class,'newevent']);
 Route::middleware('auth:sanctum')->group(function () {
     
 
