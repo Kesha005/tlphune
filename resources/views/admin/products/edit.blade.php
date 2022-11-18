@@ -69,7 +69,7 @@ Model {{$product->name}}
                         <label for="mimage1">Esasy Surat</label>
                         <input type="file" class="form-control" id="mimage1" name="public_image" placeholder="Surat">
                     </div>
-                    <br><img src="{{ asset('storage/'.$mark->public_image) }}" height="100" width="100"  />
+                    <br><img src="{{ asset('storage/'.$product->public_image) }}" height="100" width="100"  />
                 </div>
                 
                 <button type="submit"  class="btn btn-outline-success ">Üýtget</button>
