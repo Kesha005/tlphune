@@ -40,7 +40,7 @@ class productcontrol extends Controller
 
         $path =  $request->image[0]; $filename = $path->getClientOriginalName();
         $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-        $image_resize->save(storage_path('app/public/product_thumb'.$filename));
+        $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
         $validated['public_image'] = "product_thumb/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
@@ -84,6 +84,7 @@ class productcontrol extends Controller
     {
         Storage::deleteDirectory("public/products/$product");
         products::where('id', $product)->delete();
+        File::delete("storage/".$product->public_image);
         return redirect()->route('admin.products.index');
     }
 
