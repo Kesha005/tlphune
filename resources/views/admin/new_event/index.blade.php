@@ -7,13 +7,6 @@ Aýratyn bildirişler
 @section('main_section')
 <div>
     <div class="d-flex justify-content-start">
-    <form class="me-2" name="check_event_form" action="{{route('admin.events.multi_del')}}" method="post">
-            @csrf
-            <input name="msgdel" id="check_val" hidden value="">
-            <button class="btn btn-outline-danger" id="check_event" type="submit" disabled>
-                <i class="bi bi-trash"></i>Aýyr
-            </button>
-        </form>
         <form name="del_event_form" action="{{route('admin.new_event.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
@@ -81,5 +74,5 @@ Aýratyn bildirişler
 
 @section('js')
 
-<script src="{{asset('assets/js/event_check.js')}}"></script>
+<script src="{{asset('assets/js/new_check.js')}}"></script>
 @endsection

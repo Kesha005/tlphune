@@ -49,6 +49,7 @@ class neweventreq extends FormRequest
             'color_id'=>'required'
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->errors(), 422));

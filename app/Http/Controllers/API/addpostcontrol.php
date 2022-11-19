@@ -53,6 +53,6 @@ class addpostcontrol extends Controller
     {
         $data=$request->all();$data['color_id']=$request->color_id;
         newevent::create($data);
-        return response()->json(['message'=>'Bildiriş nobata goýuldy']);
+        return response()->json(['message'=>'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler']);
     }
 }

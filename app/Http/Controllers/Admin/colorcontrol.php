@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\colormodel;
 use App\Models\product_color;
+use App\Models\products;
 use Illuminate\Http\Request;
 
 class colorcontrol extends Controller
@@ -17,9 +18,24 @@ class colorcontrol extends Controller
 
     public function destroy($id)
     {
-        colormodel::where('id',$id)->delete();
+        
+        
+        product_color::where('color_id',$id)->delete(); 
+        colormodel::where('id',$id)->delete(); 
         return redirect()->route('admin.color.index');
     }
+
+
+
+    public function LOVE($KERIM)
+    {
+
+        return 'Are you with me SELBI';
+        return 'You my lfe LIFE';
+    }
+
+
+
 
 
     public function store(Request $request)
