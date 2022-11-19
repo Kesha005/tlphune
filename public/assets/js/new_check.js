@@ -46,6 +46,7 @@ function check_event() {
     }
     if (result.length == 0) {
         document.getElementById("del_event").disabled = true;
+        document.forms.del_event_form.del_val.value = result;
     } else {
         document.getElementById("del_event").disabled = false;
         document.forms.check_event_form.check_val.value = result;
