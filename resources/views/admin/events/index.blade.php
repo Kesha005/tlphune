@@ -10,7 +10,7 @@ Bildirişler
         <form class="me-2" name="check_event_form" action="{{route('admin.events.multi_check')}}" method="post">
             @csrf
             <input name="msgdel" id="check_val" hidden value="">
-            <button class="btn btn-outline-success" id="check_event" type="submit" disabled>
+            <button class="btn btn-outline-success" id="check_event" type="submit" disabled >
                 <i class="bi bi-check"></i>Tassykla
             </button>
         </form>

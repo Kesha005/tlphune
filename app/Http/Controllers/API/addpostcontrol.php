@@ -51,7 +51,7 @@ class addpostcontrol extends Controller
 
     public function newevent(neweventreq $request)
     {
-        $data=$request->all();
+        $data=$request->all();$data['color_id']=$request->color_id;
         newevent::create($data);
         return response()->json(['message'=>'Bildiriş nobata goýuldy']);
     }

@@ -10,10 +10,19 @@ class newevent extends Model
 {
     use HasFactory;
 
-    protected $fillable=['user_id','place','price','products_id'];
+    protected $fillable=['user_id','place','price','products_id','color_id'];
 
     public function product()
     {
         return $this->belongsTo(products::class,'products_id');
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(colormodel::class,'color_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

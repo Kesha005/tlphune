@@ -11,7 +11,8 @@ class newpostcontrol extends Controller
 {
     public function index()
     {
-        $events=newevent::all();
+        $events=newevent::with('product')->get();
+
         return view('admin.new_event.index',compact('events'));
     }
 
@@ -37,6 +38,6 @@ class newpostcontrol extends Controller
             $event->delete();
         }
 
-        return redirect()->route('admin.events.index');
+        return redirect()->route('admin.new_event.index');
     }
 }
