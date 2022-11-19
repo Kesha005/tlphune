@@ -97,7 +97,6 @@ class productcontrol extends Controller
         return redirect()->route('admin.products.index');
         }
         $validated['public_image']=$product->public_image;
-        return $product;
         $product->update($validated);
         return redirect()->route('admin.products.index');
        
