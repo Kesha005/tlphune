@@ -43,6 +43,8 @@ Bildirişler
                                     <th scope="col">Ady</th>
                                     <th scope="col">Suraty</th>
                                     <th scope="col">Ulanyjy belgisi</th>
+                                    <th scope="col">Goýulan wagty</th>
+                                    <th scope="col">Tassyklanan wagty</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
@@ -57,6 +59,8 @@ Bildirişler
                                     <td>{{$event->name}}</td>
                                     <td><img src="{{ asset('storage/'.$event->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
+                                    <td>{{$event->created_at}}</td>
+                                    <td>{{$event->updated_at}}</td>
 
                                     <td class="st{{$event->id}}">
                                         @if($event->status==0)
