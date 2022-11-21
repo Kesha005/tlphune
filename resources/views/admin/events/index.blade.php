@@ -60,7 +60,7 @@ Bildirişler
                                     <td><img src="{{ asset('storage/'.$event->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
                                     <td>{{$event->created_at}}</td>
-                                    <td>{{$event->updated_at}}</td>
+                                    <td>{{$event->updated_at==$event->created_at ? "Tassyklanmadyk" : $event->updated_at}}</td>
 
                                     <td class="st{{$event->id}}">
                                         @if($event->status==0)

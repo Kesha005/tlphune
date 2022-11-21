@@ -35,6 +35,7 @@ Aýratyn bildirişler
                                     <th scope="col">Ady</th>
                                     <th scope="col">Suraty</th>
                                     <th scope="col">Ulanyjy belgisi</th>
+                                    <th scope="col">Goýulan wagty</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -48,6 +49,8 @@ Aýratyn bildirişler
                                     <td>{{$event->product->name}}</td>
                                     <td><img src="{{ asset('storage/'.$event->product->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
+
+                                    <td>{{$event->created_at}}</td>
 
                                     <td>
                                         

@@ -72,6 +72,19 @@ Bildiriş barada
                         </div>
 
 
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Goýulan wagty</div>
+                            <div class="col-lg-9 col-md-8">{{$event->created_at}}</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Tassyklanan wagty</div>
+                            <div class="col-lg-9 col-md-8">{{$event->updated_at==$event->created_at ? "Tassyklanmadyk" : $event->updated_at}}</div>
+                        </div>
+
+
                     </div>
                 </div>
 
