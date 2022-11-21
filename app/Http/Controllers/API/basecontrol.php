@@ -24,17 +24,15 @@ class basecontrol extends Controller
 
     public function get_events()
     {
-        $events = events::with('image:id,event_id,image','category:id,tm,ru,en','mark:id,name','color:id,tm,ru,en,code')->has('user')->where('status', 1)->get()->map(function ($query) {
-            return (array)($query->toArray() + ['user_phone' => $query->user->phone]);
-        });
-
-        return response()->json($events);
+        $events = events::with('category','mark')->where('status', 1)->get();
+        $new_events=newevent::with('product:id,name,public_image')->get();
+        return response()->json($events,$new_events);
     }
 
     public function get_category()
     {
         $category = category::all()->map(function ($query) {
-            return (array)($query->toArray() + ['count' => count($query->events->where('status',1))]);
+            return (array)($query->toArray() + ['count' => count($query->events->where('status',1))+count($query->products)]);
         });
 
         return response()->json($category);
@@ -61,21 +59,30 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::with('user', 'mark')->where('category_id', $id)->get();
-        return response()->json($events);
+        $events = events::with('user', 'mark')->where('category_id', $id)->where('status',1 )->get();
+        $new_event = newevent::with('product:id,name,category_id')->get()->map(function ($item) use ($id) {
+            if ($item->product->category_id == $id) return $item;
+        });
+
+        $new_event = collect($new_event)->filter(function ($item) {
+            return $item != null;
+        });
+        return response()->json(['events'=>$events,'new_event'=>$new_event]);
     }
 
     public function filter($category_id,$mark_id)
     {
         $events = events::where('status', 1)->where('category_id',$category_id)->where('mark_id',$mark_id)->get();
-        return response()->json($events);
+        $new_event = newevent::with('product:id,name,category_id')->get()->map(function ($item) use ($category_id,$mark_id) {
+            if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id ) return $item;
+        });
+
+        $new_event = collect($new_event)->filter(function ($item) {
+            return $item != null;
+        });
+        return response()->json(['events'=>$events,'new_event'=>$new_event]);
     }
 
-    public function allmark($category_id)
-    {
-        $events = events::where('status', 1)->where('category_id',$category_id)->get();
-        return response()->json($events);
-    }
 
     public function event($event_id)
     {
@@ -84,5 +91,12 @@ class basecontrol extends Controller
         });
 
         return response()->json($events);
+    }
+
+    public function new_event($id)
+    {
+        $new_event=newevent::with('product')->where('id',$id)->get();
+        return response()->json($new_event);
+
     }
 }

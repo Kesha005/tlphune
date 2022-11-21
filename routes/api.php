@@ -36,7 +36,7 @@ Route::get('/category/{id}',[basecontrol::class,'category']);
 
 Route::get('/category/{category_id}/marks/{mark_id}',[basecontrol::class,'filter']);
 
-Route::get('/category/{category_id}',[basecontrol::class,'allmark']);
+Route::get('/category/{category_id}',[basecontrol::class,'category']);
 
 Route::get('/event/{event_id}',[basecontrol::class,'event']);
 
@@ -44,6 +44,7 @@ Route::get('/model',[basecontrol::class,'models']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::post('/new_add',[addpostcontrol::class,'newevent']);
+Route::get('/new_event/{id}',[basecontrol::class,'new_event']);
 Route::middleware('auth:sanctum')->group(function () {
     
 
