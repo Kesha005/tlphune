@@ -76,33 +76,29 @@ class basecontrol extends Controller
        
     }
 
-    public function AddArrays($events, $new_event)
-    {
-        foreach ($events as $event) {
-            $new_event[]  = $event;
-        }
-        return response()->json($new_event);
-    }
+    
 
     public function filter($category_id, $mark_id)
-    {
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get();
-        return response()->json($events);
-    }
-
-
-    public function new_filter($category_id, $mark_id)
     {
 
         $new_event = newevent::with('product:id,name,category_id')->get()->map(function ($item) use ($category_id, $mark_id) {
             if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id) return $item;
+            return (array)($item->toArray() + ['is_new' => true]);
+
         });
 
         $new_event = collect($new_event)->filter(function ($item) {
             return $item != null;
         });
-        return response()->json($new_event);
+
+
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get()->map(function ($query) {
+            return (array)($query->toArray() + ['is_new' => false]);
+           
+        });
+        $new_event = count($new_event) > 0 ? $this->AddArrays($events, $new_event) : $this->AddArrays($new_event, $events);
     }
+
 
 
     public function event($event_id)
@@ -117,6 +113,14 @@ class basecontrol extends Controller
     public function new_event($id)
     {
         $new_event = newevent::with('product')->where('id', $id)->get();
+        return response()->json($new_event);
+    }
+
+    public function AddArrays($events, $new_event)
+    {
+        foreach ($events as $event) {
+            $new_event[]  = $event;
+        }
         return response()->json($new_event);
     }
 }
