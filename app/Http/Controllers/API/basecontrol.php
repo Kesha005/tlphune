@@ -71,7 +71,8 @@ class basecontrol extends Controller
             return $item != null;
         });
 
-        $new_event = count($new_event) > 0 ? $this->AddArrays($events, $new_event) : $this->AddArrays($new_event, $events);
+        
+        if(count($new_event) > 0) return $this->AddArrays($new_event, $events); $this->AddArrays($events, $new_event);
 
        
     }
@@ -96,7 +97,7 @@ class basecontrol extends Controller
             return (array)($query->toArray() + ['is_new' => false]);
            
         });
-        $new_event = count($new_event) > 0 ? $this->AddArrays($events, $new_event) : $this->AddArrays($new_event, $events);
+        if(count($new_event) > 0) return $this->AddArrays($new_event, $events); $this->AddArrays($events, $new_event);
     }
 
 
@@ -110,7 +111,11 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-   
+    public function new_event($id)
+    {
+        $new_event = newevent::with('product')->where('id', $id)->get();
+        return response()->json($new_event);
+    }
 
     public function AddArrays($events, $new_event)
     {
