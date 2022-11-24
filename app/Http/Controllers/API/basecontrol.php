@@ -113,7 +113,7 @@ class basecontrol extends Controller
 
     public function new_event($event_id)
     {
-        $new_event = newevent::with('product')->where('id',$event_id)->first();
+        $new_event = newevent::all();
         return response()->json($new_event);
     }
 
