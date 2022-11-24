@@ -68,9 +68,14 @@ class basecontrol extends Controller
             return (array)($item->toArray() + ['is_new' => true]);
         });
 
+        $events = collect($events)->filter(function ($item) {
+            return $item != null;
+        });
+
         $new_event = collect($new_event)->filter(function ($item) {
             return $item != null;
         });
+
 
 
         if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
