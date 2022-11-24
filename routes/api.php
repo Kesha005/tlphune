@@ -41,7 +41,7 @@ Route::get('/category/{category_id}',[basecontrol::class,'category']);
 
 
 Route::get('/event/{event_id}',[basecontrol::class,'event']);
-Route::get('/newevent',[basecontrol::class,'new_event']);
+Route::get('/new/{new_id}',[basecontrol::class,'new']);
 
 
 Route::get('/model',[basecontrol::class,'models']);

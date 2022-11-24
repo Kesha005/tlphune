@@ -111,9 +111,9 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-    public function new_event()
+    public function new($new_id)
     {
-        $new_event = newevent::all();
+        $new_event = newevent::with('product')->where('id',$new_id)->first();
         return response()->json($new_event);
     }
 
