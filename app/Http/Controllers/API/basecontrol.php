@@ -122,6 +122,8 @@ class basecontrol extends Controller
         foreach ($events as $event) {
             $new_event[]  = $event;
         }
+
+        $new_event=collect($new_event)->sortByDesc('updated_at');
         return response()->json($new_event);
     }
 }
