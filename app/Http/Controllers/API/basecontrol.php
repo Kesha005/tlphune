@@ -113,7 +113,7 @@ class basecontrol extends Controller
 
     public function new_event($new_event_id)
     {
-        $new_event = newevent::with('product')->find($new_event_id);
+        $new_event = newevent::find($new_event_id);
         return response()->json($new_event);
     }
 
