@@ -67,7 +67,7 @@ class basecontrol extends Controller
             if ($item->product->category_id == $id) return $item;
             return (array)($item->toArray() + ['is_new' => true]);
         });
-
+//d
         $events = collect($events)->filter(function ($item) {
             return $item != null;
         });
