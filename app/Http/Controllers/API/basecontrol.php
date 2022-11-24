@@ -123,7 +123,7 @@ class basecontrol extends Controller
             $new_event[]  = $event;
         }
 
-        $new_event=collect($new_event)->sortByDesc('updated_at');
+        $new_event=$new_event->sortByDesc('updated_at');
         return response()->json($new_event);
     }
 }
