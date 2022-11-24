@@ -59,18 +59,21 @@ class basecontrol extends Controller
     public function category($id)
     {
 
-        $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
-            return (array)($query);
-        });
+        $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->get();
 
         $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($id) {
             if ($item->product->category_id == $id) return $item;
             return (array)($item->toArray() + ['is_new' => true]);
         });
 
+        $events = collect($events)->filter(function ($item) {
+            return $item != null;
+        });
+
         $new_event = collect($new_event)->filter(function ($item) {
             return $item != null;
         });
+
 
 
         if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
