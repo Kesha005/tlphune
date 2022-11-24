@@ -60,7 +60,7 @@ class basecontrol extends Controller
     {
 
         $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
-            return (array)($query);
+            return array($query->toArray() + ['is_new' => false]);
         });
 
         $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($id) {
