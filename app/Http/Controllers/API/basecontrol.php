@@ -32,7 +32,7 @@ class basecontrol extends Controller
     public function get_category()
     {
         $category = category::all()->map(function ($query) {
-            return (array)($query->toArray() + ['count' => count($query->events->where('status', 1)) + count($query->products)]);
+            return (array)($query->toArray() + ['count' => count($query->events->where('status', 1)->get()) + count($query->products)]);
         });
 
         return response()->json($category);
@@ -62,7 +62,7 @@ class basecontrol extends Controller
             return (array)($query->toArray() + ['is_new' => false]);
         });
 
-        $new_event = newevent::with('product:id,name,category_id')->get()->map(function ($item) use ($id) {
+        $new_event = newevent::with('product,name,category_id')->get()->map(function ($item) use ($id) {
             if ($item->product->category_id == $id) return $item;
             return (array)($item->toArray() + ['is_new' => true]);
         });
@@ -82,7 +82,7 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $new_event = newevent::with('product:id,name,category_id')->get()->map(function ($item) use ($category_id, $mark_id) {
+        $new_event = newevent::with('product,name,category_id')->get()->map(function ($item) use ($category_id, $mark_id) {
             if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id) return $item;
             return (array)($item->toArray() + ['is_new' => true]);
 
@@ -113,7 +113,7 @@ class basecontrol extends Controller
 
     public function new_event($id)
     {
-        $new_event = newevent::with('product')->where('id', $id)->get();
+        $new_event = newevent::with('product')->where('id', $id)->first();
         return response()->json($new_event);
     }
 
