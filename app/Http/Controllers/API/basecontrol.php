@@ -104,7 +104,7 @@ class basecontrol extends Controller
 
     public function event($event_id)
     {
-        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','user')->where('status', 1)->where('id', $event_id)->first()->map(function ($query) {
+        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('status', 1)->where('id', $event_id)->first()->map(function ($query) {
             return (array)($query->toArray() + ['user_phone' => $query->user->phone]);
         });
 
@@ -113,7 +113,7 @@ class basecontrol extends Controller
 
     public function new($new_id)
     {
-        $new_event = newevent::with('product')->where('id',$new_id)->get();
+        $new_event = newevent::where('id',$new_id)->get();
         return response()->json($new_event);
     }
 
