@@ -19,7 +19,6 @@ Bildiriş barada
                     <li class="nav-item">
                         <form action="{{route('admin.new_event.destroy',$event->id)}}" method="post">
                             @csrf
-                            @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger">Poz</button>
                         </form>
 
