@@ -111,7 +111,7 @@ class basecontrol extends Controller
         return response()->json($events);
     }
 
-    public function new_event($event_id)
+    public function new_event()
     {
         $new_event = newevent::all();
         return response()->json($new_event);
