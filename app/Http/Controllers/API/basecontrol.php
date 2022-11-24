@@ -32,7 +32,7 @@ class basecontrol extends Controller
     public function get_category()
     {
         $category = category::all()->map(function ($query) {
-            return (array)($query->toArray() + ['count' => count($query->events->where('status', 1)->get()) + count($query->products)]);
+            return (array)($query->toArray() + ['count' => count($query->products)]);
         });
 
         return response()->json($category);
