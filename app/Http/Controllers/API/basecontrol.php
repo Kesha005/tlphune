@@ -58,7 +58,7 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
+        $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->pluck('id','name','public_image','price')->map(function ($query) {
             return (array)($query->toArray() + ['is_new' => false]);
         });
 
@@ -93,7 +93,7 @@ class basecontrol extends Controller
         });
 
 
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get()->map(function ($query) {
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->pluck('id','name','public_image','price')->map(function ($query) {
             return (array)($query->toArray() + ['is_new' => false]);
            
         });
