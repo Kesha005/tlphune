@@ -72,9 +72,7 @@ class basecontrol extends Controller
             return $item != null;
         });
 
-        $new_event = collect($new_event)->filter(function ($item) {
-            return $item != null;
-        });
+       
 
 
 
