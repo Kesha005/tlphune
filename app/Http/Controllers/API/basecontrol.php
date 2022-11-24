@@ -72,12 +72,11 @@ class basecontrol extends Controller
             return $item != null;
         });
 
-       
 
 
 
         if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
-        $this->AddArrays($events, $new_event);
+        return $this->AddArrays($events, $new_event);
     }
 
 
