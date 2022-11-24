@@ -104,7 +104,9 @@ class basecontrol extends Controller
 
     public function event($event_id)
     {
-        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','user')->where('status', 1)->where('id', $event_id)->first();
+        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','user')->where('status', 1)->where('id', $event_id)->first()->map(function ($query) {
+            return (array)($query->toArray() + ['user_phone' => $query->user->phone]);
+        });
 
         return response()->json($events);
     }
