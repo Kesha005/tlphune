@@ -52,4 +52,9 @@ class events extends Model
         return $this->belongsTo(colormodel::class,'color_id');
     }
 
+    public function etrap()
+    {
+        return $this->belongsTo(etrap::class,'place');
+    }
+
 }

@@ -26,6 +26,11 @@ class newevent extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    public function etrap()
+    {
+        return $this->belongsTo(etrap::class,'place');
+    }
+
    
 
 }

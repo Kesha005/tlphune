@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('public_image');
             $table->string('mark_id')->nullable();
-            $table->string('place');
+            $table->foreignId('place');
             $table->string('price');
             $table->longText('about')->nullable();
             $table->integer('status')->default(0);

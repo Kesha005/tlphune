@@ -4,12 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\category;
+use App\Models\etrap;
 use App\Models\events;
 use App\Models\gallery;
 use App\Models\marks;
 use App\Models\messages;
 use App\Models\newevent;
 use App\Models\products;
+use App\Models\welayat;
 use ArrayIterator;
 use Illuminate\Http\Request;
 
@@ -101,14 +103,18 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('status', 1)->where('id', $event_id)->get()->map(function ($item) {
-            return (array)($item->toArray() + ['user_phone' => $item->user->phone]);
+            $welayat=welayat::where('id',$item->etrap->welayat_id)->first();
+            return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$welayat->name]);
         });
         return response()->json($events);
     }
 
     public function new($new_id)
     {
-        $new_event = newevent::where('id', $new_id)->get();
+        $new_event = newevent::with('product')->where('id', $new_id)->get()->map(function ($item) {
+            $welayat=welayat::where('id',$item->etrap->welayat_id)->first();
+            return (array)($item->toArray() +  ['welayat' =>$welayat->name]);
+        });;
         return response()->json($new_event);
     }
 
