@@ -59,8 +59,8 @@ class basecontrol extends Controller
     public function category($id)
     {
 
-        $events = events::with('user', 'mark')->where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
-            return array($query->toArray() + ['is_new' => false]);
+        $events = events::where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
+            return (array)($query->toArray() + ['is_new' => false]);
         });
 
         $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($id) {
@@ -71,6 +71,7 @@ class basecontrol extends Controller
         $new_event = collect($new_event)->filter(function ($item) {
             return $item != null;
         });
+
         if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
         return $this->AddArrays($events, $new_event);
     }
