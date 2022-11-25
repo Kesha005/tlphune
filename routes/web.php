@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
 use App\Http\Controllers\Admin\shopscontrol;
 use App\Http\Controllers\Admin\designcontrol;
+use App\Http\Controllers\Admin\etrapcontrol;
 use App\Http\Controllers\Admin\newpostcontrol;
+use App\Http\Controllers\Admin\placecontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Controllers\Admin\productcontrol;
 use App\Http\Middleware\admin;
@@ -85,5 +87,8 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
         Route::resource('/color', colorcontrol::class);
+
+        Route::resource('/place',placecontrol::class);
+        Route::resource('/etrap',etrapcontrol::class);
     });
 });

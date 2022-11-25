@@ -8,6 +8,10 @@ use App\Models\marks;
 use App\Models\category;
 use Illuminate\Support\Facades\File;
 use App\Models\events;
+use App\Models\newevent;
+use App\Models\product_color;
+use App\Models\products;
+use Illuminate\Support\Facades\Storage;
 
 class categories extends Controller
 {
@@ -19,7 +23,7 @@ class categories extends Controller
 
   public function store(Request $request)
   {
-    $validateddata = $request->validate(['tm' => 'required', 'image' => 'required','en'=>'required','ru'=>'required']);
+    $validateddata = $request->validate(['tm' => 'required', 'image' => 'required', 'en' => 'required', 'ru' => 'required']);
     $validateddata['image'] = $request->image->store('files', 'public');
     category::create($validateddata);
     return redirect()->route('admin.categories.index');
@@ -34,7 +38,7 @@ class categories extends Controller
   {
 
     if ($request['image'] != null) {
-      $validateddata = $request->validate(['tm' => 'required', 'image' => 'required','en'=>'required','ru'=>'required']);
+      $validateddata = $request->validate(['tm' => 'required', 'image' => 'required', 'en' => 'required', 'ru' => 'required']);
       $validateddata['image'] = $request->image->store('files', 'public');
       $category->update($validateddata);
       return redirect()->route('admin.categories.index');
@@ -56,22 +60,40 @@ class categories extends Controller
   {
     $id = $category->id;
     $img = category::find($category)->pluck('image');
+    $this->destroy_events($id);
     foreach ($img as $i) {
       File::delete('storage/' . $i);
     }
     $category->delete();
-    return $this->destroy_events($id);
+    return redirect()->route('admin.categories.index');
+    
   }
 
   public function destroy_events($id)
   {
-    $events = events::where('category_id', $id)->get();
-    if ($events != null) {
-      for ($i = 0; $i < count($events); ++$i) {
-        $events[$i]->delete();
-      }
-      return redirect()->route('admin.categories.index');
+    $events = events::with('user')->where('category_id', $id)->get();
+    $products=products::where('category_id',$id)->get();
+    count($events) > 0 ? $this->destroy_with_directory_img($events) : "";
+    count($products) > 0 ? $this->destroy_products($products):"";
+
+  }
+
+  public function destroy_with_directory_img($events)
+  {
+    foreach ($events as $event) {
+      Storage::deleteDirectory("public/users/$event->user->id/events/$event->id");
+      File::delete("storage/" . $event->public_image);
+      $event->delete();
     }
-    return redirect()->route('admin.categories.index');
+  }
+
+  public function destroy_products($products)
+  {
+    foreach($products as $product)
+    {
+        Storage::deleteDirectory("public/products/$product->id"); File::delete("storage/".$product->public_image);
+        products::where('id', $product->id)->delete();product_color::where('product_id',$product->id)->delete();
+        newevent::where('products_id',$product->id)->delete();
+    }
   }
 }

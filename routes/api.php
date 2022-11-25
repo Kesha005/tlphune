@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\addpostcontrol;
 use App\Http\Controllers\API\logincontrol;
 use App\Http\Controllers\API\basecontrol;
+use App\Http\Controllers\API\profilcontrol;
 use App\Http\Controllers\API\shopcontrol;
 use Faker\Provider\Base;
 use Illuminate\Http\Request;
@@ -48,6 +49,11 @@ Route::get('/model',[basecontrol::class,'models']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
 Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::post('/new_add',[addpostcontrol::class,'newevent']);
+
+Route::get('/about/{user_id}',[profilcontrol::class,'about']);
+Route::get('/all/{user_id}',[profilcontrol::class,'all']);
+Route::get('/success/{user_id}',[profilcontrol::class,'success']);
+Route::get('/onproses/{user_id}',[profilcontrol::class,'onproses']);
 
 Route::middleware('auth:sanctum')->group(function () {
     

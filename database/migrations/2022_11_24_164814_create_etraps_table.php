@@ -15,6 +15,8 @@ class CreateEtrapsTable extends Migration
     {
         Schema::create('etraps', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('welayat_id');
             $table->timestamps();
         });
     }

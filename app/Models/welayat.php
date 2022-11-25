@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class welayat extends Model
 {
     use HasFactory;
+
+    protected $fillable=['name'];
+
+    public function etrap()
+    {
+        return $this->hasMany(etrap::class,'welayat_id');
+    }
+
+
 }

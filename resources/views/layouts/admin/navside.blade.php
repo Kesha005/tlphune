@@ -38,6 +38,22 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.place.index')}}">
+        <i class="bi bi-map"></i>
+        <span>Welaýatlar</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.etrap.index')}}">
+        <i class="bi bi-map-fill"></i>
+        <span>Etraplar</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.users.banuser')}}">
         <i class="bi bi-trash-fill"></i>
         <span>Gadagan edilenler</span>

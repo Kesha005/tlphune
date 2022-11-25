@@ -26,10 +26,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function user_events()
+    public function events()
     {
-        return $this->hasMany(events::class);
+        return $this->hasMany(events::class,'user_id');
     }
+
+    public function newevents()
+    {
+        return $this->hasMany(newevent::class,'user_id');
+    }
+
 
     public function shops()
     {

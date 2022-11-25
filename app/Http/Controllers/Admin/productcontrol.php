@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\marks;
 use App\Models\category;
 use App\Models\colormodel;
+use App\Models\newevent;
 use App\Models\product_color;
 use App\Models\product_img;
 use Illuminate\Queue\Jobs\RedisJob;
@@ -106,7 +107,8 @@ class productcontrol extends Controller
     {
         Storage::deleteDirectory("public/products/$product"); File::delete("storage/".$product->public_image);
         products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
-       
+        newevent::where('product_id',$product)->delete();
+
         return redirect()->route('admin.products.index');
     }
 
