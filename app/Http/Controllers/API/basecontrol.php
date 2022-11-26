@@ -101,7 +101,10 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('status', 1)->where('id', $event_id)->get()->map(function ($item) {
-            if($item->etrap) $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            if($item->etrap)
+            {
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            }
             $place='Näbelli ýer';
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
@@ -111,7 +114,10 @@ class basecontrol extends Controller
     public function new($new_id)
     {
         $new_event = newevent::with('product')->where('id', $new_id)->get()->map(function ($item) {
-            if($item->etrap) $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            if($item->etrap)
+            {
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            }
             $place='Näbelli ýer';
             return (array)($item->toArray() +  ['welayat' =>$place]);
         });;
