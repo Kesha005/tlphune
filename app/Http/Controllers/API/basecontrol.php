@@ -101,8 +101,9 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('status', 1)->where('id', $event_id)->get()->map(function ($item) {
-            $welayat=welayat::findOrFail($item->etrap->welayat_id);
-            return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$welayat->name?$welayat->name:"Näbelli"]);
+            if($item->etrap->welayat_id) $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            $place='Näbelli ýer';
+            return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
         return response()->json($events);
     }
@@ -110,8 +111,9 @@ class basecontrol extends Controller
     public function new($new_id)
     {
         $new_event = newevent::with('product')->where('id', $new_id)->get()->map(function ($item) {
-            $welayat=welayat::where('id',$item->etrap->welayat_id)->first();
-            return (array)($item->toArray() +  ['welayat' =>$welayat->name]);
+            if($item->etrap->welayat_id) $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
+            $place='Näbelli ýer';
+            return (array)($item->toArray() +  ['welayat' =>$place]);
         });;
         return response()->json($new_event);
     }
