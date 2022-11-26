@@ -119,8 +119,8 @@ class basecontrol extends Controller
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            else {$place='Näbelli ýer';}
-            return (array)($item->toArray() +  ['welayat' =>$place]);
+            else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);
+            return (array)($item->toArray() + ['user_phone'=>$user_phone]+ ['welayat' =>$place]);
         });;
         return response()->json($new_event);
     }
