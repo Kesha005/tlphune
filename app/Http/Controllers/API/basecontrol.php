@@ -11,6 +11,7 @@ use App\Models\marks;
 use App\Models\messages;
 use App\Models\newevent;
 use App\Models\products;
+use App\Models\User;
 use App\Models\welayat;
 use ArrayIterator;
 use Illuminate\Http\Request;
@@ -118,8 +119,8 @@ class basecontrol extends Controller
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            $place='Näbelli ýer';
-            return (array)($item->toArray() + ['user_phone'=>$item->user->phone]+ ['welayat' =>$place]);
+            $place='Näbelli ýer';$user_phone=User::find($item->user_id);
+            return (array)($item->toArray() + ['user_phone'=>$user_phone]+ ['welayat' =>$place]);
         });;
         return response()->json($new_event);
     }
