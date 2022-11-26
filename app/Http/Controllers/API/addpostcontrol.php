@@ -8,6 +8,7 @@ use App\Http\Requests\neweventreq;
 use App\Models\event_img;
 use App\Models\events;
 use App\Models\newevent;
+use App\Models\welayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -54,5 +55,11 @@ class addpostcontrol extends Controller
         $data=$request->all();$data['color_id']=$request->color_id;
         newevent::create($data);
         return response()->json(['message'=>'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler']);
+    }
+
+    public function place()
+    {
+        $welayats=welayat::with('etrap')->get();
+        return response()->json($welayats);
     }
 }

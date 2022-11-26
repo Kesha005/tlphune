@@ -31,6 +31,7 @@ Route::post('/sendmsg',[basecontrol::class,'send_msg']);
 Route::get('/events',[basecontrol::class,'get_events']);
 Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
+Route::get('/welayat',[addpostcontrol::class,'place']);
 
 
 Route::get('/category/{id}',[basecontrol::class,'category']);
@@ -54,6 +55,7 @@ Route::get('/about/{user_id}',[profilcontrol::class,'about']);
 Route::get('/all/{user_id}',[profilcontrol::class,'all']);
 Route::get('/success/{user_id}',[profilcontrol::class,'success']);
 Route::get('/onproses/{user_id}',[profilcontrol::class,'onproses']);
+
 
 Route::middleware('auth:sanctum')->group(function () {
     
