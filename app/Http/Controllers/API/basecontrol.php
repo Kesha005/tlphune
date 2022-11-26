@@ -101,8 +101,8 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('status', 1)->where('id', $event_id)->get()->map(function ($item) {
-            $welayat=welayat::where('id',$item->etrap->welayat_id)->first();
-            return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$welayat->name]);
+            $welayat=welayat::findOrFail($item->etrap->welayat_id);
+            return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$welayat->name?$welayat->name:"Näbelli"]);
         });
         return response()->json($events);
     }
