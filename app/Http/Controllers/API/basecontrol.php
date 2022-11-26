@@ -114,7 +114,7 @@ class basecontrol extends Controller
 
     public function new($new_id)
     {
-        $new_event = newevent::with('product','user')->where('id', $new_id)->get()->map(function ($item) {
+        $new_event = newevent::with('product')->where('id', $new_id)->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
