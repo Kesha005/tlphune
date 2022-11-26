@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this->hasMany(events::class,'user_id');
     }
 
-    public function newevents()
+    public function newevent()
     {
         return $this->hasMany(newevent::class,'user_id');
     }
