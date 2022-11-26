@@ -66,8 +66,7 @@ class basecontrol extends Controller
         });
 
         $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($id) {
-            if ($item->product->category_id == $id) return $item;
-            return (array)($item->toArray() + ['is_new' => true]);
+            if ($item->product->category_id == $id) return (array)($item->toArray() + ['is_new' => true]);
         });
 
         $new_event = collect($new_event)->filter(function ($item) {
@@ -84,8 +83,7 @@ class basecontrol extends Controller
     {
 
         $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($category_id, $mark_id) {
-            if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id) return $item;
-            return (array)($item->toArray() + ['is_new' => true]);
+            if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id) return (array)($item->toArray() + ['is_new' => true]);
         });
 
         $new_event = collect($new_event)->filter(function ($item) {
