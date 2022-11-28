@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->string('public_image')->nullable();
             $table->longText('about');
             $table->longText('ru');
-            $table->longText('en');
             $table->timestamps();
         });
     }

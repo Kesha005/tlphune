@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\category;
+use App\Models\colormodel;
 use App\Models\etrap;
 use App\Models\events;
 use App\Models\gallery;
@@ -35,7 +36,7 @@ class basecontrol extends Controller
     public function get_category()
     {
         $category = category::all()->map(function ($query) {
-            return (array)($query->toArray() + ['count' => count($query->products) + count($query->events->where('status', 1))]);
+            return (array)($query->toArray() + ['count' => count($query->events->where('status', 1))]);
         });
 
         return response()->json($category);
@@ -61,21 +62,7 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-
-        $events = events::where('category_id', $id)->where('status', 1)->get()->map(function ($query) {
-            return (array)($query->toArray() + ['is_new' => false]);
-        });
-
-        $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($id) {
-            if ($item->product->category_id == $id) return (array)($item->toArray() + ['is_new' => true]);
-        });
-
-        $new_event = collect($new_event)->filter(function ($item) {
-            return $item != null;
-        });
-
-        if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
-        return $this->AddArrays($events, $new_event);
+        $events = events::where('category_id', $id)->where('status', 1)->pluck('id','name','public_image','is_new','products_id');
     }
 
 
@@ -83,20 +70,7 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $new_event = newevent::with('product:id,name,public_image,category_id')->get()->map(function ($item) use ($category_id, $mark_id) {
-            if ($item->product->category_id == $category_id & $item->product->mark_id == $mark_id) return (array)($item->toArray() + ['is_new' => true]);
-        });
-
-        $new_event = collect($new_event)->filter(function ($item) {
-            return $item != null;
-        });
-
-
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get()->map(function ($query) {
-            return (array)($query->toArray() + ['is_new' => false]);
-        });
-        if (count($new_event) > 0) return $this->AddArrays($new_event, $events);
-        $this->AddArrays($events, $new_event);
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->pluck('id','name','public_image','is_new','products_id');
     }
 
     public function event($event_id)
@@ -114,23 +88,15 @@ class basecontrol extends Controller
 
     public function new($new_id)
     {
-        $new_event = newevent::with('product')->where('id', $new_id)->get()->map(function ($item) {
+        $new_event = events::where('id', $new_id)->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);
-            return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]);
+            else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->product->color_id);
+            return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['ru'=>$item->product->ru]+['image'=>$item->image]
+            +['country'=>$item->product->country]+['color'=>$color]);
         });;
-        return response()->json($new_event);
-    }
-
-    public function AddArrays($events, $new_event)
-    {
-        foreach ($events as $event) {
-            $new_event[]  = $event;
-        }
-
         return response()->json($new_event);
     }
 }

@@ -46,8 +46,8 @@ Aýratyn bildirişler
                                         <input type="checkbox" class="select-item-event checkbox" id="saled" name="select-item-event" value="{{$event->id}}" onclick="check_event();" />
                                     </td>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$event->product->name}}</td>
-                                    <td><img src="{{ asset('storage/'.$event->product->public_image) }}" height="70" width="70"></td>
+                                    <td>{{$event->name}}</td>
+                                    <td><img src="{{ asset('storage/'.$event->public_image) }}" height="70" width="70"></td>
                                     <td>{{$event->user->phone ?? "Not found"}}</td>
 
                                     <td>{{$event->created_at}}</td>

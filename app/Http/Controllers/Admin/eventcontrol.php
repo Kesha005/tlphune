@@ -12,7 +12,7 @@ class eventcontrol extends Controller
 {
     public function index()
     {
-        $events = events::with('user')->get();
+        $events = events::with('user')->where('is_new',false)->get();
         return view('admin.events.index', compact('events'));
     }
 

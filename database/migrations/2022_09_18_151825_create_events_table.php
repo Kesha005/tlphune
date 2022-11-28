@@ -15,15 +15,18 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id');
-            $table->string('name');
-            $table->string('public_image');
+            $table->string('name')->nullable();
+            $table->string('public_image')->nullable();
             $table->string('mark_id')->nullable();
             $table->foreignId('place');
             $table->string('price');
             $table->longText('about')->nullable();
             $table->integer('status')->default(0);
+            $table->foreignId('color_id')->nullable();
+            $table->foreignId('products_id')->nullable();
+            $table->boolean('isnew');
             $table->timestamps();
         });
     }

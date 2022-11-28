@@ -9,7 +9,7 @@ class products extends Model
 {
     use HasFactory;
 
-    protected $fillable=['public_image','name','category_id','mark_id','country','about','ru','en'];
+    protected $fillable=['public_image','name','category_id','mark_id','country','about','ru'];
 
     public function category()
     {
@@ -31,8 +31,8 @@ class products extends Model
         return $this->belongsToMany(colormodel::class,'product_colors','product_id','color_id');
     }
 
-    public function newevent()
+    public function event()
     {
-        return $this->hasMany(newevent::class,'products_id');
+        return $this->hasMany(events::class,'products_id');
     }
 }

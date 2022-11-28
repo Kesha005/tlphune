@@ -19,6 +19,9 @@ class events extends Model
         'about',
         'status',
         'public_image',
+        'color_id',
+        'products_id',
+        'is_new'
     ];
 
 
@@ -37,10 +40,6 @@ class events extends Model
         return $this->belongsTo(marks::class);
     }
 
-    public function model()
-    {
-        return $this->belongsTo(models::class);
-    }
 
     public function image()
     {
@@ -56,5 +55,10 @@ class events extends Model
     {
         return $this->belongsTo(etrap::class,'place');
     }
+    public function product()
+    {
+        return $this->belongsTo(products::class,'products_id');
+    }
+
 
 }

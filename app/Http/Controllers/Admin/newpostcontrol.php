@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\events;
 use App\Models\newevent;
 use App\Models\products;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class newpostcontrol extends Controller
 {
     public function index()
     {
-        $events=newevent::with('product')->get();
+        $events=events::where('is_new',true)->get();
 
         return view('admin.new_event.index',compact('events'));
     }
@@ -19,14 +20,14 @@ class newpostcontrol extends Controller
 
     public function show($id)
     {
-        $event=newevent::find($id);
+        $event=events::find($id);
         $product=products::with('image','mark','category')->where('id',$event->products_id)->first();
         return view('admin.new_event.show',compact('event','product'));
     }
 
     public function destroy($id)
     {
-        newevent::where('id',$id)->delete();
+        events::where('id',$id)->delete();
         return redirect()->route('admin.new_event.index');
     }
 
@@ -34,7 +35,7 @@ class newpostcontrol extends Controller
     {
         $nums = array_map('intval', explode(',', request('msgdel')));
         for ($i = 0; $i < count($nums); ++$i) {
-            $event = newevent::find($nums[$i]);
+            $event = events::find($nums[$i]);
             $event->delete();
         }
 

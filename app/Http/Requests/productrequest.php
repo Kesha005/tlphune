@@ -24,7 +24,6 @@ class productrequest extends FormRequest
             'about'=>'Barada',
             'category_id'=>'Bölüm',
             'ru'=>'rus dili',
-            'en'=>'english'
         ];
     }
 
@@ -39,7 +38,6 @@ class productrequest extends FormRequest
             'mark_id.required'=>'Marka girizilmedik',
             'category_id.required'=>'Bölüm girizilmedik',
             'about.required'=>'Maglumat girizilmedik',
-            'en.required'=>'Maglumat girizilmedik',
             'ru.required'=>'Maglumat girizilmedik',
         ];
     }
