@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->foreignId('color_id')->nullable();
             $table->foreignId('products_id')->nullable();
-            $table->boolean('isnew');
+            $table->boolean('is_new');
             $table->timestamps();
         });
     }
