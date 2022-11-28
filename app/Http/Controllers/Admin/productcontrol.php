@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\marks;
 use App\Models\category;
 use App\Models\colormodel;
-use App\Models\newevent;
+use App\Models\events;
 use App\Models\product_color;
 use App\Models\product_img;
-use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -107,7 +106,7 @@ class productcontrol extends Controller
     {
         Storage::deleteDirectory("public/products/$product"); File::delete("storage/".$product->public_image);
         products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
-        newevent::where('product_id',$product)->delete();
+        events::where('products_id',$product)->delete();
 
         return redirect()->route('admin.products.index');
     }

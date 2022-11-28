@@ -8,7 +8,6 @@ use App\Models\marks;
 use App\Models\category;
 use Illuminate\Support\Facades\File;
 use App\Models\events;
-use App\Models\newevent;
 use App\Models\product_color;
 use App\Models\products;
 use Illuminate\Support\Facades\Storage;
@@ -93,7 +92,6 @@ class categories extends Controller
     {
         Storage::deleteDirectory("public/products/$product->id"); File::delete("storage/".$product->public_image);
         products::where('id', $product->id)->delete();product_color::where('product_id',$product->id)->delete();
-        newevent::where('products_id',$product->id)->delete();
     }
   }
 }
