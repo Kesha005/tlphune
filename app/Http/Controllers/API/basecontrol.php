@@ -62,7 +62,7 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::where('category_id', $id)->where('status', 1)->pluck('id','name','public_image','is_new','products_id');
+        $events = events::where('category_id', $id)->where('status', 1)->get();
         return response()->json($events);
     }
 
@@ -71,7 +71,7 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->pluck('id','name','public_image','is_new','products_id');
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get();
         return response()->json($events);
     }
 
