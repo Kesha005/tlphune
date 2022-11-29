@@ -50,7 +50,7 @@ class basecontrol extends Controller
 
     public function models()
     {
-        $models = products::with('color:id,code,tm,ru')->get();
+        $models = products::with('color:id,code,tm,ru')->get(['id,name,public_image,mark_id,category_id']);
         return response()->json($models);
     }
 
