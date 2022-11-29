@@ -38,8 +38,8 @@ class productcontrol extends Controller
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about','ru','en');
         $path =  $request->image[0]; $filename=hash('sha256', $path).".".$path->extension();
         $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-        $image_resize->save(storage_path("app/public/thumb/").$filename);
-        $validated['public_image'] = "thumb/$filename";
+        $image_resize->save(storage_path("app/public/product_thumb/").$filename);
+        $validated['public_image'] = "product_thumb/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
         $this->storecolor($request, $product);
@@ -87,7 +87,7 @@ class productcontrol extends Controller
             File::delete("storage/".$product->public_image);
             $path =  $request->public_image; $filename =hash('sha256', $path).".".$request->file('public_image')->extension();
         $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/'.$filename));
-        $validated['public_image'] =  "thumb/$filename";$product->update($validated);
+        $validated['public_image'] =  "product_thumb/$filename";$product->update($validated);
         return redirect()->route('admin.products.index');
         }
         $validated['public_image']=$product->public_image;
@@ -99,7 +99,7 @@ class productcontrol extends Controller
     public function destroy($product)
     {
         $public_image=products::find($product);
-        if ($public_image->public_image!=null) File::delete("storage/".$public_image->public_image); "";
+    File::delete("storage/".$public_image->public_image); 
         Storage::deleteDirectory("public/products/$product"); 
         products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
         events::where('products_id',$product)->delete();
