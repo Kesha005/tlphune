@@ -68,10 +68,6 @@
                         <textarea  class="form-control" id="about1" placeholder="Barada rus" name="ru"></textarea>
                     </div><br>
 
-                    <div class="form-group">
-                        <label for="about2">Barada Iňlis dili</label>
-                        <textarea  class="form-control" id="about2" placeholder="Barada inlis" name="en"></textarea>
-                    </div><br>
 
 
                 </div>
