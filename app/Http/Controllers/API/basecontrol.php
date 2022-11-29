@@ -82,7 +82,7 @@ class basecontrol extends Controller
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            $place='Näbelli ýer';
+           else{$place='Näbelli ýer';} 
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
         return response()->json($events);
