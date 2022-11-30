@@ -53,7 +53,6 @@ class productrequest extends FormRequest
             'mark_id'=>'required',
             'category_id'=>'required',
             'about'=>'required',
-            'en'=>'required',
             'ru'=>'required',
             'color' => 'required',
             'color.*' => 'max:10000',

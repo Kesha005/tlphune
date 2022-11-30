@@ -63,7 +63,7 @@ class eventcontrol extends Controller
 
     public function destroy_img($img)
     {
-        
+        Storage::deleteDirectory("public/users/$img->user_id/events/$img->id"); File::delete("storage/".$img->public_image);
     }
 
    

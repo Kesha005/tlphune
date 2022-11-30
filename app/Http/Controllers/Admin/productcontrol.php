@@ -18,7 +18,7 @@ use Intervention\Image\Facades\Image;
 
 class productcontrol extends Controller
 {
-    public $validate= ['name'=>'required','public_image' => 'max:10000|mimes:jpeg,jpg,png','country'=>'required','mark_id'=>'required', 'category_id'=>'required','about'=>'required', 'en'=>'required','ru'=>'required'];
+    public $validate= ['name'=>'required','public_image' => 'max:10000|mimes:jpeg,jpg,png','country'=>'required','mark_id'=>'required', 'category_id'=>'required','about'=>'required','ru'=>'required'];
     public function index()
     {
         $marks = marks::all();
@@ -35,14 +35,11 @@ class productcontrol extends Controller
 
     public function store(productrequest $request)
     {
-       
-
         $validated = $request->only('name', 'country', 'mark_id', 'category_id', 'about','ru','en');
-
-        $path =  $request->image[0]; $filename =hash('sha256', $path);
+        $path =  $request->image[0]; $filename=hash('sha256', $path).".".$path->extension();
         $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-        $image_resize->save(storage_path('app/public/'.$filename));
-        $validated['public_image'] = $filename;
+        $image_resize->save(storage_path("app/public/product_thumb/").$filename);
+        $validated['public_image'] = "product_thumb/$filename";
         $product = products::create($validated);
         $this->storeimage($product, $request);
         $this->storecolor($request, $product);
@@ -84,16 +81,13 @@ class productcontrol extends Controller
     {
        
         $request->validate($this->validate);
-        $validated=$request->only('name','country','mark_id','category_id','about','ru','en'); 
-        $product=products::find($id);
+        $validated=$request->only('name','country','mark_id','category_id','about','ru');  $product=products::find($id);
         if($request->public_image!=null) 
         {
             File::delete("storage/".$product->public_image);
             $path =  $request->public_image; $filename =hash('sha256', $path).".".$request->file('public_image')->extension();
-        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150);
-        $image_resize->save(storage_path('app/public/'.$filename));
-        $validated['public_image'] = $filename;
-        $product->update($validated);
+        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/'.$filename));
+        $validated['public_image'] =  "product_thumb/$filename";$product->update($validated);
         return redirect()->route('admin.products.index');
         }
         $validated['public_image']=$product->public_image;
@@ -104,7 +98,9 @@ class productcontrol extends Controller
 
     public function destroy($product)
     {
-        Storage::deleteDirectory("public/products/$product"); File::delete("storage/".$product->public_image);
+        $public_image=products::find($product);
+    File::delete("storage/".$public_image->public_image); 
+        Storage::deleteDirectory("public/products/$product"); 
         products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
         events::where('products_id',$product)->delete();
 

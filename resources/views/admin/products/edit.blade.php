@@ -61,11 +61,6 @@ Model {{$product->name}}
                     </div><br>
 
                     <div class="form-group">
-                        <label for="about2">Barada Iňlis dili</label>
-                        <textarea  class="form-control" id="about2" placeholder="Barada inlis" name="en" value="{{$product->en}}">{{$product->en}}</textarea>
-                    </div><br>
-
-                    <div class="form-group">
                         <label for="mimage1">Esasy Surat</label>
                         <input type="file" class="form-control" id="mimage1" name="public_image" placeholder="Surat">
                     </div>

@@ -50,7 +50,7 @@ class basecontrol extends Controller
 
     public function models()
     {
-        $models = products::with('color:id,code,tm,ru')->get();
+        $models = products::with('color:id,code,tm,ru')->get(['id','name','public_image','mark_id','category_id']);
         return response()->json($models);
     }
 
@@ -62,7 +62,8 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::where('category_id', $id)->where('status', 1)->pluck('id','name','public_image','is_new','products_id');
+        $events = events::where('category_id', $id)->where('status', 1)->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id']);
+        return response()->json($events);
     }
 
 
@@ -70,7 +71,8 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->pluck('id','name','public_image','is_new','products_id');
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id']);
+        return response()->json($events);
     }
 
     public function event($event_id)
@@ -80,7 +82,7 @@ class basecontrol extends Controller
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            $place='Näbelli ýer';
+           else{$place='Näbelli ýer';} 
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
         return response()->json($events);
@@ -95,8 +97,8 @@ class basecontrol extends Controller
             }
             else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->color_id);
             return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['image'=>$item->product->image]
-            +['color'=>$color] +['mark'=>$item->mark])
-        });;
+            +['color'=>$color] +['mark'=>$item->mark]);
+        });
         return response()->json($new_event);
     }
 }

@@ -42,10 +42,6 @@ Model barada
                             <div class="col-lg-9 col-md-8">{{$model->ru}}</div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 label ">Barada iňlis dili</div>
-                            <div class="col-lg-9 col-md-8">{{$model->en}}</div>
-                        </div>
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Marka</div>
