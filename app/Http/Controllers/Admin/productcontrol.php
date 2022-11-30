@@ -99,8 +99,8 @@ class productcontrol extends Controller
     public function destroy($product)
     {
         $public_image=products::find($product);
-    File::delete("storage/".$public_image->public_image); 
-        Storage::deleteDirectory("public/products/$product"); 
+        File::delete("storage/".$public_image->public_image); Storage::deleteDirectory("public/products/$product"); 
+        product_img::where('product_id',$product)->delete();
         products::where('id', $product)->delete();product_color::where('product_id',$product)->delete();
         events::where('products_id',$product)->delete();
 
