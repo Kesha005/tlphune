@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\event_img;
 use App\Models\events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -64,6 +65,7 @@ class eventcontrol extends Controller
     public function destroy_img($img)
     {
         Storage::deleteDirectory("public/users/$img->user_id/events/$img->id"); File::delete("storage/".$img->public_image);
+        event_img::where('event_id',$img->id)->delete();
     }
 
    
