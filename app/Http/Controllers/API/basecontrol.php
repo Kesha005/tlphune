@@ -97,7 +97,7 @@ class basecontrol extends Controller
             }
             else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->color_id);
             return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['image'=>$item->product->image]
-            +['color'=>$color] +['mark'=>$item->mark]);
+            +['color'=>$color] +['mark'=>$item->mark]+['ru'=>$item->product->ru]);
         });
         return response()->json($new_event);
     }
