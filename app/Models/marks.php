@@ -10,9 +10,9 @@ class marks extends Model
     use HasFactory;
     protected $fillable=['name','image'];
 
-    public function mark_event()
+    public function events()
     {
-        return $this->hasMany(events::class,'mark_id','id');
+        return $this->hasMany(events::class,'mark_id');
     }
 
     public function product()

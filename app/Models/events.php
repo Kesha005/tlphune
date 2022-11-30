@@ -37,7 +37,7 @@ class events extends Model
 
     public function mark()
     {
-        return $this->belongsTo(marks::class);
+        return $this->belongsTo(marks::class,'mark_id');
     }
 
 

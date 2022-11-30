@@ -55,7 +55,7 @@ class addpostcontrol extends Controller
     {
         $product=products::find($request->products_id);
         $data=$request->all();$data['color_id']=$request->color_id;$data['status']=1;$data['name']=$product->name;$data['public_image']=$product->public_image;$data['is_new']=true;
-        $data['about']=$product->about;
+        $data['about']=$product->about; $data['mark_id']=$product->mark_id;
         events::create($data);
         return response()->json(['message'=>'Bildiriş nobata goýuldy admin tassyklandan soň kabul ediler']);
     }

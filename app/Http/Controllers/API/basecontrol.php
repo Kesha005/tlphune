@@ -93,9 +93,9 @@ class basecontrol extends Controller
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' '.$item->etrap->name;
             }
-            else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->product->color_id);
-            return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['ru'=>$item->product->ru]+['image'=>$item->image]
-            +['country'=>$item->product->country]+['color'=>$color]);
+            else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->color_id);
+            return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['image'=>$item->product->image]
+            +['color'=>$color] +['mark'=>$item->mark])
         });;
         return response()->json($new_event);
     }
