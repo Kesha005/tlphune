@@ -12,7 +12,7 @@ class newpostcontrol extends Controller
 {
     public function index()
     {
-        $events=events::where('is_new',true)->orderBy('created_at', 'DESC')->get();
+        $events=events::where('is_new',true)->orderBy('updated_at', 'DESC')->get();
 
         return view('admin.new_event.index',compact('events'));
     }

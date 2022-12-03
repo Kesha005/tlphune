@@ -31,7 +31,7 @@ class colorcontrol extends Controller
     {
 
         return 'Are you with me SELBI';
-        return 'You my lfe LIFE';
+        return 'You my LIFE';
     }
 
 
