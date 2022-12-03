@@ -62,7 +62,7 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::where('category_id', $id)->where('status', 1)->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::where('category_id', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
@@ -78,7 +78,7 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;

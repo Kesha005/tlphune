@@ -21,16 +21,17 @@ class productcontrol extends Controller
     public $validate= ['name'=>'required','public_image' => 'max:10000|mimes:jpeg,jpg,png','country'=>'required','mark_id'=>'required', 'category_id'=>'required','about'=>'required','ru'=>'required'];
     public function index()
     {
-        $marks = marks::all();
-        $categories = category::all();
-        $colors = colormodel::all();
+       
         $products = products::with('category', 'mark', 'image')->get();
-        return view('admin.products.index', compact('products', 'marks', 'categories', 'colors'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('admin.products.create');
+        $marks = marks::all();
+        $categories = category::all();
+        $colors = colormodel::all();
+        return view('admin.products.create',compact('marks','categories','colors'));
     }
 
     public function store(productrequest $request)
@@ -43,7 +44,7 @@ class productcontrol extends Controller
         $product = products::create($validated);
         $this->storeimage($product, $request);
         $this->storecolor($request, $product);
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.create')->with('success','Haryt goşuldy');
     }
 
     public function storeimage($product, $request)

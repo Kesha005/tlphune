@@ -8,7 +8,9 @@ Modeller
 @section('main_section')
 
 <div>
-    @include('admin.products.create')<br>
+<a type="button" class="btn btn-outline-success" href="{{route('admin.products.create')}}" >
+    <i class="bi bi-plus"></i>Täze
+</a><br><br>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
