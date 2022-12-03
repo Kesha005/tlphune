@@ -34,11 +34,12 @@ class productrequest extends FormRequest
             'image.required'=>'Surat ýok',
             'image.max'=>'Surat uly',
             'image.mimes'=>'Faýl kabul edilmeýär',
-            'country.required'=>'',
+            'country.required'=>'Ýurt girizilmedik',
             'mark_id.required'=>'Marka girizilmedik',
             'category_id.required'=>'Bölüm girizilmedik',
             'about.required'=>'Maglumat girizilmedik',
             'ru.required'=>'Maglumat girizilmedik',
+            'color.required'=>'Reňk girizilmedik',        
         ];
     }
 
@@ -57,10 +58,5 @@ class productrequest extends FormRequest
             'color' => 'required',
             'color.*' => 'max:10000',
         ];
-    }
-    protected function failedValidation(Validator $validator)
-    {
-        
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
