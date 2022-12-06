@@ -57,9 +57,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::put('profile_update_password/{user}', [a_changecontrol::class, 'change_password'])->name('profile.update.password');
 
         #__________________________________Gallery_Routes______________________
-        Route::get('gallery', [gallerycontrol::class, 'index'])->name('gallery.index');
-        Route::post('img_store', [gallerycontrol::class, 'store'])->name('gallery.store');
-        Route::delete('img_destroy/{image}', [gallerycontrol::class, 'destroy'])->name('gallery.destroy');
+        Route::resource('gallery', gallerycontrol::class);
         #_________________________________Event routes_______________________________________________
 
         Route::resource('design', designcontrol::class);

@@ -21,6 +21,7 @@ Galereýa
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Suraty</th>
+                                    <th scope="col">URL</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -29,11 +30,13 @@ Galereýa
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td><img src="{{ asset('storage/'.$image->image) }}" height="70" width="70"></td>
+                                    <td>{{$image->url}}</td>
                                     <td>
                                     <form action="{{route('admin.gallery.destroy',$image)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
+                                        <a  class="btn btn-outline-warning btn-sm" href="{{route('admin.gallery.edit',$image->id)}}" ><i class="bi bi-pen"></i></button>
                                     </form>
                                     </td>
                                 </tr>
