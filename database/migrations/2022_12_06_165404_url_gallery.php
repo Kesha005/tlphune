@@ -14,7 +14,7 @@ class UrlGallery extends Migration
     public function up()
     {
         Schema::table('galleries', function (Blueprint $table) {
-            $table->string('url')->default(null);
+            $table->string('url')->nullable();
         });
     }
 
