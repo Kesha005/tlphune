@@ -16,6 +16,11 @@
                         <input type="file" class="form-control" id="image" name="image" placeholder="Surat">
                     </div>
 
+                    <div class="form-group">
+                        <label for="image1">Surat</label>
+                        <input type="text" class="form-control" id="image1" name="url" placeholder="url">
+                    </div>
+
 
                 </div>
 
