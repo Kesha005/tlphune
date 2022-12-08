@@ -21,7 +21,8 @@ class events extends Model
         'public_image',
         'color_id',
         'products_id',
-        'is_new'
+        'is_new',
+        'view'
     ];
 
 
