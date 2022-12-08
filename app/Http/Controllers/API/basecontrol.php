@@ -91,7 +91,7 @@ class basecontrol extends Controller
 
     public function event($event_id)
     {
-        $count=events::find($event_id);events::where('id',$event_id)->update(['view'=>$count+1]);
+        $count=events::find($event_id);events::where('id',$event_id)->update(['view'=>$count->view+1]);
         $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('id', $event_id)->get()->map(function ($item) {
             if($item->etrap)
             {
@@ -105,7 +105,7 @@ class basecontrol extends Controller
 
     public function new($new_id)
     { 
-        $count=events::find($new_id);events::where('id',$new_id)->update(['view'=>$count+1]);
+        $count=events::find($new_id);events::where('id',$new_id)->update(['view'=>$count->view+1]);
         $new_event = events::where('id', $new_id)->get()->map(function ($item) {
             if($item->etrap)
             {
