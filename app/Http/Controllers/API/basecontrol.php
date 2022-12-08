@@ -99,7 +99,7 @@ class basecontrol extends Controller
            else{$place='Näbelli ýer';} 
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
-        return $events->view;
+        return $events->first()->view;
         return response()->json($events);
     }
 
