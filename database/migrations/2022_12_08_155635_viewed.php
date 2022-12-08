@@ -14,7 +14,7 @@ class Viewed extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->integer('view')->nullable();
+            $table->integer('view')->default(0);
         });
     }
 
