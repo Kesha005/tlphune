@@ -99,7 +99,6 @@ class basecontrol extends Controller
            else{$place='Näbelli ýer';} 
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
         });
-        $events[0]->view=$events[0]->view+1;
         return response()->json($events);
     }
 
@@ -114,7 +113,7 @@ class basecontrol extends Controller
             return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['image'=>$item->product->image]
             +['color'=>$color] +['mark'=>$item->mark]+['ru'=>$item->product->ru]);
         });
-        $new_event[0]->view=$new_event[0]->view+1;
+        
         return response()->json($new_event);
     }
 }
