@@ -22,7 +22,7 @@ class events extends Model
         'color_id',
         'products_id',
         'is_new',
-        'viewed'
+        'view'
     ];
 
 
