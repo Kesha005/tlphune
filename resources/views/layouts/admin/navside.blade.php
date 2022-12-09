@@ -112,6 +112,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.about.index')}}">
+        <i class="bi bi-command"></i>
+        <span>Dörediji barada</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.apk.index')}}">
         <i class="bi bi-cloud"></i>
         <span>APK</span>

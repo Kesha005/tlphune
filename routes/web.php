@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\a_changecontrol;
+use App\Http\Controllers\Admin\aboutcontrol;
 use App\Http\Controllers\Admin\apkcontrol;
 use App\Http\Controllers\Admin\authcontrol;
 use App\Http\Controllers\Admin\firstcontrol;
@@ -88,5 +89,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
         Route::resource('/place',placecontrol::class);
         Route::resource('/etrap',etrapcontrol::class);
+        Route::resource('/about',aboutcontrol::class);
     });
 });
