@@ -13,5 +13,10 @@ class shops extends Model
     {
         return $this->belongsTo(User::class,'id');
     }
+
+    public function events()
+    {
+        return $this->hasMany(events::class,'shopid');
+    }
     
 }

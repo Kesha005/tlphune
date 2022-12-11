@@ -12,10 +12,12 @@ use App\Models\marks;
 use App\Models\messages;
 use App\Models\newevent;
 use App\Models\products;
+use App\Models\shops;
 use App\Models\User;
 use App\Models\welayat;
 use ArrayIterator;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class basecontrol extends Controller
 {
@@ -62,7 +64,7 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::where('category_id', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::with('shop')->where('category_id', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
@@ -78,7 +80,7 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $events = events::where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::with('shop')->where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
@@ -92,7 +94,7 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $count=events::find($event_id);events::where('id',$event_id)->update(['view'=>$count->view+1]);
-        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name')->where('id', $event_id)->get()->map(function ($item) {
+        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','shop')->where('id', $event_id)->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
@@ -106,7 +108,7 @@ class basecontrol extends Controller
     public function new($new_id)
     { 
         $count=events::find($new_id);events::where('id',$new_id)->update(['view'=>$count->view+1]);
-        $new_event = events::where('id', $new_id)->get()->map(function ($item) {
+        $new_event = events::where('id', $new_id)->with('shop')->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
@@ -118,4 +120,5 @@ class basecontrol extends Controller
         
         return response()->json($new_event);
     }
+
 }

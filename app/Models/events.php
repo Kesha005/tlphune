@@ -22,7 +22,8 @@ class events extends Model
         'color_id',
         'products_id',
         'is_new',
-        'view'
+        'view',
+        'shopid'
     ];
 
 
@@ -59,6 +60,11 @@ class events extends Model
     public function product()
     {
         return $this->belongsTo(products::class,'products_id');
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(shops::class,'shopid');
     }
 
 

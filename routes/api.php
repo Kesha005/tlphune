@@ -48,8 +48,13 @@ Route::get('/new/{new_id}',[basecontrol::class,'new']);
 
 Route::get('/model',[basecontrol::class,'models']);
 Route::post('/add',[addpostcontrol::class,'add_event']);
-Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::post('/new_add',[addpostcontrol::class,'newevent']);
+
+Route::get('shops',[shopcontrol::class,'shops']);
+Route::get('shop_product/{id}',[shopcontrol::class,'products']);
+Route::post('/shop_add',[shopcontrol::class,'store']);
+Route::get('/myshop/{user_id}',[shopcontrol::class,'index']);
+Route::post('/delshop/{user_id}',[shopcontrol::class,'destroy']);
 
 Route::get('/about/{user_id}',[profilcontrol::class,'about']);
 Route::get('/all/{user_id}',[profilcontrol::class,'all']);

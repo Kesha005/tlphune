@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\shoprequest;
-use App\Models\products;
-use App\Models\shopproducts;
+use App\Models\events;
 use App\Models\shops;
+use App\Models\welayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,9 +19,9 @@ class shopcontrol extends Controller
     {
         $shop = shops::where('user_id', $id)->first();
 
-        if (!($shop->status)) return $this->NotActivated();
+        if ($shop->status!=1) return $this->NotActivated();
 
-        return response()->json($shop, 200);
+        return response()->json($shop);
     }
 
 
@@ -40,21 +40,16 @@ class shopcontrol extends Controller
         // 
     }
 
-    public function destroy(Request $request)
+    public function destroy($user_id)
     {
-        $this->DestroyUserAndShopData($request);
-        $this->DestroyUserAndShopFiles($request);
+        $this->DestroyUserAndShopData($user_id);
+        $this->DestroyUserAndShopFiles($user_id);
 
         return response()->json([
             'message' => 'Dükan we ähli maglumatlary pozuldy'
         ]);
     }
 
-
-    public function delfiles($path)
-    {
-        Storage::delete($path);
-    }
 
     public function NotActivated()
     {
@@ -63,15 +58,34 @@ class shopcontrol extends Controller
         ]);
     }
 
-    protected function DestroyUserAndShopData($request)
+    protected function DestroyUserAndShopData($user_id)
     {
-        shops::where('user_id', $request->user_id)->delete();
-        shopproducts::where('shop_id', $request->shop_id)->delete();
+        shops::where('user_id', $user_id)->delete();
+        events::where('shopid',$user_id)->delete();
     }
 
-    protected function DestroyUserAndShopFiles($request)
+    protected function DestroyUserAndShopFiles($user_id)
     {
-        $this->delfiles(Storage::allFiles("public/users/$request->user_id/shops/"));
-        $this->delfiles(Storage::allFiles("public/users/$request->user_id/products/"));
+        $shop=shops::where('user_id',$user_id)->first();
+        Storage::deleteDirectory("public/users/$user_id/shops/$shop->id");
+    }
+
+    public function shops()
+    {
+        $shops=shops::all();
+        return response()->json($shops);
+    }
+
+    public function products($id)
+    {
+        $events = events::with('shop')->where('shop', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
+            if($item->etrap)
+            {
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
+            }
+           else{$place='Näbelli ýer';} 
+            return (array)($item->toArray() +  ['welayat' =>$place]);
+        });
+        return response()->json($events);
     }
 }
