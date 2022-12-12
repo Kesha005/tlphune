@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\event_img;
 use App\Models\events;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +14,7 @@ class eventcontrol extends Controller
 {
     public function index()
     {
-        $events = events::with('user')->where('is_new',false)->orderBy('created_at', 'DESC')->get();
+        $events = events::with('user')->where('is_new',false)->where('vip',0)->orderBy('created_at', 'DESC')->get();
         return view('admin.events.index', compact('events'));
     }
 
@@ -66,6 +67,20 @@ class eventcontrol extends Controller
     {
         Storage::deleteDirectory("public/users/$img->user_id/events/$img->id"); File::delete("storage/".$img->public_image);
         event_img::where('event_id',$img->id)->delete();
+    }
+
+
+    public function isvip()
+    {
+        events::where('vip',1)->chunk(50,function($events){
+            foreach($events as $event)
+            {
+                if(Carbon::now()->diffInHours($event->to)==0 or Carbon::now()->diffInHours($event->to)<0)
+                {
+                    $event->update(['vip'=>0,'to'=>null]);
+                }
+            } 
+        });
     }
 
    

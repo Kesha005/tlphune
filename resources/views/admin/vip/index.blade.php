@@ -22,9 +22,6 @@ Bildirişler
                 <i class="bi bi-trash"></i>Aýyr
             </button>
         </form>
-        <button class="btn btn-outline-info" id="vip" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
-            <i class="bi bi-trash"></i>VIP
-        </button>
     </div>
 
     <br>
@@ -95,62 +92,8 @@ Bildirişler
         </div>
     </section>
 </div>
-
-<div class="modal fade" id="cmmodal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="{{route('admin.vip.store')}}" enctype="multipart/form-data" id="markform" method="POST" name="vip_event_form">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title">VIP goş</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-
-                    <div class="form-group">
-                        <label for="to">Çenli</label>
-                        <input type="datetime" class="form-control"   name="to">
-                    </div><br>
-                </div>
-
-                <input name="vip" id="vip_val" value="" hidden> 
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary close-btn" data-bs-dismiss="modal" aria-label="Close">Çyk</button>
-                    <button type="submit" id="savemark" class="btn btn-outline-success">Goş</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
 @endsection
 
 @section('js')
-<script src="{{asset('assets/js/event_check.js')}}"></script>
-
-<script>
-    function example(id) {
-        $.ajax({
-            data: {
-                _token: "{{csrf_token()}}",
-                'id':id,
-                'ajax':'true'
-            },
-            url: "{{route('admin.events.check')}}/" + id,
-            type: 'POST',
-            dataType: 'JSON',
-            
-            success: function(response) {
-                
-                var id = response['dataId']
-                console.log(response)
-                html = `<span class="badge bg-success">Tassyklanan</span>`;
-                $('.st' + id).html(html)
-            }
-        });
-    }
-</script>
-
+<script src="{{asset('assets/js/vip.js')}}"></script>
 @endsection

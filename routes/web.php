@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\newpostcontrol;
 use App\Http\Controllers\Admin\placecontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Controllers\Admin\productcontrol;
+use App\Http\Controllers\Admin\vipcontrol;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\auth;
 use App\Http\Middleware\Authenticate;
@@ -90,6 +91,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/place',placecontrol::class);
         Route::resource('/etrap',etrapcontrol::class);
         Route::resource('/about',aboutcontrol::class);
+        Route::resource('/vip',vipcontrol::class);
         Route::get('/update',[etrapcontrol::class,'backup']);
     });
 });
