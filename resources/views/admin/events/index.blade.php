@@ -23,7 +23,7 @@ Bildirişler
             </button>
         </form>
         <button class="btn btn-outline-info" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
-            <i class="bi bi-trash"></i>VIP
+            <i class="bi bi-vip"></i>VIP
         </button>
     </div>
 
