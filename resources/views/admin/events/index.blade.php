@@ -15,14 +15,14 @@ Bildirişler
             </button>
         </form>
 
-        <form name="del_event_form" action="{{route('admin.events.multi_del')}}" method="post">
+        <form class="me-2" name="del_event_form" action="{{route('admin.events.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
             <button type="submit" class="btn btn-outline-danger" id="del_event" disabled>
                 <i class="bi bi-trash"></i>Aýyr
             </button>
         </form>
-        <button class="btn btn-outline-info" id="vip" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
+        <button class="btn btn-outline-info" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
             <i class="bi bi-trash"></i>VIP
         </button>
     </div>
