@@ -47,11 +47,11 @@ function check_event() {
     if (result.length == 0) {
         document.getElementById("vip_event").disabled = true;
         document.getElementById("del_event").disabled = true;
-        document.getElementById("check_event1").disabled = true;
+        // document.getElementById("check_event").disabled = true;
         
     } else { 
         document.getElementById("vip_event").disabled = false;
-        document.getElementById("check_event1").disabled = false;
+        // document.getElementById("check_event").disabled = false;
         document.getElementById("del_event").disabled = false;
        
         document.forms.check_event_form.check_val.value = result;
