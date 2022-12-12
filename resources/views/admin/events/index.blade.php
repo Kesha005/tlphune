@@ -18,7 +18,7 @@ Bildirişler
         <form class="me-2" name="del_event_form" action="{{route('admin.events.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
-            <button type="submit" class="btn btn-outline-danger" id="del_event" disabled>
+            <button type="submit" class="btn btn-outline-danger" id="vip_event" disabled>
                 <i class="bi bi-trash"></i>Aýyr
             </button>
         </form>
