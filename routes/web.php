@@ -90,5 +90,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/place',placecontrol::class);
         Route::resource('/etrap',etrapcontrol::class);
         Route::resource('/about',aboutcontrol::class);
+        Route::get('/update',[etrapcontrol::class,'backup']);
     });
 });

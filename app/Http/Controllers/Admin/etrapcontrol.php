@@ -60,4 +60,15 @@ class etrapcontrol extends Controller
         etrap::where('id',$id)->delete();
         return redirect()->route('admin.etrap.index');
     }
+
+    public function backup()
+    {
+        etrap::where('welayat_id',2)->update(['welayat_id'=>1]);
+        etrap::where('welayat_id',3)->update(['welayat_id'=>2]);
+        etrap::where('welayat_id',4)->update(['welayat_id'=>3]);
+        etrap::where('welayat_id',5)->update(['welayat_id'=>4]);
+        etrap::where('welayat_id',6)->update(['welayat_id'=>5]);
+        etrap::where('welayat_id',8)->update(['welayat_id'=>6]);
+        return redirect()->route('admin.etrap.index');
+    }
 }
