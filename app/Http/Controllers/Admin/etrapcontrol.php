@@ -63,12 +63,6 @@ class etrapcontrol extends Controller
 
     public function backup()
     {
-        $e=[47,48,49,50,51,52,53,54,55,56,57,58,59];
-        for($i=0;$i<count($e);++$i)
-        {
-            etrap::where('id',$e[$i])->update(['welayat_id'=>4]);
-        }
-       
         return redirect()->route('admin.etrap.index');
     }
 }
