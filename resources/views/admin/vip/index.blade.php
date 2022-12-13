@@ -1,25 +1,22 @@
 @extends('layouts.admin.app')
 
 @section('page_name')
-Bildirişler
+VIP-ler
 @endsection
 
 @section('main_section')
 <div>
     <div class="d-flex justify-content-start">
-        <form class="me-2" name="check_event_form" action="{{route('admin.events.multi_check')}}" method="post">
-            @csrf
-            <input name="msgdel" id="check_val" hidden value="">
-            <button class="btn btn-outline-success" id="check_event" type="submit" disabled >
-                <i class="bi bi-check"></i>Tassykla
+      
+            <button class="btn btn-outline-success me-2" id="check_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled disabled >
+                <i class="bi bi-check"></i>Üýtget
             </button>
-        </form>
 
-        <form name="del_event_form" action="{{route('admin.events.multi_del')}}" method="post">
+        <form name="del_event_form" action="{{route('admin.vip.remove')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
             <button type="submit" class="btn btn-outline-danger" id="del_event" disabled>
-                <i class="bi bi-trash"></i>Aýyr
+                <i class="bi bi-trash"></i>VIP Aýyr
             </button>
         </form>
     </div>
@@ -46,6 +43,7 @@ Bildirişler
                                     <th scope="col">Goýulan wagty</th>
                                     <th scope="col">Tassyklanan wagty</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">VIP wagty</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
@@ -71,14 +69,19 @@ Bildirişler
                                     </td>
 
                                     <td>
+                                        {{$event->to}}
+                                    </td>             
+                                    <td>
                                         
-                                    <form action="{{route('admin.events.destroy',$event)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a class="btn btn-outline-success btn-sm single_check" onclick="example({{$event->id}})"><i class="bi bi-check"></i></a>
-                                        <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
-                                    </form>
+                                        <form action="{{route('admin.events.destroy',$event)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a class="btn btn-outline-success btn-sm single_check" onclick="example({{$event->id}})"><i class="bi bi-check"></i></a>
+                                            <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                        </td>
+    
                                     </td>
 
                                 </tr>
@@ -91,6 +94,38 @@ Bildirişler
             </div>
         </div>
     </section>
+</div>
+
+
+
+<div class="modal fade" id="cmmodal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{route('admin.vip.change')}}" enctype="multipart/form-data" id="markform" method="POST" name="vip_event_form">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title">VIP wagty üýtget</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="to">Çenli</label>
+                        <input type="datetime-local" class="form-control"   name="to">
+                    </div><br>
+                </div>
+
+                <input name="vip" id="vip_val" value="" hidden> 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary close-btn" data-bs-dismiss="modal" aria-label="Close">Çyk</button>
+                    <button type="submit" id="savemark" class="btn btn-outline-success">Goş</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
 @endsection
 

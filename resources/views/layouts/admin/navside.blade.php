@@ -74,6 +74,13 @@
         <span>Aýratyn Bildirişler</span>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.vip.index')}}">
+        <i class="bi bi-shield"></i>
+        <span>VIP Bildirişler</span>
+      </a>
+    </li>
     
 
     <li class="nav-item">
