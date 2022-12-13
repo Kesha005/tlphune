@@ -47,13 +47,13 @@ function check_event() {
     if (result.length == 0) {
         document.getElementById("vip_event").disabled = true;
         document.getElementById("del_event").disabled = true;
-        // document.getElementById("check_event").disabled = true;
-        
-    } else { 
+        document.getElementById("check_event").disabled = true;
+
+    } else {
         document.getElementById("vip_event").disabled = false;
-        // document.getElementById("check_event").disabled = false;
+        document.getElementById("check_event").disabled = false;
         document.getElementById("del_event").disabled = false;
-       
+
         document.forms.check_event_form.check_val.value = result;
         document.forms.del_event_form.del_val.value = result;
         document.forms.vip_event_form.vip_val.value = result;

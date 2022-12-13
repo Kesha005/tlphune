@@ -30,10 +30,9 @@ class vipcontrol extends Controller
         $request->validate(['to'=>'required']);
         $nums = array_map('intval', explode(',', request('vip')));
         for ($i = 0; $i < count($nums); ++$i) {
-            $event = events::find($nums[$i]);
-            $event->update(['vip'=>1,'to'=>Carbon::createFromFormat('Y-m-d H:i:s',$request->to)]);
+            events::where('id',$nums[$i])->update(['vip'=>1,'to'=>Carbon::parse($request->to)->format('Y-m-d H:i:s')]);
         }
-        return route('admin.events.index');
+        return redirect()->route('admin.events.index');
     }
 
     public function edit()

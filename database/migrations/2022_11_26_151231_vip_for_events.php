@@ -15,7 +15,7 @@ class VipForEvents extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->integer('vip')->default(0);
-            $table->date('to')->nullable();
+            $table->dateTime('to')->nullable();
         });
     }
 
@@ -27,7 +27,7 @@ class VipForEvents extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            //
+           
         });
     }
 }

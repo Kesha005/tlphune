@@ -22,8 +22,8 @@ Bildirişler
                 <i class="bi bi-trash"></i>Aýyr
             </button>
         </form>
-        <button class="btn btn-outline-info" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
-            <i class="bi bi-vip"></i>VIP
+        <button class="btn btn-outline-warning" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
+            <i class="bi bi-shield"></i>VIP
         </button>
     </div>
 
@@ -110,7 +110,7 @@ Bildirişler
 
                     <div class="form-group">
                         <label for="to">Çenli</label>
-                        <input type="datetime" class="form-control"   name="to">
+                        <input type="datetime-local" class="form-control"   name="to">
                     </div><br>
                 </div>
 
