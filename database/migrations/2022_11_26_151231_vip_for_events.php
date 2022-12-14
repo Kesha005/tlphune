@@ -15,7 +15,7 @@ class VipForEvents extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->integer('vip')->default(0);
-            $table->dateTime('to')->nullable();
+            $table->timestamp('to')->nullable();
         });
     }
 
