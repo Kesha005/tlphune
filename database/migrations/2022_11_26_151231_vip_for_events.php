@@ -27,7 +27,7 @@ class VipForEvents extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-           Schema::drop($table->to);
+           Schema::dropIfExists('to');
         });
     }
 }
