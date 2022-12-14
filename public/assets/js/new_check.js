@@ -33,24 +33,3 @@ $(document).ready(function() {
 
 });
 
-function check_event() {
-
-    var checkboxes = document.getElementsByName('select-item-event');
-    var result = [];
-
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            result.push(checkboxes[i].value);
-
-        }
-    }
-    if (result.length == 0) {
-        document.getElementById("del_event").disabled = true;
-        document.getElementById("vip_event").disabled = true;
-    } else {
-        document.getElementById("del_event").disabled = false;
-        document.getElementById("vip_event").disabled = false;
-        document.forms.del_event_form.del_val.value = result;
-        document.forms.vip_event_form.vip_val.value = result;
-    }
-}
