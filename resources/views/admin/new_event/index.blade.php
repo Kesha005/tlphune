@@ -10,8 +10,11 @@ Aýratyn bildirişler
         <form name="del_event_form" action="{{route('admin.new_event.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
-            <button type="submit" class="btn btn-outline-danger" id="del_event" disabled>
+            <button type="submit" class="btn btn-outline-danger me-2" id="del_event" disabled>
                 <i class="bi bi-trash"></i>Aýyr
+            </button>
+            <button class="btn btn-outline-warning" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
+                <i class="bi bi-shield"></i>VIP
             </button>
         </form>
     </div>
@@ -72,6 +75,36 @@ Aýratyn bildirişler
             </div>
         </div>
     </section>
+</div>
+
+<div class="modal fade" id="cmmodal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{route('admin.vip.store')}}" enctype="multipart/form-data" id="markform" method="POST" name="vip_event_form">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title">VIP goş</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="to">Çenli</label>
+                        <input type="datetime-local" class="form-control"   name="in_to">
+                    </div><br>
+                </div>
+
+                <input name="vip" id="vip_val" value="" hidden> 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary close-btn" data-bs-dismiss="modal" aria-label="Close">Çyk</button>
+                    <button type="submit" id="savemark" class="btn btn-outline-success">Goş</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
 @endsection
 
