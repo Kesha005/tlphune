@@ -13,7 +13,7 @@ Etrap
                     <div class="card-body">
 
                         <h5 class="card-title">Üýtget</h5>
-                        <form action="{{route('admin.products.update',$etrap->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
+                        <form action="{{route('admin.etrap.update',$etrap->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
                             @method('PUT')
                             @csrf
 
