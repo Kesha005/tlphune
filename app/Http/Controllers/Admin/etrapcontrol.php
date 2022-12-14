@@ -47,6 +47,7 @@ class etrapcontrol extends Controller
    
     public function update(Request $request, $id)
     {
+        return $request;
         $request->validate(['name'=>'required','welayat_id'=>'required']);
         $etrap=etrap::find($id);
         $etrap->update($request->all());
