@@ -14,6 +14,7 @@ class VipForEvents extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
+            Schema::dropIfExists('to');
             $table->integer('vip')->default(0);
             $table->timestamp('to')->nullable();
         });
@@ -27,7 +28,6 @@ class VipForEvents extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-           Schema::dropIfExists('to');
         });
     }
 }
