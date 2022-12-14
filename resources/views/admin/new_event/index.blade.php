@@ -6,17 +6,17 @@ Aýratyn bildirişler
 
 @section('main_section')
 <div>
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-start me-2">
         <form name="del_event_form" action="{{route('admin.new_event.multi_del')}}" method="post">
             @csrf
             <input name="msgdel" id="del_val" hidden value="">
-            <button type="submit" class="btn btn-outline-danger me-2" id="del_event" disabled>
+            <button type="submit" class="btn btn-outline-danger " id="del_event" disabled>
                 <i class="bi bi-trash"></i>Aýyr
             </button>
-            <button class="btn btn-outline-warning" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
-                <i class="bi bi-shield"></i>VIP
-            </button>
         </form>
+        <button class="btn btn-outline-warning" id="vip_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled>
+            <i class="bi bi-shield"></i>VIP
+        </button>
     </div>
 
     <br>
