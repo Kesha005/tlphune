@@ -64,10 +64,10 @@ class basecontrol extends Controller
 
     public function category($id)
     {
-        $events = events::with('shop')->where('category_id', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::with('shop','etrap')->where('category_id', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
-                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;
             }
            else{$place='Näbelli ýer';} 
             return (array)($item->toArray() +  ['welayat' =>$place]);
@@ -80,10 +80,10 @@ class basecontrol extends Controller
     public function filter($category_id, $mark_id)
     {
 
-        $events = events::with('shop')->where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
+        $events = events::with('shop','etrap')->where('status', 1)->where('category_id', $category_id)->where('mark_id', $mark_id)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {
             if($item->etrap)
             {
-                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.'/'.$item->etrap->name;
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;
             }
            else{$place='Näbelli ýer';} 
             return (array)($item->toArray() +  ['welayat' =>$place]);
@@ -94,10 +94,10 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $count=events::find($event_id);events::where('id',$event_id)->update(['view'=>$count->view+1]);
-        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','shop')->where('id', $event_id)->get()->map(function ($item) {
+        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','shop','etrap')->where('id', $event_id)->get()->map(function ($item) {
             if($item->etrap)
             {
-                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' / '.$item->etrap->name;
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;
             }
            else{$place='Näbelli ýer';} 
             return (array)($item->toArray() + ['user_phone' => $item->user->phone]+ ['welayat' =>$place]);
@@ -108,10 +108,10 @@ class basecontrol extends Controller
     public function new($new_id)
     { 
         $count=events::find($new_id);events::where('id',$new_id)->update(['view'=>$count->view+1]);
-        $new_event = events::where('id', $new_id)->with('shop')->get()->map(function ($item) {
+        $new_event = events::where('id', $new_id)->with('shop','etrap')->get()->map(function ($item) {
             if($item->etrap)
             {
-                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name.' / '.$item->etrap->name;
+                $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;
             }
             else {$place='Näbelli ýer';}$user_phone=User::find($item->user_id);$color=colormodel::find($item->color_id);
             return (array)($item->toArray() + ['user_phone'=>$user_phone->phone]+ ['welayat' =>$place]+['image'=>$item->product->image]
