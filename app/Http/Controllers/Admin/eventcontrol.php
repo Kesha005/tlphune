@@ -75,9 +75,9 @@ class eventcontrol extends Controller
         events::where('vip',1)->chunk(50,function($events){
             foreach($events as $event)
             {
-                if(Carbon::now()->diffInHours($event->to)==0 or Carbon::now()->diffInHours($event->to)<0)
+                if(Carbon::now()->diffInHours($event->to)==0 or Carbon::now()->diffInHours($event->in_to)<0)
                 {
-                    $event->update(['vip'=>0,'to'=>null]);
+                    $event->update(['vip'=>0,'in_to'=>null]);
                 }
             } 
         });
