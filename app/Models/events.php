@@ -23,7 +23,8 @@ class events extends Model
         'products_id',
         'is_new',
         'view',
-        'shopid'
+        'shopid',
+        'in_to'
     ];
 
 

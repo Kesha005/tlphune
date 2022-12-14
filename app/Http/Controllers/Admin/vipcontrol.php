@@ -26,10 +26,10 @@ class vipcontrol extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['to'=>'required']);
+        $request->validate(['in_to'=>'required']);
         $nums = array_map('intval', explode(',', request('vip')));
         for ($i = 0; $i < count($nums); ++$i) {
-            events::where('id',$nums[$i])->update(['vip'=>1,'to'=>Carbon::parse($request->to)->format('Y-m-d H:i:s')]);
+            events::where('id',$nums[$i])->update(['vip'=>1,'in_to'=>Carbon::parse($request->to)->format('Y-m-d H:i:s')]);
         }
         return redirect()->route('admin.events.index');
     }
@@ -40,10 +40,10 @@ class vipcontrol extends Controller
 
     public function update(Request $request)
     {
-        $request->validate(['to'=>'required']);
+        $request->validate(['in_to'=>'required']);
         $nums = array_map('intval', explode(',', request('vip')));
         for ($i = 0; $i < count($nums); ++$i) {
-            events::where('id',$nums[$i])->update(['to'=>Carbon::parse($request->to)->format('Y-m-d H:i:s')]);
+            events::where('id',$nums[$i])->update(['in_to'=>Carbon::parse($request->to)->format('Y-m-d H:i:s')]);
         }
         return redirect()->route('admin.vip.index');
     }
@@ -57,7 +57,7 @@ class vipcontrol extends Controller
     {
         $nums = array_map('intval', explode(',', request('msgdel')));
         for ($i = 0; $i < count($nums); ++$i) {
-            events::where('id',$nums[$i])->update(['vip'=>0,'to'=>null]);
+            events::where('id',$nums[$i])->update(['vip'=>0,'in_to'=>null]);
         }
         return redirect()->route('admin.vip.index');
     }

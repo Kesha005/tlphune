@@ -69,7 +69,7 @@ VIP-ler
                                     </td>
 
                                     <td>
-                                        {{$event->to}}
+                                        {{$event->in_to}}
                                     </td>             
                                     <td>
                                         

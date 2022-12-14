@@ -110,7 +110,7 @@ Bildirişler
 
                     <div class="form-group">
                         <label for="to">Çenli</label>
-                        <input type="datetime-local" class="form-control"   name="to">
+                        <input type="datetime-local" class="form-control"   name="in_to">
                     </div><br>
                 </div>
 
