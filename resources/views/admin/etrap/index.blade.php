@@ -35,6 +35,7 @@ Etraplar
                                         <form method="POST" action="{{route('admin.etrap.destroy',$etrap->id)}}">
                                             @csrf
                                             @method('DELETE')
+                                            <a href="{{route('admin.etrap.edit',$etrap->id)}}" class="btn btn-outline-warning btn-sm "><i class="bi bi-pen"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                         </form>
                                         
