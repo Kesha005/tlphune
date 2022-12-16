@@ -11,7 +11,7 @@ class aboutcontrol extends Controller
     
     public function index()
     {
-        $about=about::latest();
+        $about=about::latest()->first();
         return view('admin.about.index',compact('about'));
     }
 
@@ -23,7 +23,7 @@ class aboutcontrol extends Controller
  
     public function store(Request $request)
     {
-        $request->validate(['name'=>'required','text'=>'required']);
+        $request->validate(['text'=>'required']);
         about::create($request->all());
         return redirect()->route('admin.about.index');
     }
@@ -43,10 +43,10 @@ class aboutcontrol extends Controller
   
     public function update(Request $request, $id)
     {
-        $request->validate(['name'=>'required','text'=>'required']);
+        $request->validate(['text'=>'required']);
         $about=about::find($id);
         $about->update($request->all());
-        return redirect()->route('admin.public.index');
+        return redirect()->route('admin.about.index');
     }
 
  
