@@ -12,6 +12,7 @@ class aboutcontrol extends Controller
     public function index()
     {
         $about=about::latest()->first();
+
         return view('admin.about.index',compact('about'));
     }
 

@@ -24,21 +24,21 @@ Dörediji  barada
                     </div>
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                            @if(($about->text)!=null))
+                            @if(($about!=null))
                             {{$about->text}}
                             @else
                             Maglumat ýok
                             @endif
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                            @if(($about->text)!=null)
+                            @if(($about)!=null)
                             @include('admin.about.edit')
                             @else
                             Maglumat giriziň
                             @endif
                         </div>
                         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                            @if(($about->text)==null)
+                            @if(($about)==null)
                             @include('admin.about.create')
                             @else
                             Maglumat girizilen üýtgedip bilersiňiz
