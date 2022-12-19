@@ -12,7 +12,7 @@ class msgscontrol extends Controller
 
     public function index()
     {
-        $msgs = messages::paginate(15);
+        $msgs = messages::all()->orderBy('created_at', 'DESC');
         return view('admin.msgs.index', compact('msgs'));
     }
 

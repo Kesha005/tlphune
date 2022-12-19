@@ -121,4 +121,11 @@ class basecontrol extends Controller
         return response()->json($new_event);
     }
 
+
+    public function messages($id)
+    {
+        $msg=messages::where('user_id',$id)->get();
+        return response()->json($msg);
+    }
+
 }
