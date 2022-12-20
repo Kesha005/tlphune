@@ -18,5 +18,10 @@ class shops extends Model
     {
         return $this->hasMany(events::class,'shopid');
     }
+
+    public function image()
+    {
+        return $this->hasMany(shopimg::class,'shop_id');
+    }
     
 }
