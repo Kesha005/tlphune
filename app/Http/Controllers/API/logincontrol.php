@@ -119,4 +119,6 @@ class logincontrol extends Controller
             'message'=>'Siz ulgamdan çykdyňyz'
         ]);
     }
+
+  
 }

@@ -94,7 +94,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/vip',vipcontrol::class);
         Route::post('vip_remove',[vipcontrol::class,'remove'])->name('vip.remove');
         Route::post('vip_change',[vipcontrol::class,'update'])->name('vip.change');
-
         Route::get('/update',[etrapcontrol::class,'backup']);
     });
 });

@@ -60,6 +60,7 @@ Route::get('/about/{user_id}',[profilcontrol::class,'about']);
 Route::get('/all/{user_id}',[profilcontrol::class,'all']);
 Route::get('/success/{user_id}',[profilcontrol::class,'success']);
 Route::get('/onproses/{user_id}',[profilcontrol::class,'onproses']);
+Route::get('/mymsg/{user_id}',[basecontrol::class,'messages']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
