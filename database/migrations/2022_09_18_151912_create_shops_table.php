@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('place');
+            $table->foreignId('place');
             $table->string('phone');
             $table->string('user_id');
             $table->longText('about')->nullable();

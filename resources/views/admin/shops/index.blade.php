@@ -56,18 +56,23 @@ Dükanlar
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$shop->name}}</td>
                                     <td><img src="{{ asset('storage/'.$shop->image) }}" height="70" width="70"></td>
-                                    <td>{{$shop->user}}</td>
-                                    @if($shop->status==0)
-                                    <td> <span class="badge bg-warning">prosesde</span></td>
-                                    @else
-                                    <td> <span class="badge bg-success">Tassyklanan</span></td>
-                                    @endif
+                                    <td>{{$shop->phone}}</td>
+                                   
+                                    <td class="st{{$shop->id}}">  
+                                        @if($shop->status==0)
+                                        <span class="badge bg-warning">prosesde</span>
+                                        @else
+                                        <span class="badge bg-success">Tassyklanan</span>
+                                        @endif
+                                    </td>
+                                    
+                                    
                                     <td>
                                         <form action="{{route('admin.shops.destroy',$shop)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{route('admin.shops.show',$shop)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
-                                            <a href="{{route('admin.shops.update',$shop)}}" class="btn btn-outline-success btn-sm "><i class="bi bi-check"></i></a>
+                                            <a class="btn btn-outline-success btn-sm " onclick="example({{$shop->id}})"><i class="bi bi-check"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
@@ -76,7 +81,7 @@ Dükanlar
                                 @endforeach
                             </tbody>
                         </table>
-                        {!! $shops->links() !!}
+
                     </div>
                 </div>
 
@@ -89,4 +94,26 @@ Dükanlar
 
 @section('js')
 <script src="{{asset('assets/js/shop.js')}}"></script>
+<script>
+    function example(id) {
+        $.ajax({
+            data: {
+                _token: "{{csrf_token()}}",
+                'id': id,
+                'ajax': 'true'
+            },
+            url: "{{route('admin.shops.check')}}/" + id,
+            type: 'POST',
+            dataType: 'JSON',
+
+            success: function(response) {
+
+                var id = response['dataId']
+                console.log(response)
+                html = `<span class="badge bg-success">Tassyklanan</span>`;
+                $('.st' + id).html(html)
+            }
+        });
+    }
+</script>
 @endsection

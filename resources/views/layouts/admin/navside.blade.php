@@ -81,6 +81,14 @@
         <span>VIP Bildirişler</span>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.push.index')}}">
+        <i class="bi bi-messenger"></i>
+        <span>Duýdurmak we bildirmek</span>
+      </a>
+    </li>
+    
     
 
     <li class="nav-item">

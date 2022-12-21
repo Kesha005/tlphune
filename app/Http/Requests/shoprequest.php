@@ -38,6 +38,7 @@ class shoprequest extends FormRequest
             'phone.required'=>'Telefon nomeri girizilmedik',
             'user_id.required'=>'Dükanyň eýesi näbelli ',
             'about.max'=>'Has uly format',
+            'about.required'=>'Maglumat yok'
         ];
     }
    
@@ -50,7 +51,7 @@ class shoprequest extends FormRequest
             'place'=>'required',
             'phone'=>'required',
             'user_id'=>'required',
-            'about'=>'max:10000',
+            'about'=>'required|max:10000',
         ];
     }
 

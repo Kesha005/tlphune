@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\newpostcontrol;
 use App\Http\Controllers\Admin\placecontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Controllers\Admin\productcontrol;
+use App\Http\Controllers\Admin\pushnotcontrol;
 use App\Http\Controllers\Admin\vipcontrol;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\auth;
@@ -83,6 +84,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/shops', shopscontrol::class);
         Route::post('/shops/multi_confirm', [shopscontrol::class, 'multi_confirm'])->name('shops.multi_confirm');
         Route::post('/shops/multi_delete', [shopscontrol::class, 'multi_destroy'])->name('shops.multi_destroy');
+        Route::post('/shops/check/{id?}',[shopscontrol::class,'check'])->name('shops.check');
 
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
@@ -94,6 +96,8 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/vip',vipcontrol::class);
         Route::post('vip_remove',[vipcontrol::class,'remove'])->name('vip.remove');
         Route::post('vip_change',[vipcontrol::class,'update'])->name('vip.change');
-        Route::get('/update',[etrapcontrol::class,'backup']);
+
+        Route::get('push',[pushnotcontrol::class,'index'])->name('push.index');
+        Route::post('push_send',[pushnotcontrol::class,'send'])->name('push.send');
     });
 });

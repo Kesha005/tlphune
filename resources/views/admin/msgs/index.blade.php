@@ -61,7 +61,7 @@ Hatlar
                                 @endforeach
                             </tbody>
                         </table>
-                        {!! $msgs->links() !!}
+                        
                     </div>
                 </div>
 

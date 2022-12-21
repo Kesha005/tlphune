@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class shops extends Model
 {
-    protected $fillable=['name','image','user_id','place','phone','status'];
+    protected $fillable=['name','image','user_id','place','phone','status','about'];
 
     public function user()
     {
-        return $this->belongsTo(User::class,'id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function events()
@@ -19,9 +19,14 @@ class shops extends Model
         return $this->hasMany(events::class,'shopid');
     }
 
-    public function image()
+    public function images()
     {
         return $this->hasMany(shopimg::class,'shop_id');
+    }
+
+    public function etrap()
+    {
+        return $this->belongsTo(etrap::class,'place');
     }
     
 }
