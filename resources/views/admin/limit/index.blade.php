@@ -13,7 +13,11 @@ Bildirişlere limit ber
                     <div class="card-body">
 
                         <h5 class="card-title">Limit ber</h5>
-                        @if($limit==null)
+                        @if($limit!=null)
+                        @include('admin.limit.edit')
+            
+                        @else
+
                         <form action="{{route('admin.limit.store')}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
                             @csrf
 
@@ -27,9 +31,6 @@ Bildirişlere limit ber
                                 <button type="submit" class="btn btn-outline-success btn-sm pull-right ">Iber</button>
                             </div>
                         </form>
-                        @else
-
-                       @include('admin.limit.edit')
                         @endif
 
                     </div>
