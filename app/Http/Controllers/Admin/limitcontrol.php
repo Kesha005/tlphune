@@ -19,7 +19,8 @@ class limitcontrol extends Controller
     {
         $request->validate(['limit'=>'required|numeric']);
         limit::create($request->all());
-        event(new limitevent($request->limit));
+        $limit=$request->limit;
+        event(new limitevent($limit));
         return redirect()->route('admin.limit.index');
     }
 
@@ -27,7 +28,8 @@ class limitcontrol extends Controller
     {
         $request->validate(['limit'=>'required|numeric']);
         limit::where('id',$id)->update($request->all());
-        event(new limitevent($request->limit));
+        $limit=$request->limit;
+        event(new limitevent($limit));
         return redirect()->route('admin.limit.index');
     }
 }
