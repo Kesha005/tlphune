@@ -11,7 +11,7 @@ class limitcontrol extends Controller
 {
     public function index()
     {
-        $limit=limit::latest()->get();
+        $limit=limit::latest()->first();
         return view('admin.limit.index',compact('limit'));
     }
 
