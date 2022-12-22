@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\banuser_event;
+use App\Events\limitevent;
 use App\Listeners\banuser_listener;
+use App\Listeners\limilis;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         banuser_event::class=>[
             banuser_listener::class,
+        ],
+
+        limitevent::class=>[
+            limilis::class   
         ],
     ];
 

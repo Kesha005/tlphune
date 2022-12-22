@@ -88,6 +88,13 @@
         <span>Duýdurmak we bildirmek</span>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.limit.index')}}">
+        <i class="bi bi-solider"></i>
+        <span>Limit ber</span>
+      </a>
+    </li>
     
     
 
