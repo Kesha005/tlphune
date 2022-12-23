@@ -24,10 +24,10 @@ class limitcontrol extends Controller
         return redirect()->route('admin.limit.index');
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
         $request->validate(['limit'=>'required|numeric']);
-        limit::where('id',$id)->update($request->all());
+        limit::latest()->first()->update($request->all());
         $limit=$request->limit;
         event(new limitevent($limit));
         return redirect()->route('admin.limit.index');

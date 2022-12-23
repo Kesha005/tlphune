@@ -104,6 +104,6 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
         Route::get('/limit',[limitcontrol::class,'index'])->name('limit.index');
         Route::post('store_limit',[limitcontrol::class,'store'])->name('limit.store');
-        Route::post('limitstore/{id}',[limitcontrol::class,'update'])->name('limit.update');
+        Route::post('limitupdate',[limitcontrol::class,'update'])->name('limit.update');
     });
 });

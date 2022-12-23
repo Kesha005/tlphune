@@ -1,4 +1,4 @@
-<form action="{{route('admin.limit.update',$limit->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
+<form action="{{route('admin.limit.update')}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
     @csrf
     <div class="col-md-4">
         <div class="form-group">
