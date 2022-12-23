@@ -1,6 +1,5 @@
 <form action="{{route('admin.limit.update',$limit->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
     @csrf
-    @method('PUT')
     <div class="col-md-4">
         <div class="form-group">
             <label for="name">Günlük bildiriş  sany</label>
