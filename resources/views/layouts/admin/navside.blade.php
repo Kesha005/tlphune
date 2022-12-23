@@ -141,6 +141,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.contract.index')}}">
+        <i class="bi bi-book-fill"></i>
+        <span>Şertnamalar</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link " href="{{route('admin.apk.index')}}">
         <i class="bi bi-cloud"></i>
         <span>APK</span>
