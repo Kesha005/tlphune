@@ -23,7 +23,7 @@ class contractcontrol extends Controller
     public function store(contractreq $request)
     {
         contract::create($request->all());
-        return redirect()->route('admin.contract.create')->with(['success','Şertnama goşuldy']);
+        return redirect()->route('admin.contract.create')->with('success','Şertnama goşuldy');
     }
 
     public function edit($id)

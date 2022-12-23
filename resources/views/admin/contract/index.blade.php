@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 @foreach($contracts as $contract)
-                                <tr class="us{{$user->id}}">
+                                <tr class="us{{$contract->id}}">
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$contract->name}}</td>
                                     <td>{{$contract->created_at}}</td>
