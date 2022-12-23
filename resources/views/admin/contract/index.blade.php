@@ -34,7 +34,7 @@
 
                                         <div class="row">
                                             <div class=" col-md-2 col-lg-1 col-xs-1">
-                                                <form method="post" action="{{route('admin.contract.destroy',contract->id)}}">
+                                                <form method="post" action="{{route('admin.contract.destroy',$contract->id)}}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <a  class="btn btn-outline-info btn-sm" href="{{route('admin.contract.show',$contract->id)}}"><i class="bi bi-eye"></i></a>
