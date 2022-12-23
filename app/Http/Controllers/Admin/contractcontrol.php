@@ -11,7 +11,7 @@ class contractcontrol extends Controller
 {
     public function index()
     {
-        $contracts=contract::get(['name']);
+        $contracts=contract::get(['name','created_at','id']);
         return view('admin.contract.index',compact('contracts'));
     }
 
@@ -26,6 +26,12 @@ class contractcontrol extends Controller
         return redirect()->route('admin.contract.create')->with('success','Şertnama goşuldy');
     }
 
+    public function show($id)
+    {
+        $contract=contract::find($id);
+        return view('admin.contract.show',compact('contract'));
+    }
+
     public function edit($id)
     {
         $contract=contract::find($id);
@@ -34,7 +40,8 @@ class contractcontrol extends Controller
 
     public function update(contractreq $request,$id)
     {
-        contract::where('id',$id)->update($request->all());
+        $contract=contract::find($id);
+        $contract->update($request->all());
         return redirect()->route('admin.contract.index');
     }
 

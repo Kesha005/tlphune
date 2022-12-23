@@ -8,9 +8,9 @@
 @section('main_section')
 
 <div>
-<a type="button" class="btn btn-outline-success" href="{{route('admin.contract.create')}}" >
-    <i class="bi bi-plus"></i>Täze
-</a><br><br>
+    <a type="button" class="btn btn-outline-success" href="{{route('admin.contract.create')}}">
+        <i class="bi bi-plus"></i>Täze
+    </a><br><br>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -35,17 +35,15 @@
                                     <td>{{$contract->created_at}}</td>
                                     <td>
 
-                                        <div class="row">
-                                            <div class=" col-md-2 col-lg-1 col-xs-1">
-                                                <form method="post" action="{{route('admin.contract.destroy',[$contract])}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a  class="btn btn-outline-info btn-sm" href="{{route('admin.contract.show',$contract->id)}}"><i class="bi bi-eye"></i></a>
-                                                    <a  class="btn btn-outline-warning btn-sm" href="{{route('admin.contract.edit',$contract->id)}}"><i class="bi bi-pen"></i></a>
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                                </form>
-                                            </div>
-                                        </div>
+
+                                        <form method="post" action="{{route('admin.contract.destroy',$contract->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a class="btn btn-outline-info btn-sm" href="{{route('admin.contract.show',$contract->id)}}"><i class="bi bi-eye"></i></a>
+                                            <a class="btn btn-outline-warning btn-sm" href="{{route('admin.contract.edit',$contract->id)}}"><i class="bi bi-pen"></i></a>
+                                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        </form>
+
 
                                     </td>
                                 </tr>

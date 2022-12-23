@@ -77,36 +77,37 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
 
         #________________________________________NEW_EVENTS____________________________________________________
-        Route::get('new_event',[newpostcontrol::class,'index'])->name('new_event.index');
-        Route::get('new_event/show/{id}',[newpostcontrol::class,'show'])->name('new_event.show');
-        Route::post('new_event/delete/{id}',[newpostcontrol::class,'destroy'])->name('new_event.destroy');
-        Route::post('new_event/multidel',[newpostcontrol::class,'multi_del'])->name('new_event.multi_del');
-        
+        Route::get('new_event', [newpostcontrol::class, 'index'])->name('new_event.index');
+        Route::get('new_event/show/{id}', [newpostcontrol::class, 'show'])->name('new_event.show');
+        Route::post('new_event/delete/{id}', [newpostcontrol::class, 'destroy'])->name('new_event.destroy');
+        Route::post('new_event/multidel', [newpostcontrol::class, 'multi_del'])->name('new_event.multi_del');
+
 
         Route::resource('/shops', shopscontrol::class);
         Route::post('/shops/multi_confirm', [shopscontrol::class, 'multi_confirm'])->name('shops.multi_confirm');
         Route::post('/shops/multi_delete', [shopscontrol::class, 'multi_destroy'])->name('shops.multi_destroy');
-        Route::post('/shops/check/{id?}',[shopscontrol::class,'check'])->name('shops.check');
+        Route::post('/shops/check/{id?}', [shopscontrol::class, 'check'])->name('shops.check');
 
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
         Route::resource('/color', colorcontrol::class);
 
-        Route::resource('/place',placecontrol::class);
-        Route::resource('/etrap',etrapcontrol::class);
-        Route::resource('/about',aboutcontrol::class);
-        Route::resource('/vip',vipcontrol::class);
-        Route::post('vip_remove',[vipcontrol::class,'remove'])->name('vip.remove');
-        Route::post('vip_change',[vipcontrol::class,'update'])->name('vip.change');
+        Route::resource('/place', placecontrol::class);
+        Route::resource('/etrap', etrapcontrol::class);
+        Route::resource('/about', aboutcontrol::class);
+        Route::resource('/vip', vipcontrol::class);
+        Route::post('vip_remove', [vipcontrol::class, 'remove'])->name('vip.remove');
+        Route::post('vip_change', [vipcontrol::class, 'update'])->name('vip.change');
 
-        Route::get('push',[pushnotcontrol::class,'index'])->name('push.index');
-        Route::post('push_send',[pushnotcontrol::class,'send'])->name('push.send');
+        Route::get('push', [pushnotcontrol::class, 'index'])->name('push.index');
+        Route::post('push_send', [pushnotcontrol::class, 'send'])->name('push.send');
 
 
-        Route::get('/limit',[limitcontrol::class,'index'])->name('limit.index');
-        Route::post('store_limit',[limitcontrol::class,'store'])->name('limit.store');
-        Route::post('limitupdate',[limitcontrol::class,'update'])->name('limit.update');
-
-        Route::resource('contract',contractcontrol::class);
+        Route::get('/limit', [limitcontrol::class, 'index'])->name('limit.index');
+        Route::post('store_limit', [limitcontrol::class, 'store'])->name('limit.store');
+        Route::post('limitupdate', [limitcontrol::class, 'update'])->name('limit.update');
+        #__________________________________________________CONTRACT ROUTES_____________________________________________
+        Route::resource('/contract',contractcontrol::class);
+      
     });
 });

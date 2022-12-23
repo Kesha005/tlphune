@@ -1,4 +1,4 @@
-ds('layouts.admin.app')
+@extends('layouts.admin.app')
 
 @section('page_name')
 Şertnamany üýtget
@@ -20,11 +20,11 @@ ds('layouts.admin.app')
                     <h5 class="card-title">Üýtget</h5>
                     <form action="{{route('admin.contract.update',$contract->id)}}" enctype="multipart/form-data" id="markform" method="POST" class="row g-3">
                         @csrf
-
+                        @method ('PUT')
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="name">Ady</label>
-                                <input type="text" class="form-control" id="name" placeholder="Ady" name="name" value="{{old('name')}}" value="{{$contract->name}}">
+                                <input type="text" class="form-control" id="name" placeholder="Ady" name="name" value="{{$contract->name}}">
                                 @if($errors->has('name'))
                                 <div style="color:red;">
                                     {{$errors->first('name')}}
