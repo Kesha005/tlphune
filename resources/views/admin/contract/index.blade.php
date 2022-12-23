@@ -8,6 +8,9 @@
 @section('main_section')
 
 <div>
+<a type="button" class="btn btn-outline-success" href="{{route('admin.contract.create')}}" >
+    <i class="bi bi-plus"></i>Täze
+</a><br><br>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
