@@ -19,7 +19,7 @@ class shopcontrol extends Controller
 
     public function index($id)
     {
-        $shop = shops::where('user_id', $id)->first();
+        $shop = shops::where('user_id', $id)->with('images')->first();
 
         if ($shop->status!=1) return $this->NotActivated();
 
@@ -91,7 +91,7 @@ class shopcontrol extends Controller
 
     public function shops()
     {
-        $shops=shops::with('image')->get();
+        $shops=shops::with('images')->get();
         return response()->json($shops);
         
     }
