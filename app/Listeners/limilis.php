@@ -4,25 +4,12 @@ namespace App\Listeners;
 
 use App\Events\limitevent;
 use App\Models\User;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
-class limilis
+trait limilis
 {
   
-    public function __construct(limitevent $limit)
+    public function ChangeLimitUser(int $limit)
     {
-        
-    }
-
-  
-    public function handle(limitevent $event)
-    {
-       $users=User::all();
-       foreach($users->chunk(200) as $user)
-       {
-        $user->update(['eventlimit'=>$event->limit]);
-       }
-      
+       return (bool)User::where('isban',0)->update(['eventlimit' => $limit]);
     }
 }
