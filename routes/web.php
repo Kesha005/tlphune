@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\firstcontrol;
 use App\Http\Controllers\Admin\markcontrol;
 use App\Http\Controllers\Admin\categories;
 use App\Http\Controllers\Admin\colorcontrol;
+use App\Http\Controllers\Admin\contractcontrol;
 use App\Http\Controllers\Admin\eventcontrol;
 use App\Http\Controllers\Admin\gallerycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
@@ -105,5 +106,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::get('/limit',[limitcontrol::class,'index'])->name('limit.index');
         Route::post('store_limit',[limitcontrol::class,'store'])->name('limit.store');
         Route::post('limitupdate',[limitcontrol::class,'update'])->name('limit.update');
+
+        Route::resource('contract',contractcontrol::class);
     });
 });
