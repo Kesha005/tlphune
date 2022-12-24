@@ -3,8 +3,10 @@
 use App\Http\Controllers\API\addpostcontrol;
 use App\Http\Controllers\API\logincontrol;
 use App\Http\Controllers\API\basecontrol;
+use App\Http\Controllers\API\contractcontrol;
 use App\Http\Controllers\API\profilcontrol;
 use App\Http\Controllers\API\shopcontrol;
+use App\Models\contract;
 use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +64,7 @@ Route::get('/success/{user_id}',[profilcontrol::class,'success']);
 Route::get('/onproses/{user_id}',[profilcontrol::class,'onproses']);
 Route::get('/mymsg/{user_id}',[basecontrol::class,'messages']);
 
+Route::get('/contract',[contractcontrol::class,'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
