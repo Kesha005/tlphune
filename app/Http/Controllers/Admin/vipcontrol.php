@@ -39,8 +39,8 @@ class vipcontrol extends Controller
     }
 
     public function update(Request $request)
-    {        return $request;
-        // $request->validate(['in_to'=>'required']);
+    {     
+        $request->validate(['in_to'=>'required']);
        
         $nums = array_map('intval', explode(',', request('vip')));
         for ($i = 0; $i < count($nums); ++$i) {
