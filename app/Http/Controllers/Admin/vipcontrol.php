@@ -46,7 +46,7 @@ class vipcontrol extends Controller
         for ($i = 0; $i < count($nums); ++$i) {
             events::where('id',$nums[$i])->update(['in_to'=>Carbon::parse($request->in_to)->format('Y-m-d H:i:s')]);
         }
-        // return redirect()->route('admin.vip.index');
+        return redirect()->route('admin.vip.index');
     }
 
     public function destroy()
