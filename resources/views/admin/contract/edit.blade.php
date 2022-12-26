@@ -28,7 +28,7 @@
                                 @if($errors->has('name'))
                                 <div style="color:red;">
                                     {{$errors->first('name')}}
-                                </div> 
+                                </div>
                                 @endif
                             </div><br>
                         </div>
@@ -42,11 +42,10 @@
                                 @if($errors->has('text'))
                                 <div style="color:red;">
                                     {{$errors->first('text')}}
-                                </div> 
+                                </div>
                                 @endif
                             </div>
                         </div>
-
 
                         <div class="text-center">
                             <a type="button" class="btn btn-outline-secondary close-btn" href="{{route('admin.contract.index')}}">Çyk</a>

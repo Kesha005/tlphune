@@ -17,6 +17,7 @@ class CreateContractsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('text');
+            
             $table->timestamps();
         });
     }

@@ -128,4 +128,11 @@ class basecontrol extends Controller
         return response()->json($msg);
     }
 
+
+    public function color()
+    {
+        $color=colormodel::all();
+        return response()->json($color);
+    }
+
 }

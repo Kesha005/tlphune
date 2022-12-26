@@ -66,6 +66,8 @@ Route::get('/mymsg/{user_id}',[basecontrol::class,'messages']);
 
 Route::get('/contract',[contractcontrol::class,'index']);
 
+Route::get('/color',[basecontrol::class,'color']);
+
 Route::middleware('auth:sanctum')->group(function () {
     
 
