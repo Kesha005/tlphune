@@ -33,6 +33,17 @@
                             </div><br>
                         </div>
 
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="type">Tipi</label>
+                                <select id="type" class="form-control" name="type">
+                                <option value="vip" {{($contract->type=='vip')? 'selected': ''}}>VIP</option>
+                                    <option value="shop" {{($contract->type=='shop')? 'selected': ''}}>Dükan</option>
+                                    <option value="login" {{($contract->type=='login')? 'selected': ''}}>Registrasiýa we Login</option>
+                                </select>
+                            </div><br>
+                        </div>
+
 
                         <div class="col-md-4">
 

@@ -17,7 +17,7 @@ class CreateContractsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('text');
-            
+            $table->enum('type',['vip','shop','login']);
             $table->timestamps();
         });
     }

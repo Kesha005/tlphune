@@ -23,15 +23,18 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Ady</th>
+                                    <th scope="col">Tipi</th>
                                     <th scope="col">Goýulan wagty</th>
                                     <th scope="col">Funksiýa</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($contracts as $contract)
+                                
                                 <tr class="us{{$contract->id}}">
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$contract->name}}</td>
+                                    <td>{{$contract->type}}</td>
                                     <td>{{$contract->created_at}}</td>
                                     <td>
 

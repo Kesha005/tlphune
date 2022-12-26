@@ -47,7 +47,19 @@
                             </div>
                         </div>
 
-                      
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="about">Tip</label>
+                                <select id="about" name="type" class="form-control">
+                                    <option value="vip">VIP</option>
+                                    <option value="shop">Dükan</option>
+                                    <option value="login">Registrasiýa we Login</option>
+                                </select>
+                               
+                            </div>
+                        </div>
+
+
 
                         <div class="text-center">
                             <a type="button" class="btn btn-outline-secondary close-btn" href="{{route('admin.contract.index')}}">Çyk</a>

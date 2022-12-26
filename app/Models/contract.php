@@ -9,5 +9,5 @@ class contract extends Model
 {
     use HasFactory;
 
-    protected $fillable=['name','text'];
+    protected $fillable=['name','text','type'];
 }

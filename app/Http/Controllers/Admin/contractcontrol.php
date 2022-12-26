@@ -11,7 +11,7 @@ class contractcontrol extends Controller
 {
     public function index()
     {
-        $contracts=contract::get(['name','created_at','id']);
+        $contracts=contract::get(['name','created_at','id' ,'type']);
         return view('admin.contract.index',compact('contracts'));
     }
 

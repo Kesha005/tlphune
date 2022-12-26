@@ -7,10 +7,10 @@ VIP-ler
 @section('main_section')
 <div>
     <div class="d-flex justify-content-start">
-      
-            <button class="btn btn-outline-success me-2" id="check_event" data-bs-toggle="modal" data-bs-target="#cmmodal" disabled disabled >
-                <i class="bi bi-check"></i>Üýtget
-            </button>
+
+        <button class="btn btn-outline-success me-2" id="check_event" data-bs-toggle="modal" data-bs-target="#cmmodal"  disabled>
+            <i class="bi bi-check"></i>Üýtget
+        </button>
 
         <form name="del_event_form" action="{{route('admin.vip.remove')}}" method="post">
             @csrf
@@ -70,9 +70,9 @@ VIP-ler
 
                                     <td>
                                         {{$event->in_to}}
-                                    </td>             
+                                    </td>
                                     <td>
-                                        
+
                                         <form action="{{route('admin.events.destroy',$event)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -80,8 +80,8 @@ VIP-ler
                                             <a href="{{route('admin.events.show',$event)}}" class="btn btn-outline-info btn-sm "><i class="bi bi-eye"></i></a>
                                             <button type="submit" class="btn btn-outline-danger btn-sm" id="delete_confirm"><i class="bi bi-trash"></i></button>
                                         </form>
-                                        </td>
-    
+                                    </td>
+
                                     </td>
 
                                 </tr>
@@ -101,26 +101,25 @@ VIP-ler
 <div class="modal fade" id="cmmodal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('admin.vip.change')}}" enctype="multipart/form-data" id="markform" method="POST" name="vip_event_form">
+            <form action="{{route('admin.vip.change')}}" id="markform" method="post" name="vip_event_form">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">VIP wagty üýtget</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
                     <div class="form-group">
                         <label for="to">Çenli</label>
-                        <input type="datetime-local" class="form-control"   name="to">
+                        <input type="datetime-local" class="form-control" name="in_to" id="to">
                     </div><br>
                 </div>
 
-                <input name="vip" id="vip_val" value="" hidden> 
+                <input name="vip" id="vip_val" value="" hidden>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary close-btn" data-bs-dismiss="modal" aria-label="Close">Çyk</button>
                     <button type="submit" id="savemark" class="btn btn-outline-success">Goş</button>
+                    <button type="button" class="btn btn-outline-secondary close-btn" data-bs-dismiss="modal" aria-label="Close">Çyk</button>
+
                 </div>
             </form>
         </div>

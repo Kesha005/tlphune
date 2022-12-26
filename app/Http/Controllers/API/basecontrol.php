@@ -135,4 +135,6 @@ class basecontrol extends Controller
         return response()->json($color);
     }
 
+   
+
 }

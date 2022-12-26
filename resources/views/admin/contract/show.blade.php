@@ -43,10 +43,18 @@
                             <div class="col-lg-9 col-md-8">{{$contract->name}}</div>
                         </div>
 
+                        
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Tipi</div>
+                            <div class="col-lg-9 col-md-8">{{$contract->type}}</div>
+                        </div>
+
+
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">Mazmuny</div>
                             <div class="col-lg-9 col-md-8">{{$contract->text}}</div>
                         </div>
+                        
 
 
                     </div>
