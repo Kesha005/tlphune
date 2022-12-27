@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call([eventcontrol::class,'isvip'])->everyMinute();
+        $schedule->command('vip:control')->everyFourHours();
     }
 
     /**
