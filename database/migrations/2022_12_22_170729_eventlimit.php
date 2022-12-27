@@ -14,7 +14,7 @@ class Eventlimit extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('eventlimit');
+            $table->integer('eventlimit')->default(2);
         });
     }
 
