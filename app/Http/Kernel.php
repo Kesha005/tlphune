@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'web_auth'=>\App\Http\Middleware\web_auth::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'eventlimit'=> \App\Http\Middleware\eventlimitmid::class,
         'apiauth'=>\App\Http\Middleware\apiauth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

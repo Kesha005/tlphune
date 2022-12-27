@@ -6,6 +6,7 @@ use App\Http\Controllers\API\basecontrol;
 use App\Http\Controllers\API\contractcontrol;
 use App\Http\Controllers\API\profilcontrol;
 use App\Http\Controllers\API\shopcontrol;
+use App\Http\Middleware\eventlimitmid;
 use App\Models\contract;
 use Faker\Provider\Base;
 use Illuminate\Http\Request;
@@ -47,10 +48,14 @@ Route::get('/category/{category_id}',[basecontrol::class,'category']);
 Route::get('/event/{event_id}',[basecontrol::class,'event']);
 Route::get('/new/{new_id}',[basecontrol::class,'new']);
 
-
 Route::get('/model',[basecontrol::class,'models']);
-Route::post('/add',[addpostcontrol::class,'add_event']);
-Route::post('/new_add',[addpostcontrol::class,'newevent']);
+
+Route::middleware(eventlimitmid::class)->group(function()
+{
+    Route::post('/add',[addpostcontrol::class,'add_event']);
+    Route::post('/new_add',[addpostcontrol::class,'newevent']);
+});
+
 
 Route::get('shops',[shopcontrol::class,'shops']);
 Route::get('shop_product/{id}',[shopcontrol::class,'products']);
