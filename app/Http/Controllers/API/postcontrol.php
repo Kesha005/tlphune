@@ -12,9 +12,7 @@ use Symfony\Component\CssSelector\XPath\Extension\FunctionExtension;
 
 class postcontrol extends Controller
 {
-   
 
-   
     public function edit($id)
     {
         $product=events::find($id);
@@ -29,12 +27,18 @@ class postcontrol extends Controller
         else return $this->updatenew($request,$event);
     }
 
-    public function updatenew(eventrequest $request,$event)
+    public function updatenew(neweventreq $request,$event)
     {
-
+        $event->update($request->all());
+        return response()->json(['message'=>'Bildiriş üýtgedildi']);
     }
 
-    public function updateold(neweventreq $request,$event)
+    public function updateold(eventrequest $request,$event)
+    {
+        
+    }
+
+    public function updateimg($request,$event)
     {
 
     }

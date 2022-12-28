@@ -87,7 +87,7 @@ class productcontrol extends Controller
         {
             File::delete("storage/".$product->public_image);
             $path =  $request->public_image; $filename =hash('sha256', $path).".".$request->file('public_image')->extension();
-        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/'.$filename));
+        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
         $validated['public_image'] =  "product_thumb/$filename";$product->update($validated);
         return redirect()->route('admin.products.index');
         }
