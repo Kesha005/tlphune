@@ -26,7 +26,7 @@ Bildiriş ibermek
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="tekst">Tekst</label>
-                                    <textarea id="tekst" class="form-control"></textarea>
+                                    <textarea id="tekst" class="form-control" name='text'></textarea>
                                 </div><br>
                             </div>
 

@@ -17,19 +17,27 @@ class pushnotcontrol extends Controller
 
     public function send(Request $request)
     {
-        foreach(User::where('isban',0) as $user)  // sendpushnot::dispatch($request->all(),$user);
-        {
-          
-            FCMService::send(
-                $user->fcm_token,
-                [
-                    'title' => 'your title',
-                    'body' => 'your body',
-                ]
-            );
-      
-        }
-        return redirect()->route('admin.push.index');
+       $url='https://fcm.googleapis.com/fcm/send';
+       $apikey='AAAAlG8TfR4:APA91bEKmtljhL-YtMX1SodOasN0kCTxe3obfrv3wdw5e0i6PZWsXHbeaGdpcJ30DS6rQtyIb1s_g-m3D7bzPhZ5PCM3NQ0JofXkKwO0qntsmMTrdc9M5I9D5vaq0PtXZB5MMKWXC-ec';
+       $headers=[
+           'Authorization:key='.$apikey,
+           'Content-Type:application/json'
+       ];
+       $notifdata=[
+           'name'=>$request->name,
+           'text'=>$request->text
+       ];
+
+       $ch=curl_init();
+       curl_setopt($ch,CURLOPT_URL,$url);
+       curl_setopt($ch,CURLOPT_POST,true);
+       curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
+       curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($notifdata));
+       $result=curl_exec($ch);
+       return $result;
+       curl_close($ch);
+
+        // return redirect()->route('admin.push.index');
     }
          
             

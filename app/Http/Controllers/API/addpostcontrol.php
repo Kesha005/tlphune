@@ -20,7 +20,7 @@ class addpostcontrol extends Controller
     public function add_event(eventrequest $request)
     {
 
-        $data = $request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about','shopid');
+        $data = $request->only('user_id', 'category_id', 'name', 'mark_id', 'place', 'price', 'about','shopid','color_id');
         $path =  $request->image[0];$filename  = hash('sha256', $path);$image_resize = Image::make($path->getRealPath());
         $image_resize->resize(150, 150);  $image_resize->save(storage_path("/app/public/users/$request->user_id/") . $filename);
         $data['public_image']="/users/$request->user_id/$filename";$data['is_new']=false;

@@ -94,7 +94,7 @@ class basecontrol extends Controller
     public function event($event_id)
     {
         $count=events::find($event_id);events::where('id',$event_id)->update(['view'=>$count->view+1]);
-        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','shop','etrap')->where('id', $event_id)->get()->map(function ($item) {
+        $events = events::with('image', 'category:id,tm,ru,en', 'mark:id,name','shop','etrap','color')->where('id', $event_id)->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;
