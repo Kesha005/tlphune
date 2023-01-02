@@ -9,6 +9,9 @@ class events extends Model
 {
     use HasFactory;
 
+    const IF_VIP = 1;
+
+
     protected $fillable = [
         'user_id',
         'category_id',
@@ -68,5 +71,8 @@ class events extends Model
         return $this->belongsTo(shops::class,'shopid');
     }
 
+    public function ScopeVipEvents($req){
+           return $req->where('vip',self::IF_VIP);
+    }
 
 }
