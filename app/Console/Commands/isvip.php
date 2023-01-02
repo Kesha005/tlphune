@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\colormodel;
 use App\Models\events;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -43,5 +44,7 @@ class isvip extends Command
                 }
             } 
         });
+
+      
     }
 }
