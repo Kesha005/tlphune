@@ -55,7 +55,7 @@ class eventrequest extends FormRequest
         'mark_id' => 'required',
         'name' => 'required',
             'image' => 'required',
-            'image.*' => 'max:10000|mimes:jpeg,jpg,png',
+            'image.*' => 'max:10000|mimes:jpeg,jpg,png,webp',
         'price' => 'required|numeric',
         'about' => 'required',
         'place' => 'required',

@@ -47,7 +47,7 @@ class shoprequest extends FormRequest
         return [
             'name'=>'required|unique:shops,name',
             'image' => 'required',
-            'image.*' => 'max:10000|mimes:jpeg,jpg,png',
+            'image.*' => 'max:10000|mimes:jpeg,jpg,png,webp',
             'place'=>'required',
             'phone'=>'required',
             'user_id'=>'required',
