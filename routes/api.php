@@ -48,15 +48,12 @@ Route::get('/category/{category_id}',[basecontrol::class,'category']);
 Route::get('/event/{event_id}',[basecontrol::class,'event']);
 Route::get('/new/{new_id}',[basecontrol::class,'new']);
 Route::get('/model',[basecontrol::class,'models']);
-Route::post('/add',[addpostcontrol::class,'add_event']);
-Route::post('/new_add',[addpostcontrol::class,'newevent']);
 Route::get('/edit/{id}',[postcontrol::class,'edit']);
 Route::post('/update_event/',[postcontrol::class,'type']);
-
-
 Route::middleware(eventlimitmid::class)->group(function()
 {
-   
+    Route::post('/add',[addpostcontrol::class,'add_event']);
+    Route::post('/new_add',[addpostcontrol::class,'newevent']);
 });
 
 #__________________________________________SHOP_ROUTES_______________________________________________________

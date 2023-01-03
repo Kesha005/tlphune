@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('vip:control')->everyMinute();
+
+        $schedule->command('userlimit:control')->timezone('Asia/Ashgabat')->at('00:00');
     }
 
     /**
