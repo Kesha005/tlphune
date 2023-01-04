@@ -5,18 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\adds;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class reklamcontrol extends Controller
 {
     public function index()
     {
         $adds = adds::all();
-        return $adds;
+        return view('admin.adds.index',compact('adds'));
     }
 
     public function create()
     {
-        return view('admin.adds.index');
+        return view('admin.adds.create');
     }
 
     public function store(Request $request)
@@ -24,7 +25,7 @@ class reklamcontrol extends Controller
         $add = $request->all();
         $add['image'] = $request->image->store('files', 'public');
         adds::create($add);
-        return redirect()->route('admin.adds.index');
+        return redirect()->route('admin.adds.create')->with('success','Reklama goşuldy');
     }
 
     public function show($id)
@@ -60,6 +61,6 @@ class reklamcontrol extends Controller
     {
         File::delete('storage/' . adds::where('id', $id)->first()->image);
         adds::where('id', $id)->delete();
-        return redirect()->route('admib.adds.index');
+        return redirect()->route('admin.adds.index');
     }
 }

@@ -91,7 +91,7 @@
 
     <li class="nav-item">
       <a class="nav-link " href="{{route('admin.limit.index')}}">
-        <i class="bi bi-solider"></i>
+        <i class="bi bi-cat"></i>
         <span>Limit ber</span>
       </a>
     </li>
@@ -123,6 +123,13 @@
       <a class="nav-link " href="{{route('admin.shops.index')}}">
         <i class="bi bi-bank"></i>
         <span>Dükanlar</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('admin.adds.index')}}">
+        <i class="bi bi-list"></i>
+        <span>Reklamalar</span>
       </a>
     </li>
 
