@@ -96,6 +96,12 @@ class shopcontrol extends Controller
         
     }
 
+    public function show($id)
+    {
+        $shop=shops::with('user','images','etrap')->where('id',$id)->first();
+        return response()->json($shop);
+    }
+
     public function products($id)
     {
         $events = events::with('shop')->where('shop', $id)->where('status', 1)->orderBy('created_at', 'DESC')->get(['id','name','public_image','user_id','is_new','price','place','created_at','updated_at','mark_id','category_id'])->map(function ($item) {

@@ -58,6 +58,7 @@ Route::middleware(eventlimitmid::class)->group(function()
 
 
 Route::get('shops',[shopcontrol::class,'shops']);
+Route::get('shop/{id}',[shopcontrol::class,'show']);
 Route::get('shop_product/{id}',[shopcontrol::class,'products']);
 Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::get('/myshop/{user_id}',[shopcontrol::class,'index']);
