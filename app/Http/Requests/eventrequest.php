@@ -51,14 +51,14 @@ class eventrequest extends FormRequest
     {
         return [
             'user_id' => 'required',
-            'category_id' => 'required',
-            'mark_id' => 'required',
-            'name' => 'required',
+        'category_id' => 'required',
+        'mark_id' => 'required',
+        'name' => 'required',
             'image' => 'required',
-            'image.*' => 'max:10000|mimes:jpeg,jpg,png',
-            'price' => 'required|numeric',
-            'about' => 'required',
-            'place' => 'required',
+            'image.*' => 'max:10000|mimes:jpeg,jpg,png,webp',
+        'price' => 'required|numeric',
+        'about' => 'required',
+        'place' => 'required',
         ];
     }
 

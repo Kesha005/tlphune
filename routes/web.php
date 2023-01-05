@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\placecontrol;
 use App\Http\Controllers\Admin\usercontrol;
 use App\Http\Controllers\Admin\productcontrol;
 use App\Http\Controllers\Admin\pushnotcontrol;
+use App\Http\Controllers\Admin\reklamcontrol;
 use App\Http\Controllers\Admin\vipcontrol;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\auth;
@@ -108,6 +109,8 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::post('limitupdate', [limitcontrol::class, 'update'])->name('limit.update');
         #__________________________________________________CONTRACT ROUTES_____________________________________________
         Route::resource('/contract',contractcontrol::class);
+
+        Route::resource('/adds',reklamcontrol::class);
       
     });
 });

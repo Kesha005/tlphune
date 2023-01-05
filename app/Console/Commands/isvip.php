@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\colormodel;
 use App\Models\events;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+
+use function Ramsey\Uuid\v1;
 
 class isvip extends Command
 {
@@ -34,14 +37,8 @@ class isvip extends Command
 
     public function handle()
     {
-        events::where('vip',1)->chunk(50,function($events){
-            foreach($events as $event)
-            {
-                if(Carbon::now()->diffInHours($event->to)==0 or Carbon::now()->diffInHours($event->in_to)<0)
-                {
-                    $event->update(['vip'=>0,'in_to'=>null]);
-                }
-            } 
-        });
+        events::where('vip', 1)->whereDate('in_to', '<=', now())->update([
+            'vip' => 0, 'in_to' => null
+        ]);
     }
 }

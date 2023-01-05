@@ -50,7 +50,7 @@ class cshopprequest extends FormRequest
             'name'=>'required',
             'image'=>'required|max:10000|mimes:jpg,jpeg,png',
             'price'=>'required|numeric',
-            'image1'=>'max:10000|mimes:jpg,jpeg,png',
+            'image1'=>'max:10000|mimes:jpg,jpeg,png,webp',
             'mark_id'=>'required',
             'about'=>'required',
             'shop_id'=>'required',

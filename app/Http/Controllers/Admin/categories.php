@@ -37,6 +37,7 @@ class categories extends Controller
   {
 
     if ($request['image'] != null) {
+      File::delete('storage/' . $category->image);
       $validateddata = $request->validate(['tm' => 'required', 'image' => 'required', 'en' => 'required', 'ru' => 'required']);
       $validateddata['image'] = $request->image->store('files', 'public');
       $category->update($validateddata);

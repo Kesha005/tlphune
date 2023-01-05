@@ -18,13 +18,6 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        banuser_event::class=>[
-            banuser_listener::class,
-        ],
-
-        limitevent::class=>[
-            limilis::class   
-        ],
     ];
 
    
