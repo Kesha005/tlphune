@@ -30,9 +30,9 @@ use App\Models\gallery;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [authcontrol::class, 'login'])->name('login');
+Route::get('/sign', [authcontrol::class, 'login'])->name('login');
 Route::post('/post', [authcontrol::class, 'post'])->name('postlog');
-Route::post('logout', [authcontrol::class, 'logout'])->name('logout');
+Route::post('/logout', [authcontrol::class, 'logout'])->name('logout');
 
 
 
@@ -59,29 +59,29 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::post('/messages_multi_del/', [msgscontrol::class, 'multi_del'])->name('messages.multi_del');
         #__________________Admin profil routes_______________
         Route::get('/profile', [a_changecontrol::class, 'index'])->name('profile.index');
-        Route::put('profile_update/{user}', [a_changecontrol::class, 'change_profil'])->name('profile.update');
-        Route::put('profile_update_password/{user}', [a_changecontrol::class, 'change_password'])->name('profile.update.password');
+        Route::put('/profile_update/{user}', [a_changecontrol::class, 'change_profil'])->name('profile.update');
+        Route::put('/profile_update_password/{user}', [a_changecontrol::class, 'change_password'])->name('profile.update.password');
 
         #__________________________________Gallery_Routes______________________
-        Route::resource('gallery', gallerycontrol::class);
+        Route::resource('/gallery', gallerycontrol::class);
         #_________________________________Event routes_______________________________________________
 
-        Route::resource('design', designcontrol::class);
-        Route::get('download/{id}', [designcontrol::class, 'download'])->name('design.download');
+        Route::resource('/design', designcontrol::class);
+        Route::get('/download/{id}', [designcontrol::class, 'download'])->name('design.download');
 
-        Route::get('events', [eventcontrol::class, 'index'])->name('events.index');
-        Route::get('event_show/{id}', [eventcontrol::class, 'show'])->name('events.show');
-        Route::delete('event_destroy/{event}', [eventcontrol::class, 'destroy'])->name('events.destroy');
-        Route::post('event_del', [eventcontrol::class, 'multi_del'])->name('events.multi_del');
-        Route::post('event_check', [eventcontrol::class, 'multi_check'])->name('events.multi_check');
-        Route::post('event_check_single/{id?}', [eventcontrol::class, 'check'])->name('events.check');
+        Route::get('/events', [eventcontrol::class, 'index'])->name('events.index');
+        Route::get('/event_show/{id}', [eventcontrol::class, 'show'])->name('events.show');
+        Route::delete('/event_destroy/{event}', [eventcontrol::class, 'destroy'])->name('events.destroy');
+        Route::post('/', [eventcontrol::class, 'multi_del'])->name('events.multi_del');
+        Route::post('/event_check', [eventcontrol::class, 'multi_check'])->name('events.multi_check');
+        Route::post('/event_check_single/{id?}', [eventcontrol::class, 'check'])->name('events.check');
 
 
         #________________________________________NEW_EVENTS____________________________________________________
-        Route::get('new_event', [newpostcontrol::class, 'index'])->name('new_event.index');
-        Route::get('new_event/show/{id}', [newpostcontrol::class, 'show'])->name('new_event.show');
-        Route::post('new_event/delete/{id}', [newpostcontrol::class, 'destroy'])->name('new_event.destroy');
-        Route::post('new_event/multidel', [newpostcontrol::class, 'multi_del'])->name('new_event.multi_del');
+        Route::get('/new_event', [newpostcontrol::class, 'index'])->name('new_event.index');
+        Route::get('/new_event/show/{id}', [newpostcontrol::class, 'show'])->name('new_event.show');
+        Route::post('/new_event/delete/{id}', [newpostcontrol::class, 'destroy'])->name('new_event.destroy');
+        Route::post('/new_event/multidel', [newpostcontrol::class, 'multi_del'])->name('new_event.multi_del');
 
 
         Route::resource('/shops', shopscontrol::class);
@@ -97,16 +97,16 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/etrap', etrapcontrol::class);
         Route::resource('/about', aboutcontrol::class);
         Route::resource('/vip', vipcontrol::class);
-        Route::post('vip_remove', [vipcontrol::class, 'remove'])->name('vip.remove');
-        Route::post('vip_change', [vipcontrol::class, 'update'])->name('vip.change');
+        Route::post('/vip_remove', [vipcontrol::class, 'remove'])->name('vip.remove');
+        Route::post('/vip_change', [vipcontrol::class, 'update'])->name('vip.change');
 
-        Route::get('push', [pushnotcontrol::class, 'index'])->name('push.index');
-        Route::post('push_send', [pushnotcontrol::class, 'send'])->name('push.send');
+        Route::get('/push', [pushnotcontrol::class, 'index'])->name('push.index');
+        Route::post('/push_send', [pushnotcontrol::class, 'send'])->name('push.send');
 
 
         Route::get('/limit', [limitcontrol::class, 'index'])->name('limit.index');
-        Route::post('store_limit', [limitcontrol::class, 'store'])->name('limit.store');
-        Route::post('limitupdate', [limitcontrol::class, 'update'])->name('limit.update');
+        Route::post('/store_limit', [limitcontrol::class, 'store'])->name('limit.store');
+        Route::post('/limitupdate', [limitcontrol::class, 'update'])->name('limit.update');
         #__________________________________________________CONTRACT ROUTES_____________________________________________
         Route::resource('/contract',contractcontrol::class);
 

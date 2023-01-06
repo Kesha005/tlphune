@@ -36,6 +36,7 @@ Route::get('/events',[basecontrol::class,'get_events']);
 Route::get('/images',[basecontrol::class,'images']);
 Route::get('/marks',[basecontrol::class,'marks']);
 Route::get('/welayat',[addpostcontrol::class,'place']);
+Route::get('/etrap', [basecontrol::class, 'etrap']);
 
 
 Route::get('/category/{id}',[basecontrol::class,'category']);
