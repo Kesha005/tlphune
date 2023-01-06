@@ -25,9 +25,9 @@ class postcontrol extends Controller
     }
 
 
-    public function type(Request $request)
+    public function type(Request $request,$id)
     {
-        $event = events::find($request->id);
+        $event = events::find($id);
         if ($event->is_new == true) return $this->update($request, $event);
         else return $this->updatenew($request, $event);
     }
