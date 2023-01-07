@@ -49,7 +49,7 @@ class reklamcontrol extends Controller
             adds::where('id', $id)->update($validateddata);
             return redirect()->route('admin.adds.index');
         }
-        return $this->update_nonimage($request, $category);
+        return $this->update_nonimage($request, $id);
     }
     public function update_nonimage($request, $id)
     {

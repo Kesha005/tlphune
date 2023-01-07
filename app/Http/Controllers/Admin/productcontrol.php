@@ -75,7 +75,8 @@ class productcontrol extends Controller
         $product=products::find($product);
         $marks=marks::all();
         $categories=category::all();
-        return view('admin.products.edit',compact('product','marks','categories'));
+        $images = product_img::where('product_id', $product->id)->get();
+        return view('admin.products.edit',compact('product','marks','categories','images'));
     } 
 
     public function update(Request $request,$id)
@@ -83,6 +84,10 @@ class productcontrol extends Controller
        
         $request->validate($this->validate);
         $validated=$request->only('name','country','mark_id','category_id','about','ru');  $product=products::find($id);
+        if($request->image!=null)
+        {
+            $this->update_image($request, $id);
+        }
         if($request->public_image!=null) 
         {
             File::delete("storage/".$product->public_image);
@@ -95,6 +100,23 @@ class productcontrol extends Controller
         $product->update($validated);
         return redirect()->route('admin.products.index');
        
+    }
+
+    public function remove_image($id)
+    {
+        File::delete("storage/".product_img::where('id',$id)->first()->image);
+        product_img::where('id', $id)->delete();
+        return back();
+    }
+
+    public function update_image($request,$id)
+    {
+        $images = $request->file('image');
+        foreach ($images as $image) {
+            $file['product_id'] = $id;
+            $file['image'] = $image->store("products/$id/", 'public');
+            product_img::create($file);
+        }
     }
 
     public function destroy($product)

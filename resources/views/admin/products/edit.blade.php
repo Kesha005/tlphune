@@ -75,6 +75,16 @@ Model {{$product->name}}
                                 </div>
 
                             </div>
+                            <div class="container my-5 py-5">
+                                <div class="row align-items-center justify-content-between">
+                                    @foreach($images as $image )
+                                          <div class="col-auto mb-3">
+                                        <img src="{{ asset('storage/'.$image->image) }}" class="img-fluid" style="width: 80px">
+                                    </div>
+                                    @endforeach
+                                  
+                                </div>
+                            </div>
 
 
                             <div class="pull-right">
