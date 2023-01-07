@@ -34,7 +34,7 @@ class authcontrol extends Controller
 
     public function logout()
     {
-        Session::flush();
+        \Illuminate\Support\Facades\Session::flush();
         Auth::logout();
         return redirect()->route('');
     }

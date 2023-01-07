@@ -135,6 +135,12 @@ class basecontrol extends Controller
         return response()->json($color);
     }
 
+    public function etrap()
+    {
+        $etraps=\App\Models\etrap::all();
+        return response()->json($etraps);
+    }
+
    
 
 }

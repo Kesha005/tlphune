@@ -75,7 +75,8 @@ class productcontrol extends Controller
         $product=products::find($product);
         $marks=marks::all();
         $categories=category::all();
-        return view('admin.products.edit',compact('product','marks','categories'));
+        $images = product_img::where('product_id', $product->id)->get();
+        return view('admin.products.edit',compact('product','marks','categories','images'));
     } 
 
     public function update(Request $request,$id)
@@ -87,7 +88,6 @@ class productcontrol extends Controller
         {
             $this->update_image($request, $id);
         }
-
         if($request->public_image!=null) 
         {
             File::delete("storage/".$product->public_image);
