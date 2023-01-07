@@ -13,14 +13,16 @@ Model {{$product->name}}
                     <div class="card-body">
 
                         <h5 class="card-title">Üýtget</h5>
-                        <form action="{{route('admin.products.update',$product->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
+                        <form action="{{route('admin.products.update',$product->id)}}" id="markform1"
+                            enctype="multipart/form-data" method="POST" class="row g-3">
                             @method('PUT')
                             @csrf
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name">Ady</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Ady" name="name" value="{{$product->name}}">
+                                    <input type="text" class="form-control" id="name" placeholder="Ady" name="name"
+                                        value="{{$product->name}}">
                                 </div><br>
                             </div>
 
@@ -29,7 +31,8 @@ Model {{$product->name}}
                                     <label for="category">Kategoriýa</label>
                                     <select name="category_id" class="form-control" id="category_id">
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}" {{($category->id==$product->category_id) ? 'selected' : ''}} class="form-control">{{$category->tm}}</option>
+                                        <option value="{{$category->id}}" {{($category->id==$product->category_id) ?
+                                            'selected' : ''}} class="form-control">{{$category->tm}}</option>
                                         @endforeach
                                     </select>
                                 </div><br>
@@ -40,7 +43,8 @@ Model {{$product->name}}
                                     <label for="mark_id">Marka</label>
                                     <select name="mark_id" class="form-control" id="mark_id">
                                         @foreach($marks as $mark)
-                                        <option value="{{$mark->id}}" class="form-control" {{($mark->id==$product->mark_id)? 'selected': ''}}>{{$mark->name}}</option>
+                                        <option value="{{$mark->id}}" class="form-control" {{($mark->
+                                            id==$product->mark_id)? 'selected': ''}}>{{$mark->name}}</option>
                                         @endforeach
                                     </select>
                                 </div><br>
@@ -49,40 +53,47 @@ Model {{$product->name}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="country">Ýurt</label>
-                                    <input type="text" class="form-control" id="country" placeholder="Yurt" name="country" value="{{$product->country}}">
+                                    <input type="text" class="form-control" id="country" placeholder="Yurt"
+                                        name="country" value="{{$product->country}}">
                                 </div><br>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="about">Barada</label>
-                                    <textarea class="form-control" id="about" placeholder="Barada" name="about" value="{{$product->tm}}">{{$product->about}}</textarea>
+                                    <textarea class="form-control" id="about" placeholder="Barada" name="about"
+                                        value="{{$product->tm}}">{{$product->about}}</textarea>
                                 </div><br>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="about1">Barada Rus dili</label>
-                                    <textarea class="form-control" id="about1" placeholder="Barada rus" name="ru" value="{{$product->ru}}">{{$product->ru}}</textarea>
+                                    <textarea class="form-control" id="about1" placeholder="Barada rus" name="ru"
+                                        value="{{$product->ru}}">{{$product->ru}}</textarea>
                                 </div><br>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="mimage1">Esasy Surat</label>
-                                    <input type="file" class="form-control" id="mimage1" name="public_image" placeholder="Surat">
-                                    <img src="{{ asset('storage/'.$product->public_image) }}" height="100" width="100" />
+                                    <input type="file" class="form-control" id="mimage1" name="public_image"
+                                        placeholder="Surat">
+                                    <img src="{{ asset('storage/'.$product->public_image) }}" height="100"
+                                        width="100" />
                                 </div>
 
                             </div>
                             <div class="container my-5 py-5">
                                 <div class="row align-items-center justify-content-between">
                                     @foreach($images as $image )
-                                          <div class="col-auto mb-3">
-                                        <img src="{{ asset('storage/'.$image->image) }}" class="img-fluid" style="width: 80px">
+                                    <div class="col-auto mb-3 d-flex flex-column" style="height:180px;position:relative">
+                                        <img src="{{ asset('storage/'.$image->image) }}" class="img-fluid"
+                                            style="width: 80px">
+                                        <button class="btn btn-outline-danger" style="position: absolute; bottom:0;">Delete</button>
                                     </div>
                                     @endforeach
-                                  
+
                                 </div>
                             </div>
 
