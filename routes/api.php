@@ -49,7 +49,7 @@ Route::get('/event/{event_id}',[basecontrol::class,'event']);
 Route::get('/new/{new_id}',[basecontrol::class,'new']);
 Route::get('/model',[basecontrol::class,'models']);
 Route::get('/edit/{id}',[postcontrol::class,'edit']);
-Route::post('/update_event/',[postcontrol::class,'type']);
+Route::post('/update_event/{id}',[postcontrol::class,'type']);
 Route::middleware(eventlimitmid::class)->group(function()
 {
     Route::post('/add',[addpostcontrol::class,'add_event']);

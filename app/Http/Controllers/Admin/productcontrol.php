@@ -83,19 +83,43 @@ class productcontrol extends Controller
        
         $request->validate($this->validate);
         $validated=$request->only('name','country','mark_id','category_id','about','ru');  $product=products::find($id);
+        if($request->image!=null)
+        {
+            $this->update_image($request, $id);
+        }
+
         if($request->public_image!=null) 
         {
             File::delete("storage/".$product->public_image);
             $path =  $request->public_image; $filename =hash('sha256', $path).".".$request->file('public_image')->extension();
-        $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
-        $validated['public_image'] =  "product_thumb/$filename";$product->update($validated);
-        return redirect()->route('admin.products.index');
+            $image_resize = Image::make($path->getRealPath());$image_resize->resize(150, 150); $image_resize->save(storage_path('app/public/product_thumb/'.$filename));
+            $validated['public_image'] =  "product_thumb/$filename";$product->update($validated);
+            return redirect()->route('admin.products.index');
         }
         $validated['public_image']=$product->public_image;
         $product->update($validated);
         return redirect()->route('admin.products.index');
        
     }
+
+    public function remove_image(Request $request)
+    {
+        File::delete("storage/".product_img::find($request->id)->image);
+        product_img::where('id',$request->id)->delete();
+        return response()->json(['message'=>'success']);
+    }
+
+    public function update_image($request,$id)
+    {
+        $images = $request->file('image');
+        foreach ($images as $image) {
+            $file['product_id'] = $id;
+            $file['image'] = $image->store("products/$id/", 'public');
+            product_img::create($file);
+        }
+    }
+
+
 
     public function destroy($product)
     {

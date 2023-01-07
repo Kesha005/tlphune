@@ -73,9 +73,21 @@ Model {{$product->name}}
                                     <input type="file" class="form-control" id="mimage1" name="public_image" placeholder="Surat">
                                     <img src="{{ asset('storage/'.$product->public_image) }}" height="100" width="100" />
                                 </div>
-
                             </div>
 
+                            <div class="container my-5 py-5">
+                                <div class="row align-items-center justify-content-between">
+                                    @foreach($images as $image )
+                                    <div class="image">
+                                        <div class="col-auto mb-3 d-flex flex-column" style="height:180px;position:relative">
+                                            <img src="{{ asset('storage/'.$image->image) }}" class="img-fluid"
+                                                style="width: 80px">
+                                            <a class="btn btn-outline-danger delete-image" data-id="{{$image->id}}" href="" style="position: absolute; bottom:0;">Delete</a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
 
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-outline-success btn-sm pull-right ">Üýtget</button>
@@ -90,3 +102,29 @@ Model {{$product->name}}
     </section>
 </div>
 @endsection
+
+<script>
+    $('delete-image').on('click',function(e){
+        e.preventDefault();
+        let id=$(this).attr('data-id');
+
+        $.ajax({
+            data: {
+                _token: "{{csrf_token()}}",
+                'id':id,
+                'ajax':'true'
+            },
+            url: "{{route('admin.product.remove.image')}}/" + id,
+            type: 'POST',
+            dataType: 'JSON',
+            
+            success: function(response) {
+                if(response){
+                    $(this).parents('.image').slideUp().remove();
+                }
+            }.bind(this)
+        });
+    })
+       
+    
+</script>

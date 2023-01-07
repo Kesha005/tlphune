@@ -91,6 +91,7 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
 
         #______________________________________Model Product Routes_____________________________________________________
         Route::resource('/products', productcontrol::class);
+        Route::post('/product_rm_image/{id?}',[productcontrol::class,'remove_image'])->name('product.remove.image');
         Route::resource('/color', colorcontrol::class);
 
         Route::resource('/place', placecontrol::class);
