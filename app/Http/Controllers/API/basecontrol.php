@@ -108,7 +108,7 @@ class basecontrol extends Controller
     public function new($new_id)
     { 
         $count=events::find($new_id);events::where('id',$new_id)->update(['view'=>$count->view+1]);
-        $new_event = events::where('id', $new_id)->with('shop','etrap')->get()->map(function ($item) {
+        $new_event = events::where('id', $new_id)->with('shop','etrap','category:id,tm,ru,en')->get()->map(function ($item) {
             if($item->etrap)
             {
                 $welayat=welayat::find($item->etrap->welayat_id); $place=$welayat->name;

@@ -6,6 +6,7 @@ use App\Http\Controllers\API\basecontrol;
 use App\Http\Controllers\API\contractcontrol;
 use App\Http\Controllers\API\postcontrol;
 use App\Http\Controllers\API\profilcontrol;
+use App\Http\Controllers\API\reklamapi;
 use App\Http\Controllers\API\shopcontrol;
 use App\Http\Middleware\eventlimitmid;
 use App\Models\contract;
@@ -65,6 +66,7 @@ Route::post('/shop_add',[shopcontrol::class,'store']);
 Route::get('/myshop/{user_id}',[shopcontrol::class,'index']);
 Route::post('/delshop/{user_id}',[shopcontrol::class,'destroy']);
 
+
 Route::get('/about/{user_id}',[profilcontrol::class,'about']);
 Route::get('/all/{user_id}',[profilcontrol::class,'all']);
 Route::get('/success/{user_id}',[profilcontrol::class,'success']);
@@ -72,6 +74,12 @@ Route::get('/onproses/{user_id}',[profilcontrol::class,'onproses']);
 Route::get('/mymsg/{user_id}',[basecontrol::class,'messages']);
 Route::get('/contract',[contractcontrol::class,'index']);
 Route::get('/color',[basecontrol::class,'color']);
+
+#======================================Reklam ROutes======================================================
+
+Route::get('/reklam/home',[reklamapi::class,'home']);
+Route::get('/reklam/category',[reklamapi::class,'category']);
+Route::get('/reklam/product',[reklamapi::class,'product']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
