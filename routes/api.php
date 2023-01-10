@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\addpostcontrol;
+use App\Http\Controllers\API\filterapi;
 use App\Http\Controllers\API\logincontrol;
 use App\Http\Controllers\API\basecontrol;
 use App\Http\Controllers\API\contractcontrol;
@@ -80,6 +81,9 @@ Route::get('/color',[basecontrol::class,'color']);
 Route::get('/reklam/home',[reklamapi::class,'home']);
 Route::get('/reklam/category',[reklamapi::class,'category']);
 Route::get('/reklam/product',[reklamapi::class,'product']);
+
+#=========================================Filter routers==================================================
+Route::post('/filter', [filterapi::class, 'filter']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
