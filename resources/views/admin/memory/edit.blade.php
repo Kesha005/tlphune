@@ -14,7 +14,7 @@ Ram
 
                         <h5 class="card-title">Üýtget</h5>
                         <form action="{{route('admin.ram.update',$memory->id)}}" id="markform1" enctype="multipart/form-data" method="POST" class="row g-3">
-                           
+                            @method('PUT')
                             @csrf
 
                             <div class="col-md-4">
