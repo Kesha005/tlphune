@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class memory extends Model
+class ram extends Model
 {
     use HasFactory;
 
-    protected $fillable  = ['type', 'size'];
+    protected $fillable = ['type', 'size'];
 }

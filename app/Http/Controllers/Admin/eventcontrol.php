@@ -20,7 +20,7 @@ class eventcontrol extends Controller
 
     public function show($id)
     {
-        $event = events::with('mark', 'user')->find($id);
+        $event = events::with('mark', 'user','category')->find($id);
         return view('admin.events.show', compact('event'));
     }
 

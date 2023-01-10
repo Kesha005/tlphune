@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\colorcontrol;
 use App\Http\Controllers\Admin\contractcontrol;
 use App\Http\Controllers\Admin\eventcontrol;
 use App\Http\Controllers\Admin\gallerycontrol;
+use App\Http\Controllers\Admin\memorycontrol;
 use App\Http\Controllers\Admin\msgscontrol;
+use App\Http\Controllers\Admin\ramcontrol;
 use App\Http\Controllers\Admin\shopscontrol;
 use App\Http\Controllers\Admin\designcontrol;
 use App\Http\Controllers\Admin\etrapcontrol;
@@ -98,6 +100,11 @@ Route::middleware(Authenticate::class, admin::class)->group(function () {
         Route::resource('/etrap', etrapcontrol::class);
         Route::resource('/about', aboutcontrol::class);
         Route::resource('/vip', vipcontrol::class);
+        Route::resource('/memory', memorycontrol::class);
+        Route::resource('/ram', ramcontrol::class);
+
+
+
         Route::post('/vip_remove', [vipcontrol::class, 'remove'])->name('vip.remove');
         Route::post('/vip_change', [vipcontrol::class, 'update'])->name('vip.change');
 

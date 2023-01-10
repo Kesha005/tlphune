@@ -111,6 +111,18 @@
         <span>Modeller</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('admin.ram.index')}}">
+        <i class="bi bi-power"></i>
+        <span>Ram</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('admin.memory.index')}}">
+        <i class="bi bi-memory"></i>
+        <span>Hemişelik ýat</span>
+      </a>
+    </li>
 
     <li class="nav-item">
       <a class="nav-link" href="{{route('admin.color.index')}}">
