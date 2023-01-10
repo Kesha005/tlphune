@@ -41,7 +41,7 @@ class memorycontrol extends Controller
     public function update(Request $request,$id)
     {
         $memory=memory::where('id', $id);
-        $memory->update($request->all());
+        $memory->update(['type'=>$request->type,'size'=>$request->size]);
         return redirect()->route('admin.memory.index')->with('success', 'Başarnykly tamamlandy');
     }
 

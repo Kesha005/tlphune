@@ -41,7 +41,7 @@ class ramcontrol extends Controller
     public function update(Request $request,$id)
     {
         $ram=ram::where('id', $id);
-        $ram->update($request->all());
+        $ram->update(['type'=>$request->type,'size'=>$request->size]);
         return redirect()->route('admin.ram.index')->with('success', 'Başarnykly tamamlandy');
     }
 

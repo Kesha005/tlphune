@@ -2,7 +2,7 @@
 
 @section('page_name')
 
-Ramlar
+Ýatlar
 @endsection
 
 @section('main_section')
@@ -18,7 +18,7 @@ Ramlar
                 <div class="card">
                     <div class="card-body">
 
-                        <h5 class="card-title">Ramlar</h5>
+                        <h5 class="card-title">Ýatlar</h5>
                         <table class="table datatable">
                             <thead>
                                 <tr>
