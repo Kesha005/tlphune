@@ -54,14 +54,16 @@ Bildiriş barada
                         </div>
 
                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Marka</div>
+                            <div class="col-lg-9 col-md-8">{{$event->mark->name ?? "Not found"}}</div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Barada</div>
                             <div class="col-lg-9 col-md-8">{{$event->about}}</div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 label ">Marka</div>
-                            <div class="col-lg-9 col-md-8">{{$event->mark->name ?? "Not found"}}</div>
-                        </div>
+                    
 
                         <h5 class="card-title">Iberen hakda maglumat</h5>
 
@@ -73,6 +75,11 @@ Bildiriş barada
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">Telefon/nom</div>
                             <div class="col-lg-9 col-md-8">{{$event->user->phone ?? "Not found"}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Ýeri</div>
+                            <div class="col-lg-9 col-md-8">{{$welayat->name.' / '.$event->etrap->name ?? "Not found"}}</div>
                         </div>
 
 

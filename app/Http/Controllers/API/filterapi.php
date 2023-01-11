@@ -11,26 +11,27 @@ class filterapi extends Controller
 {
     public function filter(Request $request)
     {
-
         $events = events::query();
         $events->with('shop', 'etrap')->where('status', 1)->get(['id', 'name', 'public_image', 'user_id', 'is_new', 'price', 'place', 'created_at', 'updated_at', 'mark_id', 'category_id', 'vip']);
         if ($request->mark_id != null) {
-            for($i=0;$i<count($request->mark_id);++$i)
-            {
-                $events->where('mark_id', $request->mark_id[$i]);
-            }
-    
+
+            $events->whereIn('mark_id', ($request->mark_id));
+
         }
-        if ($request->model != null) {
-            $events->where('name', 'like', $request->model);
+        if ($request->model_name != null) {
+
+            $events->whereIn('name', $request->model_name);
+
+        }
+
+        if ($request->name != null) {
+            $events->where('name', 'like', $request->name);
         }
 
         if ($request->color_id != null) {
-            for($i=0;$i<count($request->color_id);++$i)
-            {
-                $events->where('color_id', $request->color_id[$i]);
-            }
-            
+
+            $events->whereIn('color_id', $request->color_id);
+
         }
 
         if ($request->price != null) {
@@ -51,12 +52,9 @@ class filterapi extends Controller
 
         }
 
-        if($request->place!=null)
-        {
-            for($i=0;$i<count($request->place);++$i)
-            {
-                $events->where('place',$request->place[$i]);
-            }
+        if ($request->place != null) {
+
+            $events->whereIn('place', $request->place);
         }
 
         $itemsPaginated = $events->paginate(20, ['id', 'name', 'public_image', 'user_id', 'is_new', 'price', 'place', 'created_at', 'updated_at', 'mark_id', 'category_id', 'vip']);

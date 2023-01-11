@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\event_img;
 use App\Models\events;
+use App\Models\welayat;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -20,8 +21,9 @@ class eventcontrol extends Controller
 
     public function show($id)
     {
-        $event = events::with('mark', 'user','category')->find($id);
-        return view('admin.events.show', compact('event'));
+        $event = events::with('mark', 'user','category','etrap')->find($id);
+        $welayat = welayat::find($event->welayat_id);
+        return view('admin.events.show', compact('event','welayat'));
     }
 
     public function destroy()

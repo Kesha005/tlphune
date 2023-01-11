@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\events;
 use App\Models\newevent;
 use App\Models\products;
+use App\Models\welayat;
 use Illuminate\Http\Request;
 
 class newpostcontrol extends Controller
@@ -20,9 +21,10 @@ class newpostcontrol extends Controller
 
     public function show($id)
     {
-        $event=events::find($id);
+        $event=events::with('etrap')->where('id',$id)->first();
+        $welayat = welayat::find($event->etrap->welayat_id);
         $product=products::with('image','mark','category')->where('id',$event->products_id)->first();
-        return view('admin.new_event.show',compact('event','product'));
+        return view('admin.new_event.show',compact('event','product','welayat'));
     }
 
     public function destroy($id)

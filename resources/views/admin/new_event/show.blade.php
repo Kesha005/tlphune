@@ -37,6 +37,11 @@ Bildiriş barada
                             <div class="col-lg-9 col-md-8">{{$product->category->tm}}</div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Ýeri</div>
+                            <div class="col-lg-9 col-md-8">{{$welayat->name.' / '.$event->etrap->name ?? "Not found"}}</div>
+                        </div>
+
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label ">Barada</div>
