@@ -22,7 +22,7 @@ class eventcontrol extends Controller
     public function show($id)
     {
         $event = events::with('mark', 'user','category','etrap')->find($id);
-        $welayat = welayat::find($event->welayat_id);
+        $welayat = welayat::find($event->etrap->welayat_id);
         return view('admin.events.show', compact('event','welayat'));
     }
 
