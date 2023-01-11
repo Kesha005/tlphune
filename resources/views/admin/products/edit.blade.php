@@ -96,20 +96,6 @@ Model {{$product->name}}
                                 </div>
                             </div>
 
-                            <div class="container my-5 py-5">
-                                <div class="row align-items-center justify-content-between">
-                                    @foreach($images as $image )
-                                    <div class="image">
-                                        <div class="col-auto mb-3 d-flex flex-column" style="height:180px;position:relative">
-                                            <img src="{{ asset('storage/'.$image->image) }}" class="img-fluid"
-                                                style="width: 80px">
-                                            <a class="btn btn-outline-danger delete-image" data-id="{{$image->id}}" href="" style="position: absolute; bottom:0;">Delete</a>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-outline-success btn-sm pull-right ">Üýtget</button>
                             </div>
